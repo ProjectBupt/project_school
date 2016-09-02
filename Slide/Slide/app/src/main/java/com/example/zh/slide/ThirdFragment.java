@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
+//nothing to do with
 public class ThirdFragment extends Fragment {
 
 
