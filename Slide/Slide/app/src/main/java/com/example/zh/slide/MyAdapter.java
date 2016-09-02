@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by charlene on 2016/8/25.
  */
-//this is a commite
+//this
 public class MyAdapter extends PagerAdapter {
 
     private List<View> viewList;
