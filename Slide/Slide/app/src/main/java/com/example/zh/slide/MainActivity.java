@@ -3,9 +3,11 @@ package com.example.zh.slide;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -27,6 +29,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.Types.ButtonType;
+import com.nightonke.boommenu.Types.DimType;
+import com.nightonke.boommenu.Types.PlaceType;
+import com.nightonke.boommenu.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView btn_third;
     private TextView btn_four;
     private TextView btn_fifth;
+
+    private BoomMenuButton menuButton;
 
     private List<Fragment> fragmentList=new ArrayList<Fragment>();
 
@@ -148,6 +158,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resetButtonColor();
         btn_first.setTextColor(Color.WHITE);
 
+    }
+
+    public void initBoomButton(){
+        menuButton= (BoomMenuButton) findViewById(R.id.boom);
+
+        int[] drawablesIDs=new int[]{R.drawable.heart,R.drawable.copy,R.drawable.github};
+        Drawable[] drawables=new Drawable[3];
+        for (int i=0;i<3;i++){
+            drawables[i]= ContextCompat.getDrawable(this,drawablesIDs[i]);
+        }
+        String[] subButtonTexts = new String[]{"", "", ""};
+        int[][] subButtonColors = new int[3][2];
+        subButtonColors[0][1] = ContextCompat.getColor(this, R.color.colorPrimary);
+        subButtonColors[0][0] = Util.getInstance().getPressedColor(subButtonColors[0][1]);
+
+        subButtonColors[1][1] = ContextCompat.getColor(this, R.color.doubanlv);
+        subButtonColors[1][0] = Util.getInstance().getPressedColor(subButtonColors[1][1]);
+
+        subButtonColors[2][1] = ContextCompat.getColor(this, R.color.font_white);
+        subButtonColors[2][0] = Util.getInstance().getPressedColor(subButtonColors[2][1]);
+        BoomMenuButton.Builder builder=new BoomMenuButton.Builder();
+        builder.subButtons(drawables,subButtonColors,subButtonTexts)
+                .place(PlaceType.CIRCLE_3_3)
+                .button(ButtonType.CIRCLE)
+                .onSubButtonClick(new BoomMenuButton.OnSubButtonClickListener() {
+                    @Override
+                    public void onClick(int buttonIndex) {
+                        switch(buttonIndex){
+                            case 0:
+                                Toast.makeText(MainActivity.this, "haha"+buttonIndex, Toast.LENGTH_SHORT).show();
+                                break;
+                            case 1:
+                                Toast.makeText(MainActivity.this, "haha"+buttonIndex, Toast.LENGTH_SHORT).show();
+                                break;
+                            case 2:
+                                Toast.makeText(MainActivity.this, "haha"+buttonIndex, Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                    }
+                })
+                .duration(700)
+                .delay(100)
+                .rotateDegree(360)
+                .dim(DimType.DIM_9)
+                .init(menuButton);
     }
 
     public void resetButtonColor(){
@@ -298,5 +353,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         return true;
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        initBoomButton();
     }
 }
