@@ -358,6 +358,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        initBoomButton();
+        initBoomButton();//jlhjfsios
     }
 }
