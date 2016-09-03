@@ -5,9 +5,9 @@ android {
     buildToolsVersion "24.0.0"
 
     defaultConfig {
-        applicationId "com.example.zh.slide"
+        applicationId "com.example.zh.uidemo"
         minSdkVersion 18
-        targetSdkVersion 18
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }
@@ -20,10 +20,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
-    compile 'com.android.support:support-v4:24.1.1'
     compile 'com.nightonke:boommenu:1.0.9'
-    compile 'com.android.support:design:24.1.1'
 }
