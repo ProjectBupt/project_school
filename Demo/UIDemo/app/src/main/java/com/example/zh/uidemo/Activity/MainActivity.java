@@ -1,7 +1,9 @@
 package com.example.zh.uidemo.Activity;
 
 import android.app.FragmentTransaction;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.zh.uidemo.R;
 import com.example.zh.uidemo.fragment.FragmentGroup;
@@ -17,6 +20,10 @@ import com.example.zh.uidemo.fragment.FragmentHomePage;
 import com.example.zh.uidemo.fragment.FragmentMe;
 import com.example.zh.uidemo.fragment.FragmentSettings;
 import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.Types.BoomType;
+import com.nightonke.boommenu.Types.ButtonType;
+import com.nightonke.boommenu.Types.PlaceType;
+import com.nightonke.boommenu.Util;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -54,7 +61,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initBoomMenuButton() {
         boomMenuButton= (BoomMenuButton) findViewById(R.id.boom_button);
         BoomMenuButton.Builder builder=new BoomMenuButton.Builder();
+        Drawable[] subButtonDrawables = new Drawable[6];
+        int[] drawablesResource = new int[]{
+                R.drawable.zero,
+                R.drawable.one,
+                R.drawable.two,
+                R.drawable.three,
+                R.drawable.four,
+                R.drawable.six
+        };
+        for (int i = 0; i < drawablesResource.length; i++)
+            subButtonDrawables[i] = ContextCompat.getDrawable(this, drawablesResource[i]);
 
+        String[] subButtonTexts = new String[]{"", "", "","","",""};
+        int[][] subButtonColors = new int[6][2];
+        for (int i = 0; i < drawablesResource.length; i++) {
+            subButtonColors[i][1] = ContextCompat.getColor(this, R.color.white);
+            subButtonColors[i][0] = Util.getInstance().getPressedColor(subButtonColors[i][1]);
+        }
+//        boomMenuButton.init(subButtonDrawables,
+//                subButtonTexts,
+//                subButtonColors,
+//                ButtonType.CIRCLE,     // 子按钮的类型
+//                BoomType.PARABOLA,  // 爆炸类型
+//                PlaceType.CIRCLE_6_3,  // 排列类型
+//                null,               // 展开时子按钮移动的缓动函数类型
+//                null,               // 展开时子按钮放大的缓动函数类型
+//                null,               // 展开时子按钮旋转的缓动函数类型
+//                null,               // 隐藏时子按钮移动的缓动函数类型
+//                null,               // 隐藏时子按钮缩小的缓动函数类型
+//                null,               // 隐藏时子按钮旋转的缓动函数类型
+//                null  );
+        builder.subButtons(subButtonDrawables,subButtonColors,subButtonTexts)
+                .button(ButtonType.CIRCLE)
+                .place(PlaceType.CIRCLE_6_3)
+                .boom(BoomType.PARABOLA)
+                .onSubButtonClick(new BoomMenuButton.OnSubButtonClickListener() {
+                        @Override
+                        public void onClick(int buttonIndex) {
+                            switch(buttonIndex){
+                                case 0:
+                                    Toast.makeText(MainActivity.this, "发布活动", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case 1:
+                                    Toast.makeText(MainActivity.this, "借东西", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case 2:
+                                    Toast.makeText(MainActivity.this, "找人取快递", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case 3:
+                                    Toast.makeText(MainActivity.this, "失物招领", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case 4:
+                                    Toast.makeText(MainActivity.this, "二手交易", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case 6:
+                                    Toast.makeText(MainActivity.this, "拼团凑单", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
+                        }
+                    })
+                .boomButtonShadow(Util.getInstance().dp2px(0), Util.getInstance().dp2px(0))
+                .subButtonsShadow(Util.getInstance().dp2px(0), Util.getInstance().dp2px(0))
+                .init(boomMenuButton);
     }
 
     private void initView() {
