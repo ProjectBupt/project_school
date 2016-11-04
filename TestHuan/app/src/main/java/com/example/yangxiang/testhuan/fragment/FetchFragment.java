@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.Gravity;
@@ -134,6 +135,10 @@ public class FetchFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             Toast.makeText(getActivity(), "查看注意事项", Toast.LENGTH_SHORT).show();
+                            AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+                            builder.setTitle("详细信息");
+                            AlertDialog dialog=builder.create();
+                            dialog.show();
                         }
                     });
 
