@@ -35,7 +35,7 @@
             android:name=".activity.MainActivity">
 
         </activity>
-
+        <!--<service android:name="com.avos.avoscloud.PushService"/>-->
         <meta-data
             android:name="EASEMOB_APPKEY"
             android:value="lecoancom#imer" />
@@ -77,13 +77,13 @@
         <!--<activity android:name="com.hyphenate.easeui.ui.EaseShowVideoActivity" />-->
         <activity
             android:screenOrientation="portrait"
-            android:name=".activity.PostActivity"></activity>
+            android:name=".activity.PostActivity" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".activity.UserInfoActivity"></activity>
+            android:name=".activity.UserInfoActivity" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".activity.ItemDetailActivity"></activity>
+            android:name=".activity.ItemDetailActivity" />
 
         <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
             <intent-filter>
