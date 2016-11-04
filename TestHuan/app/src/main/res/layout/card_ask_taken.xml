@@ -2,7 +2,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
     app:cardBackgroundColor="#fdffc7"
@@ -16,69 +16,99 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <RelativeLayout
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:src="@drawable/ease_contact_list_selected"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
 
             <TextView
                 android:id="@+id/user_name"
+                android:text="姓名"
+                android:textStyle="bold"
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/header"
+                android:layout_marginStart="10dp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="vertical"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/room_number"
+                android:text="宿舍号"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/phone_number"
+                android:text="电话"
+                android:layout_below="@+id/room_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/stu_number"
+                android:layout_below="@+id/phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学号"/>
+
+            <TextView
                 android:id="@+id/time"
+                android:text="派件时间"
+                android:layout_below="@+id/stu_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/btn_message"
-                android:text="短信"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/btn_dial"/>
-
-            <Button
+            <ImageButton
+                android:src="@drawable/call"
+                android:background="#00ffffff"
                 android:id="@+id/btn_dial"
-                android:text="电话"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/btn_confirm"/>
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/stu_number"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <ImageButton
+                android:src="@drawable/send_message"
+                android:background="#00ffffff"
+                android:id="@+id/btn_message"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/stu_number"
+                android:layout_toStartOf="@+id/btn_dial" />
 
             <Button
                 android:id="@+id/btn_confirm"
                 android:text="确认收货"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"/>
+                android:textColor="#ffffff"
+                android:textSize="10sp"
+                android:background="#30be9e"
+                android:src="@drawable/attention"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/stu_number"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toStartOf="@+id/btn_message" />
+
 
         </RelativeLayout>
 

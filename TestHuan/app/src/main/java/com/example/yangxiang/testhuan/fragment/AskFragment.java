@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,11 +25,15 @@ import com.avos.avoscloud.AVRelation;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.GetCallback;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.yangxiang.testhuan.R;
 import com.example.yangxiang.testhuan.bean.Express;
 import com.example.yangxiang.testhuan.bean.ExpressDao;
 import com.example.yangxiang.testhuan.bean.User;
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by charlene on 2016/10/12.
@@ -117,9 +123,20 @@ public class AskFragment extends Fragment {
                     if (e==null){
                         final User FetchUser=user;
                         final CardView cardView= (CardView) mInflater.inflate(R.layout.card_ask_taken,null);
-                        Button Message,Dial,Confirm;
-                        Message= (Button) cardView.findViewById(R.id.btn_message);
-                        Dial= (Button) cardView.findViewById(R.id.btn_dial);
+
+                        ImageView header= (ImageView) cardView.findViewById(R.id.header);
+                        Glide.with(getContext())
+                                .load(user.getAvatar())
+                                .crossFade()
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .placeholder(R.mipmap.ic_launcher)
+                                .bitmapTransform(new CropCircleTransformation(getContext()))
+                                .into(header);
+
+                        ImageButton Message,Dial;
+                        Button Confirm;
+                        Message= (ImageButton) cardView.findViewById(R.id.btn_message);
+                        Dial= (ImageButton) cardView.findViewById(R.id.btn_dial);
                         Confirm= (Button) cardView.findViewById(R.id.btn_confirm);
                         Message.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -149,13 +166,17 @@ public class AskFragment extends Fragment {
                             }
                         });
 
-                        TextView UserName,RoomNumber,PhoneNumber,Company,Time,Attention;
+                        TextView UserName,RoomNumber,PhoneNumber,StuNumber,Time;
                         UserName=(TextView)cardView.findViewById(R.id.user_name);
-                        UserName.setText("用户名:"+FetchUser.getUsername());
+                        UserName.setText(FetchUser.getUsername());
                         PhoneNumber= (TextView) cardView.findViewById(R.id.phone_number);
-                        PhoneNumber.setText("Tele:"+FetchUser.getMobilePhoneNumber());
+                        PhoneNumber.setText("电话:"+FetchUser.getMobilePhoneNumber());
                         RoomNumber= (TextView) cardView.findViewById(R.id.room_number);
-                        RoomNumber.setText("Room:"+user.getRoomID());
+                        RoomNumber.setText("宿舍号:"+FetchUser.getRoomID());
+                        StuNumber= (TextView) cardView.findViewById(R.id.stu_number);
+                        StuNumber.setText("学号:"+FetchUser.getStudentID());
+                        Time= (TextView) cardView.findViewById(R.id.time);
+                        Time.setText("派件时间:"+express.getTime());
                         linearLayout.addView(cardView);
                     }else{
                         Log.e("YOUNI","Error:"+e);
