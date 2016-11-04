@@ -13,7 +13,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -27,10 +26,8 @@ import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.GetCallback;
@@ -38,7 +35,6 @@ import com.avos.avoscloud.SaveCallback;
 import com.example.yangxiang.testhuan.R;
 import com.example.yangxiang.testhuan.activity.ItemDetailActivity;
 import com.example.yangxiang.testhuan.activity.MainActivity;
-import com.example.yangxiang.testhuan.activity.PostActivity;
 import com.example.yangxiang.testhuan.activity.PostFeed;
 import com.example.yangxiang.testhuan.activity.Screen;
 import com.example.yangxiang.testhuan.adapter.MyListViewAdapter;
@@ -49,7 +45,7 @@ import com.example.yangxiang.testhuan.bean.User;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+//test
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -284,8 +280,10 @@ public class ExpressFragment extends Fragment
                     if(express.getState() != ExpressDao.isWaiting) {
                         Toast.makeText(getActivity(), "已经被领取咯", Toast.LENGTH_SHORT).show();
                     }
-                    //!express.getUserID().equals(User.getCurrentUser(User.class).getObjectId())
-                    else if(1+1 == 2){
+                    //!
+                    else if(!express.getUserID().equals(User.getCurrentUser(User.class).getObjectId())){
+                        Log.i(TAG, "done: "+express.getUserID());
+                        Log.i(TAG, "done: "+User.getCurrentUser(User.class).getObjectId());
                         express.setState(ExpressDao.isTaking);
                         express.saveInBackground(new SaveCallback() {
                             @Override
