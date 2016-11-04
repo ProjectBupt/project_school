@@ -284,8 +284,10 @@ public class ExpressFragment extends Fragment
                     if(express.getState() != ExpressDao.isWaiting) {
                         Toast.makeText(getActivity(), "已经被领取咯", Toast.LENGTH_SHORT).show();
                     }
-                    //!express.getUserID().equals(User.getCurrentUser(User.class).getObjectId())
-                    else if(1+1 == 2){
+                    //!
+                    else if(!express.getUserID().equals(User.getCurrentUser(User.class).getObjectId())){
+                        Log.i(TAG, "done: "+express.getUserID());
+                        Log.i(TAG, "done: "+User.getCurrentUser(User.class).getObjectId());
                         express.setState(ExpressDao.isTaking);
                         express.saveInBackground(new SaveCallback() {
                             @Override
