@@ -1,6 +1,7 @@
 package com.example.yangxiang.testhuan.fragment;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ import com.example.yangxiang.testhuan.bean.User;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import jp.wasabeef.glide.transformations.internal.FastBlur;
 
 /**
  * Created by charlene on 2016/10/12.
@@ -135,14 +137,29 @@ public class FetchFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             Toast.makeText(getActivity(), "查看注意事项", Toast.LENGTH_SHORT).show();
+                            LinearLayout linearLayout= (LinearLayout) mInflater.inflate(R.layout.express_details,null);
+                            TextView user_name=(TextView)linearLayout.findViewById(R.id.user_name);
+                            user_name.setText("用户名:"+user.getUsername());
+                            TextView room=(TextView)linearLayout.findViewById(R.id.room);
+                            room.setText("宿舍号:"+user.getRoomID());
+                            TextView payment=(TextView)linearLayout.findViewById(R.id.payment);
+                            payment.setText("打赏金额:"+express.getMoney());
+                            TextView attention=(TextView)linearLayout.findViewById(R.id.attention);
+                            attention.setText("注意事项:"+express.getExtra());
                             AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
-                            builder.setTitle("详细信息");
-                            AlertDialog dialog=builder.create();
-                            dialog.show();
+                            builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            builder.setView(linearLayout)
+                                    .create()
+                                    .show();
                         }
                     });
 
-                    TextView UserName, RoomNumber, PhoneNumber, Company, Time;
+                    TextView UserName, RoomNumber, PhoneNumber, Company, Time, Payment;
                     UserName = (TextView) cardView.findViewById(R.id.user_name);
                     UserName.setText(user.getUsername());
                     RoomNumber= (TextView) cardView.findViewById(R.id.room_number);
@@ -153,6 +170,8 @@ public class FetchFragment extends Fragment {
                     Company.setText("快递公司:"+express.getExpressCompany());
                     Time= (TextView) cardView.findViewById(R.id.time);
                     Time.setText("派件时间:"+express.getTime());
+                    Payment= (TextView) cardView.findViewById(R.id.payment);
+                    Payment.setText("打赏金额:"+express.getMoney());
                     linearLayout.addView(cardView);
                 }else{
                     Log.e("YOUNI","User is null!");

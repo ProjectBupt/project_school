@@ -73,13 +73,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <TextView
+                android:layout_below="@+id/time"
+                android:id="@+id/payment"
+                android:text="打赏金额"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <ImageButton
                 android:src="@drawable/call"
                 android:background="#00ffffff"
                 android:id="@+id/btn_dial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/company"
+                android:layout_below="@+id/time"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"/>
@@ -92,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_below="@+id/company"
+                android:layout_below="@+id/time"
                 android:layout_toStartOf="@+id/btn_dial" />
 
             <ImageButton
@@ -101,7 +108,7 @@
                 android:src="@drawable/attention"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/company"
+                android:layout_below="@+id/time"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_toStartOf="@+id/btn_message" />

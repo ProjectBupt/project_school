@@ -34,6 +34,7 @@ import com.example.yangxiang.testhuan.bean.User;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import jp.wasabeef.glide.transformations.internal.FastBlur;
 
 /**
  * Created by charlene on 2016/10/12.
@@ -103,9 +104,11 @@ public class AskFragment extends Fragment {
     public void addContentAskView(final Express express){
         if (express.getState()== ExpressDao.isWaiting){
             final CardView cardView= (CardView) mInflater.inflate(R.layout.card_ask_waiting,null);
-
-            Button Cancel;
-            Cancel= (Button) cardView.findViewById(R.id.btn_cancel);
+            TextView Company= (TextView) cardView.findViewById(R.id.company);
+            Company.setText("快递公司:"+express.getExpressCompany());
+            TextView Time= (TextView) cardView.findViewById(R.id.time);
+            Time.setText("派件时间:"+express.getTime());
+            Button Cancel= (Button) cardView.findViewById(R.id.btn_cancel);
             Cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -166,7 +169,7 @@ public class AskFragment extends Fragment {
                             }
                         });
 
-                        TextView UserName,RoomNumber,PhoneNumber,StuNumber,Time;
+                        TextView UserName,RoomNumber,PhoneNumber,StuNumber,Time,Payment;
                         UserName=(TextView)cardView.findViewById(R.id.user_name);
                         UserName.setText(FetchUser.getUsername());
                         PhoneNumber= (TextView) cardView.findViewById(R.id.phone_number);
@@ -177,6 +180,8 @@ public class AskFragment extends Fragment {
                         StuNumber.setText("学号:"+FetchUser.getStudentID());
                         Time= (TextView) cardView.findViewById(R.id.time);
                         Time.setText("派件时间:"+express.getTime());
+                        Payment= (TextView) cardView.findViewById(R.id.payment);
+                        Payment.setText("打赏金额:"+express.getMoney());
                         linearLayout.addView(cardView);
                     }else{
                         Log.e("YOUNI","Error:"+e);
