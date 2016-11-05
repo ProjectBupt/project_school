@@ -5,6 +5,7 @@
     android:orientation="vertical">
     <com.example.yangxiang.testhuan.widget.TitleBar
         android:id="@+id/titleBar2"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
