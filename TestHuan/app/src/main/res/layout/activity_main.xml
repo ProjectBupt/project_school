@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".activity.MainActivity">
+    tools:context="com.tongxin.youni.activity.MainActivity">
 
     <FrameLayout
         android:id="@+id/content"

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.yangxiang.testhuan.fragment.ExpressFragment">
+    tools:context="com.example.tongxin.youni.com.tongxin.youni.fragment.ExpressFragment">
 
     <LinearLayout
         android:orientation="vertical"

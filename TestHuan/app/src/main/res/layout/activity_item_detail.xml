@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/acitvity_margin"
-    tools:context="com.example.yangxiang.testhuan.activity.ItemDetailActivity"
+    tools:context="com.example.tongxin.youni.com.tongxin.youni.activity.ItemDetailActivity"
     android:orientation="vertical">
     <LinearLayout
         android:background="#f8fac2"
