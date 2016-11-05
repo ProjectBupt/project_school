@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.yangxiang.testhuan.activity.PostActivity">
+    tools:context="com.example.tongxin.youni.com.tongxin.youni.activity.PostActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

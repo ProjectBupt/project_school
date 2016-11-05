@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.yangxiang.testhuan">
+    package="com.tongxin.youni">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_SMS" />
@@ -24,7 +24,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
-        android:name=".MyApplication"
+        android:name="com.tongxin.youni.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -32,7 +32,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:screenOrientation="portrait"
-            android:name=".activity.MainActivity">
+            android:name="com.tongxin.youni.activity.MainActivity">
 
         </activity>
         <!--<service android:name="com.avos.avoscloud.PushService"/>-->
@@ -40,29 +40,29 @@
             android:name="EASEMOB_APPKEY"
             android:value="lecoancom#imer" />
 
-        <receiver android:name=".receiver.NetStateReceiver">
+        <receiver android:name="com.tongxin.youni.receiver.NetStateReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.Welcome">
+        <activity android:name="com.tongxin.youni.activity.Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.GuideAty">
+        <activity android:name="com.tongxin.youni.activity.GuideAty">
         </activity>
         <activity
             android:screenOrientation="portrait"
-            android:name=".activity.LoginActivity">
+            android:name="com.tongxin.youni.activity.LoginActivity">
 
         </activity>
         <activity
             android:screenOrientation="portrait"
-            android:name=".activity.RegisterActivity" />
+            android:name="com.tongxin.youni.activity.RegisterActivity" />
 
         <!-- easeui的Activity -->
         <!--<activity android:name="com.hyphenate.easeui.ui.ChatActivity" />-->
@@ -77,13 +77,13 @@
         <!--<activity android:name="com.hyphenate.easeui.ui.EaseShowVideoActivity" />-->
         <activity
             android:screenOrientation="portrait"
-            android:name=".activity.PostActivity" />
+            android:name="com.tongxin.youni.activity.PostActivity" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".activity.UserInfoActivity" />
+            android:name="com.tongxin.youni.activity.UserInfoActivity" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".activity.ItemDetailActivity" />
+            android:name="com.tongxin.youni.activity.ItemDetailActivity" />
 
         <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
             <intent-filter>
@@ -95,7 +95,7 @@
 
 
 
-        <receiver android:name=".receiver.PushReceiver">
+        <receiver android:name="com.tongxin.youni.receiver.PushReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -105,12 +105,12 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.ChangeInformation"
+        <activity android:name="com.tongxin.youni.activity.ChangeInformation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.Screen"
+        <activity android:name="com.tongxin.youni.activity.Screen"
             android:screenOrientation="portrait"
             android:theme="@style/dialogstyle"/>
-        <activity android:name=".activity.PostFeed"
+        <activity android:name="com.tongxin.youni.activity.PostFeed"
             android:screenOrientation="portrait"
             android:theme="@style/dialogstyle"/>
 
