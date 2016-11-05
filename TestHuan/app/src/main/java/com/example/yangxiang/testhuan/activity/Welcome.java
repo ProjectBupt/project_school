@@ -59,7 +59,13 @@ public class Welcome extends AppCompatActivity {
     }
 
     private void goHome(){
-        startActivity(new Intent(Welcome.this,MainActivity.class));
+        Intent i;
+        if (currentUser!=null){
+            i=new Intent(Welcome.this,MainActivity.class);
+        }else{
+            i=new Intent(Welcome.this,LoginActivity.class);
+        }
+        startActivity(i);
         overridePendingTransition(R.anim.in,R.anim.out);
         finish();
     }

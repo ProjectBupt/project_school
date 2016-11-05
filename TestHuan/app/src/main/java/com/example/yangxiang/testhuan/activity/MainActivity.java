@@ -1,5 +1,6 @@
 package com.example.yangxiang.testhuan.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -37,11 +38,13 @@ public class MainActivity extends AppCompatActivity
     FrameLayout mContent;
     private ImageView avatar;
     private User current_user;
+    static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        activity =this;
 
         mContent = (FrameLayout) findViewById(R.id.content);
         mFragmentManager = getSupportFragmentManager();
@@ -106,6 +109,10 @@ public class MainActivity extends AppCompatActivity
 
         switch (id){
 
+            case R.id.setting:
+                Intent intent = new Intent(MainActivity.this,SettingActivity.class);
+
+                startActivity(intent);
             default:
                 break;
         }

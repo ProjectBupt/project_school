@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.example.yangxiang.testhuan.widget.TitleBar
+        android:id="@+id/titleBar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_below="@+id/titleBar2"
+        android:layout_marginTop="20dp"
+        android:id="@+id/id_modify_loginPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg2"
+        android:text="修改登录手机号"/>
+
+    <Button
+        android:layout_below="@+id/id_modify_loginPhone"
+        android:layout_marginTop="10dp"
+        android:id="@+id/id_modify_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg2"
+        android:text="更改密码"/>
+
+    <Button
+        android:layout_below="@+id/id_modify_password"
+        android:layout_marginTop="10dp"
+        android:id="@+id/id_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg2"
+        android:text="注销登录"/>
+
+    <LinearLayout
+        android:id="@+id/id_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+    </LinearLayout>
+
+</RelativeLayout>
