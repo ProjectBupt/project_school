@@ -1,6 +1,5 @@
 package com.example.yangxiang.testhuan.fragment;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,7 +13,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,6 +38,7 @@ import jp.wasabeef.glide.transformations.internal.FastBlur;
 
 /**
  * Created by charlene on 2016/10/12.
+ * 我帮别人代领的快递
  */
 
 public class FetchFragment extends Fragment {
@@ -136,26 +135,8 @@ public class FetchFragment extends Fragment {
                     Attention.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(getActivity(), "查看注意事项", Toast.LENGTH_SHORT).show();
-                            LinearLayout linearLayout= (LinearLayout) mInflater.inflate(R.layout.express_details,null);
-                            TextView user_name=(TextView)linearLayout.findViewById(R.id.user_name);
-                            user_name.setText("用户名:"+user.getUsername());
-                            TextView room=(TextView)linearLayout.findViewById(R.id.room);
-                            room.setText("宿舍号:"+user.getRoomID());
-                            TextView payment=(TextView)linearLayout.findViewById(R.id.payment);
-                            payment.setText("打赏金额:"+express.getMoney());
-                            TextView attention=(TextView)linearLayout.findViewById(R.id.attention);
-                            attention.setText("注意事项:"+express.getExtra());
-                            AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
-                            builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            builder.setView(linearLayout)
-                                    .create()
-                                    .show();
+                            Log.i("FETCH_FRAGMENT","查看详细信息");
+                            ShowDetail(user,express);
                         }
                     });
 
@@ -171,12 +152,42 @@ public class FetchFragment extends Fragment {
                     Time= (TextView) cardView.findViewById(R.id.time);
                     Time.setText("派件时间:"+express.getTime());
                     Payment= (TextView) cardView.findViewById(R.id.payment);
-                    Payment.setText("打赏金额:"+express.getMoney());
+                    Payment.setText("打赏金额:￥"+express.getMoney());
                     linearLayout.addView(cardView);
                 }else{
                     Log.e("YOUNI","User is null!");
                     Toast.makeText(getContext(), "Error!!!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    private void ShowDetail(User user,Express express){
+        LinearLayout linearLayout= (LinearLayout) mInflater.inflate(R.layout.express_details,null);
+        //设置detail中的信息
+        TextView user_name=(TextView)linearLayout.findViewById(R.id.user_name);
+        user_name.setText("用户名:"+user.getUsername());
+        TextView room=(TextView)linearLayout.findViewById(R.id.room);
+        room.setText("宿舍号:"+user.getRoomID());
+        TextView payment=(TextView)linearLayout.findViewById(R.id.payment);
+        payment.setText("打赏金额:"+express.getMoney());
+        TextView type= (TextView) linearLayout.findViewById(R.id.type);
+        type.setText("类型:"+express.getType());
+        TextView attention=(TextView)linearLayout.findViewById(R.id.attention);
+        if ("".equals(express.getExtra())){
+            attention.setText("注意事项:发布人很懒,什么注意事项也没写-_-\"");
+        }else{
+            attention.setText("注意事项:"+express.getExtra());
+        }
+
+        final AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+        builder.setView(linearLayout);
+        final AlertDialog dialog=builder.create();
+        dialog.show();
+        linearLayout.findViewById(R.id.btn_confirm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
     }

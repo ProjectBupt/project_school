@@ -38,6 +38,7 @@ import jp.wasabeef.glide.transformations.internal.FastBlur;
 
 /**
  * Created by charlene on 2016/10/12.
+ * 我的请求
  */
 
 public class AskFragment extends Fragment {
@@ -65,22 +66,18 @@ public class AskFragment extends Fragment {
             query.findInBackground(new FindCallback<Express>() {
                 @Override
                 public void done(List<Express> list, AVException e) {
-                    boolean tag=false;
                     if (e==null){
                         if (list.size()!=0){
                             for (Express ex:list){
                                 if (ex.getState()!= ExpressDao.isFinished){
                                     addContentAskView(ex);
-                                    tag=true;
                                 }
-                            }
-                            if (tag==false){
-                                TextView textView=new TextView(getContext());
-                                textView.setText("这里空空哒~~");
-                                linearLayout.addView(textView);
                             }
                         }else{
                             TextView textView=new TextView(getContext());
+                            textView.setTextSize(50);
+                            textView.setGravity(Gravity.CENTER);
+                            textView.setGravity(Gravity.CENTER);
                             textView.setText("这里空空哒~~");
                             linearLayout.addView(textView);
                         }
@@ -104,10 +101,14 @@ public class AskFragment extends Fragment {
     public void addContentAskView(final Express express){
         if (express.getState()== ExpressDao.isWaiting){
             final CardView cardView= (CardView) mInflater.inflate(R.layout.card_ask_waiting,null);
+
             TextView Company= (TextView) cardView.findViewById(R.id.company);
             Company.setText("快递公司:"+express.getExpressCompany());
             TextView Time= (TextView) cardView.findViewById(R.id.time);
             Time.setText("派件时间:"+express.getTime());
+            TextView Payment= (TextView) cardView.findViewById(R.id.payment);
+            Payment.setText("打赏金额:￥"+express.getMoney());
+
             Button Cancel= (Button) cardView.findViewById(R.id.btn_cancel);
             Cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -181,7 +182,7 @@ public class AskFragment extends Fragment {
                         Time= (TextView) cardView.findViewById(R.id.time);
                         Time.setText("派件时间:"+express.getTime());
                         Payment= (TextView) cardView.findViewById(R.id.payment);
-                        Payment.setText("打赏金额:"+express.getMoney());
+                        Payment.setText("打赏金额:￥"+express.getMoney());
                         linearLayout.addView(cardView);
                     }else{
                         Log.e("YOUNI","Error:"+e);

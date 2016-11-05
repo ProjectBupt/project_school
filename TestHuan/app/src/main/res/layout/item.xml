@@ -26,7 +26,7 @@
                 <ImageView
                     android:layout_margin="8dp"
                     android:id="@+id/avatar"
-                    android:src="@drawable/ease_contact_list_normal"
+                    android:src="@drawable/default_header"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="bottom"/>

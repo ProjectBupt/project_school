@@ -29,7 +29,7 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
-                android:navigationIcon="@drawable/ease_back"/>
+                android:navigationIcon="@drawable/back"/>
 
             <RelativeLayout
                 android:layout_margin="20dp"
@@ -46,39 +46,40 @@
                     android:layout_marginTop="8dp" />
 
                 <TextView
-                    android:text="oidshgisdagoisa"
+                    android:text="用户名"
+                    android:layout_marginTop="10dp"
                     android:layout_below="@id/header"
                     android:id="@+id/user_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"/>
 
-                <LinearLayout
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/user_name"
-                    android:layout_alignParentStart="true">
+                <!--<LinearLayout-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/user_name"-->
+                    <!--android:layout_alignParentStart="true">-->
 
-                    <TextView
-                        android:id="@+id/fetch_num"
-                        android:text="接单数:100"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/fetch_num"-->
+                        <!--android:text="接单数:100"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content" />-->
 
-                    <TextView
-                        android:text="         "
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    <!--<TextView-->
+                        <!--android:text="         "-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content" />-->
 
-                    <TextView
-                        android:id="@+id/ask_num"
-                        android:text="请求数:100"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/ask_num"-->
+                        <!--android:text="请求数:100"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content" />-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
 
             </RelativeLayout>

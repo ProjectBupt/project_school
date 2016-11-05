@@ -24,7 +24,7 @@
 
             <ImageView
                 android:id="@+id/header"
-                android:src="@drawable/ease_contact_list_selected"
+                android:src="@drawable/default_header"
                 android:layout_width="50dp"
                 android:layout_height="50dp" />
 
