@@ -29,9 +29,12 @@ import com.example.yangxiang.testhuan.bean.ExpressDao;
 import com.example.yangxiang.testhuan.bean.User;
 import java.util.List;
 
+
 /**
  * Created by charlene on 2016/10/12.
  */
+
+//test
 
 public class AskFragment extends Fragment {
 
@@ -39,7 +42,6 @@ public class AskFragment extends Fragment {
     private LinearLayout linearLayout;
     private LayoutInflater mInflater;
     private View view;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -159,7 +161,6 @@ public class AskFragment extends Fragment {
                         linearLayout.addView(cardView);
                     }else{
                         Log.e("YOUNI","Error:"+e);
-                        //Toast.makeText(getContext(), "Error!"+e, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
