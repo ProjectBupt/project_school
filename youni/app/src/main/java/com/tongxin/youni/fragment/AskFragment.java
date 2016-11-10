@@ -33,10 +33,7 @@ import com.tongxin.youni.bean.ExpressDao;
 import com.tongxin.youni.bean.User;
 import java.util.List;
 
-<<<<<<< HEAD:TestHuan/app/src/main/java/com/example/yangxiang/testhuan/fragment/AskFragment.java
-=======
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
->>>>>>> fb83df109d4fb69d148be12f84e1f849645ac35d:youni/app/src/main/java/com/tongxin/youni/fragment/AskFragment.java
 
 /**
  * Created by charlene on 2016/10/12.
