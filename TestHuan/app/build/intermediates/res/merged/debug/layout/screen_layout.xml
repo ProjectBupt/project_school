@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:background="@drawable/screen_background"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:paddingTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所在楼层: "
+            android:textColor="@color/black"/>
+        <Spinner
+            android:paddingLeft="10dp"
+            android:id="@+id/BuildingChoose"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:entries="@array/Building"
+            android:background="@color/lightcoral">
+        </Spinner>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="65dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快递公司: "
+            android:textColor="@color/black"/>
+       <Spinner
+           android:paddingLeft="10dp"
+           android:id="@+id/expressCompanyChoose"
+           android:layout_width="100dp"
+           android:layout_height="40dp"
+           android:entries="@array/expressCompany"
+           android:background="@color/lightblue">
+       </Spinner>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/cancelScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"/>
+
+        <Button
+            android:id="@+id/sureScreen"
+            android:text="确定"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>

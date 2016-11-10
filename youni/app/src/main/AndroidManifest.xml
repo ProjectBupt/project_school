@@ -113,6 +113,9 @@
         <activity android:name="com.tongxin.youni.activity.PostFeed"
             android:screenOrientation="portrait"
             android:theme="@style/dialogstyle"/>
+        <activity android:name=".activity.ConfirmActivity"
+            android:theme="@style/dialogstyle"/>
+        <activity android:name=".activity.SettingActivity"/>
 
     </application>
 

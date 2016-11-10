@@ -1,0 +1,104 @@
+[
+    {
+        "outputFile": "D:\\Desktop\\project_school\\TestHuan\\picker\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 36,
+                    "endOffset": 87
+                },
+                "from": {
+                    "file": "D:\\Desktop\\project_school\\TestHuan\\picker\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 36,
+                        "endOffset": 87
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 92,
+                    "endColumn": 46,
+                    "endOffset": 134
+                },
+                "from": {
+                    "file": "D:\\Desktop\\project_school\\TestHuan\\picker\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 92,
+                        "endColumn": 46,
+                        "endOffset": 134
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 139,
+                    "endColumn": 54,
+                    "endOffset": 189
+                },
+                "from": {
+                    "file": "D:\\Desktop\\project_school\\TestHuan\\picker\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 139,
+                        "endColumn": 54,
+                        "endOffset": 189
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 194,
+                    "endColumn": 52,
+                    "endOffset": 242
+                },
+                "from": {
+                    "file": "D:\\Desktop\\project_school\\TestHuan\\picker\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 194,
+                        "endColumn": 52,
+                        "endOffset": 242
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 247,
+                    "endLine": 9,
+                    "endColumn": 12,
+                    "endOffset": 475
+                },
+                "from": {
+                    "file": "D:\\Desktop\\project_school\\TestHuan\\picker\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 247,
+                        "endLine": 9,
+                        "endColumn": 12,
+                        "endOffset": 475
+                    }
+                }
+            }
+        ]
+    }
+]

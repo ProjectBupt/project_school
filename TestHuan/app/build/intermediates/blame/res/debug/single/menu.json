@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\res\\merged\\debug\\menu\\post_main.xml",
+        "source": "D:\\Desktop\\project_school\\TestHuan\\app\\src\\main\\res\\menu\\post_main.xml"
+    },
+    {
+        "merged": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_main2_drawer.xml",
+        "source": "D:\\Desktop\\project_school\\TestHuan\\app\\src\\main\\res\\menu\\activity_main2_drawer.xml"
+    },
+    {
+        "merged": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_scrolling.xml",
+        "source": "D:\\Desktop\\project_school\\TestHuan\\app\\src\\main\\res\\menu\\menu_scrolling.xml"
+    },
+    {
+        "merged": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main2.xml",
+        "source": "D:\\Desktop\\project_school\\TestHuan\\app\\src\\main\\res\\menu\\main2.xml"
+    },
+    {
+        "merged": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_main_drawer.xml",
+        "source": "D:\\Desktop\\project_school\\TestHuan\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
+    }
+]

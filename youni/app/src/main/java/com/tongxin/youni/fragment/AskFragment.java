@@ -33,12 +33,17 @@ import com.tongxin.youni.bean.ExpressDao;
 import com.tongxin.youni.bean.User;
 import java.util.List;
 
+<<<<<<< HEAD:TestHuan/app/src/main/java/com/example/yangxiang/testhuan/fragment/AskFragment.java
+=======
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
+>>>>>>> fb83df109d4fb69d148be12f84e1f849645ac35d:youni/app/src/main/java/com/tongxin/youni/fragment/AskFragment.java
 
 /**
  * Created by charlene on 2016/10/12.
  * 我的请求
  */
+
+//test
 
 public class AskFragment extends Fragment {
 
@@ -46,7 +51,6 @@ public class AskFragment extends Fragment {
     private LinearLayout linearLayout;
     private LayoutInflater mInflater;
     private View view;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -185,7 +189,6 @@ public class AskFragment extends Fragment {
                         linearLayout.addView(cardView);
                     }else{
                         Log.e("YOUNI","Error:"+e);
-                        //Toast.makeText(getContext(), "Error!"+e, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
