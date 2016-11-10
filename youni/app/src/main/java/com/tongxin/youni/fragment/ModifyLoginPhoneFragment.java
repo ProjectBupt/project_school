@@ -17,8 +17,8 @@ import com.avos.avoscloud.AVMobilePhoneVerifyCallback;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.RequestMobileCodeCallback;
-import com.example.yangxiang.testhuan.R;
-import com.example.yangxiang.testhuan.bean.User;
+import com.tongxin.youni.R;
+import com.tongxin.youni.bean.User;
 
 /**
  * Created by 宽伟 on 2016/10/21.

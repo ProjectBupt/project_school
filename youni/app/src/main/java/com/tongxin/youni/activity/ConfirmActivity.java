@@ -11,8 +11,8 @@ import android.widget.Toast;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
-import com.example.yangxiang.testhuan.R;
-import com.example.yangxiang.testhuan.bean.User;
+import com.tongxin.youni.R;
+import com.tongxin.youni.bean.User;
 
 
 /**

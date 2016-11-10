@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
 import com.avos.avoscloud.AVUser;
 import com.tongxin.youni.R;
 import com.tongxin.youni.bean.User;

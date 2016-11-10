@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -62,9 +63,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,UserInfoActivity.class);
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                assert drawer != null;
-                drawer.closeDrawer(GravityCompat.START);
                 startActivity(intent);
             }
         });

@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.avos.avoscloud.AVUser;
-import com.example.yangxiang.testhuan.R;
-import com.example.yangxiang.testhuan.fragment.ModifyLoginPhoneFragment;
-import com.example.yangxiang.testhuan.fragment.ModifyPasswordFragment;
-import com.example.yangxiang.testhuan.widget.TitleBar;
+import com.tongxin.youni.R;
+import com.tongxin.youni.fragment.ModifyLoginPhoneFragment;
+import com.tongxin.youni.fragment.ModifyPasswordFragment;
+import com.tongxin.youni.widget.TitleBar;
 
 /**
  * Created by 宽伟 on 2016/10/16.

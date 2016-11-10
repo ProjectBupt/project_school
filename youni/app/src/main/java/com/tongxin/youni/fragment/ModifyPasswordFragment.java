@@ -17,7 +17,7 @@ import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.RequestMobileCodeCallback;
 import com.avos.avoscloud.UpdatePasswordCallback;
-import com.example.yangxiang.testhuan.R;
+import com.tongxin.youni.R;
 
 /**
  * Created by 宽伟 on 2016/10/17.

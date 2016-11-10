@@ -17,7 +17,6 @@ import com.avos.avoscloud.LogInCallback;
 import com.avos.avoscloud.SaveCallback;
 import com.tongxin.youni.R;
 import com.tongxin.youni.bean.User;
-;
 
 //TODO 改为用手机号登录
 
