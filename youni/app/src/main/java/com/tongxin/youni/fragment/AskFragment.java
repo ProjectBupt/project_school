@@ -93,7 +93,7 @@ public class AskFragment extends Fragment {
             });
         }else{
             Log.e("YOUNI","User is null!");
-            Toast.makeText(getContext(), "Error!!!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "Error!!!", Toast.LENGTH_SHORT).show();
         }
     }
 

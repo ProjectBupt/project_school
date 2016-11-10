@@ -154,7 +154,7 @@ public class FetchFragment extends Fragment {
                     linearLayout.addView(cardView);
                 }else{
                     Log.e("YOUNI","User is null!");
-                    Toast.makeText(getContext(), "Error!!!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Error!!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
