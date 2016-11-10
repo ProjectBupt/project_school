@@ -200,7 +200,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
         final TitleBar titleBar = (TitleBar) findViewById(R.id.titleBar2);
 
         titleBar.setImmersive(isImmersive);
-        titleBar.setBackgroundColor(Color.parseColor("#011320"));
+        //titleBar.setBackgroundColor(Color.parseColor("#011320"));
 
         titleBar.setLeftImageResource(R.mipmap.back_green);
         titleBar.setLeftText("返回");
@@ -228,7 +228,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
 //        mCollectView = (ImageView) titleBar.addAction(new TitleBar.ImageAction(R.mipmap.collect) {
 //            @Override
 //            public void performAction(View view) {
-//                Toast.makeText(MainActivity.this, "点击了收藏", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "点击了收藏", Toast.LENG                                                              TH_SHORT).show();
 //                mCollectView.setImageResource(R.mipmap.fabu);
 //                titleBar.setTitle(mIsSelected ? "文章详情\n朋友圈" : "帖子详情");
 //                mIsSelected = !mIsSelected;

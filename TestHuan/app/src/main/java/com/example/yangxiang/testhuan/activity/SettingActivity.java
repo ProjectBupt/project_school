@@ -126,7 +126,7 @@ public class SettingActivity extends Activity {
 
         titleBar.setImmersive(isImmersive);
 
-        titleBar.setBackgroundColor(Color.parseColor("#87CEEB"));
+       // titleBar.setBackgroundColor(Color.parseColor("#87CEEB"));
 
         titleBar.setLeftImageResource(R.mipmap.back_green);
         titleBar.setLeftText("返回");

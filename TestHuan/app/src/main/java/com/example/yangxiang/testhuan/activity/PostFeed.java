@@ -42,7 +42,7 @@ public class PostFeed extends Activity {
      * 表示要存储到服务器上的数据
      */
     private String expressCompanyForHold;//快递公司
-    private String timeForHold;//到货时间
+    private String timeForHold="";//到货时间
     private int moneyForHold;//打赏金额
     private int isDormitory;
     private String typeThingForHold;//物品类型
@@ -180,6 +180,7 @@ public class PostFeed extends Activity {
                         }
                         else{
                             Toast.makeText(PostFeed.this,"保存失败",Toast.LENGTH_SHORT).show();
+                            finish();
                             Log.i("wrong-------->",e.toString());
                         }
                     }
@@ -208,18 +209,16 @@ public class PostFeed extends Activity {
             Toast.makeText(PostFeed.this,"请填写收获地址",Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(typeThingForHold.equals("")||typeThingForHold==null){
+        if(typeThingForHold==null||typeThingForHold.equals("")){
             Toast.makeText(PostFeed.this,"请选择物品类型",Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(timeForHold.equals("")||timeForHold==null){
+        if(timeForHold==null||timeForHold.equals("")){
             Toast.makeText(PostFeed.this,"请选择物品到达时间",Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
     }
-
-
 
     private void initChoose() {
 
