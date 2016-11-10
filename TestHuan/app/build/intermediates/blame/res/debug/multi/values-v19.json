@@ -1,0 +1,28 @@
+[
+    {
+        "outputFile": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v19\\values-v19.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 4,
+                    "endColumn": 12,
+                    "endOffset": 121
+                },
+                "from": {
+                    "file": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\exploded-aar\\com.yuyh.imgsel\\library\\1.2.0\\res\\values-v19\\values-v19.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 4,
+                        "endColumn": 12,
+                        "endOffset": 121
+                    }
+                }
+            }
+        ]
+    }
+]

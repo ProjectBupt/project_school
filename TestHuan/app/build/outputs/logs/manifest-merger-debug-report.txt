@@ -1,0 +1,273 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:2:1-122:12
+	package
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:3:5-45
+		INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.CALL_PHONE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:5:5-69
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:5:22-66
+uses-permission#android.permission.READ_SMS
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:6:5-67
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.INTERNET
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:7:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:8:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:9:5-76
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:9:22-73
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:10:5-75
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:10:22-72
+uses-permission#android.permission.READ_LOGS
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:11:5-68
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:11:22-65
+uses-permission#android.permission.CAMERA
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:12:5-65
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:12:22-62
+uses-permission#android.permission.VIBRATE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:13:5-66
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:13:22-63
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:14:5-80
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:14:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:15:5-81
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:15:22-78
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:16:5-71
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:16:22-68
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:17:5-84
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:17:22-81
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:18:5-79
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:18:22-76
+uses-permission#android.permission.GET_TASKS
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:19:5-68
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:19:22-65
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:20:5-76
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:20:22-73
+uses-permission#android.permission.WAKE_LOCK
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:21:5-68
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:21:22-65
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:22:5-80
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:22:22-77
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:23:5-81
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:23:22-78
+application
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:26:5-120:19
+MERGED from [com.android.support:design:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:cardview-v7:23.2.1] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [TestHuan:picker:unspecified] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\TestHuan\picker\unspecified\AndroidManifest.xml:11:5-15:19
+MERGED from [com.yuyh.imgsel:library:1.2.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.yuyh.imgsel\library\1.2.0\AndroidManifest.xml:11:5-18:19
+MERGED from [com.yuyh.easyadapter:library:1.0.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.yuyh.easyadapter\library\1.0.0\AndroidManifest.xml:11:5-15:19
+	android:label
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:30:9-41
+	android:supportsRtl
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:31:9-35
+	android:allowBackup
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:28:9-35
+	android:icon
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:29:9-43
+	android:theme
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:32:9-40
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:27:9-38
+activity#com.example.yangxiang.testhuan.activity.MainActivity
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:33:9-37:20
+	android:screenOrientation
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:34:13-49
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:35:13-50
+meta-data#EASEMOB_APPKEY
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:39:9-41:46
+	android:value
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:41:13-43
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:40:13-42
+receiver#com.example.yangxiang.testhuan.receiver.NetStateReceiver
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:43:9-47:20
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:43:19-60
+intent-filter#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:44:13-46:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:45:17-79
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:45:25-76
+activity#com.example.yangxiang.testhuan.activity.Welcome
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:49:9-55:20
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:49:19-51
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:50:13-54:29
+action#android.intent.action.MAIN
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:51:17-69
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:51:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:53:17-77
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:53:27-74
+activity#com.example.yangxiang.testhuan.activity.GuideAty
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:56:9-57:20
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:56:19-52
+activity#com.example.yangxiang.testhuan.activity.LoginActivity
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:58:9-62:20
+	android:screenOrientation
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:59:13-49
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:60:13-51
+activity#com.example.yangxiang.testhuan.activity.RegisterActivity
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:63:9-65:57
+	android:screenOrientation
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:64:13-49
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:65:13-54
+activity#com.example.yangxiang.testhuan.activity.PostActivity
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:78:9-80:62
+	android:screenOrientation
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:79:13-49
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:80:13-50
+activity#com.example.yangxiang.testhuan.activity.UserInfoActivity
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:81:9-83:66
+	android:screenOrientation
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:82:13-49
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:83:13-54
+activity#com.example.yangxiang.testhuan.activity.ItemDetailActivity
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:84:9-86:68
+	android:screenOrientation
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:85:13-49
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:86:13-56
+receiver#com.avos.avoscloud.AVBroadcastReceiver
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:88:9-94:20
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:88:19-72
+intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.USER_PRESENT+android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:89:13-93:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:90:17-79
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:90:25-76
+action#android.intent.action.USER_PRESENT
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:91:17-77
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:91:25-74
+receiver#com.example.yangxiang.testhuan.receiver.PushReceiver
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:98:9-106:20
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:98:19-56
+intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.USER_PRESENT+android.net.conn.CONNECTIVITY_CHANGE+com.avos.UPDATE_STATUS+com.lecoan.push.action
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:99:13-105:29
+action#com.avos.UPDATE_STATUS
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:103:17-65
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:103:25-62
+action#com.lecoan.push.action
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:104:17-65
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:104:25-62
+activity#com.example.yangxiang.testhuan.activity.ChangeInformation
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:108:9-109:51
+	android:screenOrientation
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:109:13-49
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:108:19-61
+activity#com.example.yangxiang.testhuan.activity.Screen
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:110:9-112:49
+	android:screenOrientation
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:111:13-49
+	android:theme
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:112:13-47
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:110:19-50
+activity#com.example.yangxiang.testhuan.activity.PostFeed
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:113:9-115:49
+	android:screenOrientation
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:114:13-49
+	android:theme
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:115:13-47
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:113:19-52
+activity#com.example.yangxiang.testhuan.activity.ConfirmActivity
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:116:9-117:49
+	android:theme
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:117:13-47
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:116:19-59
+activity#com.example.yangxiang.testhuan.activity.SettingActivity
+ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:118:9-61
+	android:name
+		ADDED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml:118:19-59
+uses-sdk
+INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [cn.leancloud.android:avoscloud-push:v3.7.1] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\cn.leancloud.android\avoscloud-push\v3.7.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:cardview-v7:23.2.1] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [TestHuan:picker:unspecified] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\TestHuan\picker\unspecified\AndroidManifest.xml:7:5-9:41
+MERGED from [me.relex:circleindicator:1.2.2] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\me.relex\circleindicator\1.2.2\AndroidManifest.xml:8:5-10:41
+MERGED from [com.yuyh.imgsel:library:1.2.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.yuyh.imgsel\library\1.2.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.yuyh.easyadapter:library:1.0.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.yuyh.easyadapter\library\1.0.0\AndroidManifest.xml:7:5-9:41
+MERGED from [jp.wasabeef:glide-transformations:2.0.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\jp.wasabeef\glide-transformations\2.0.0\AndroidManifest.xml:8:5-10:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:23.4.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Desktop\project_school\TestHuan\app\src\main\AndroidManifest.xml
+activity#com.yuyh.library.imgsel.ImgSelActivity
+ADDED from [com.yuyh.imgsel:library:1.2.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.yuyh.imgsel\library\1.2.0\AndroidManifest.xml:15:9-17:47
+	android:theme
+		ADDED from [com.yuyh.imgsel:library:1.2.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.yuyh.imgsel\library\1.2.0\AndroidManifest.xml:17:13-44
+	android:name
+		ADDED from [com.yuyh.imgsel:library:1.2.0] D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.yuyh.imgsel\library\1.2.0\AndroidManifest.xml:16:13-66

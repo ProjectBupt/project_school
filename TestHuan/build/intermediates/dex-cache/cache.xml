@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="cb86970df0f0f25f766d320b279c7858c1ca0003">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-23.2.1_a2d33d3c60c0e17150a2795abab8c805d2c03a9e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\宽伟\.gradle\caches\modules-2\files-2.1\cn.leancloud.android\okhttp\2.6.0-leancloud\7d1a8dbbc128e91cf41ab6eafaa741ab2a6ff930\okhttp-2.6.0-leancloud.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="7d1a8dbbc128e91cf41ab6eafaa741ab2a6ff930">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-2.6.0-leancloud_0f2300a17e479c959ffd410cdff7e42bc3ee8bbd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\jp.wasabeef\glide-transformations\2.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="dca7a60bcc49fedf852b01a28826329c330ba977">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\jp.wasabeef-glide-transformations-2.0.0_b7e9c93b0121fcfaf93eec4e72d2251b94686a77\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\宽伟\.gradle\caches\modules-2\files-2.1\cn.leancloud.android\fastjson\1.1.39-leancloud\94d4ebd4acdaf01d7445435382eea2d2d38e7534\fastjson-1.1.39-leancloud.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="94d4ebd4acdaf01d7445435382eea2d2d38e7534">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\fastjson-1.1.39-leancloud_10155149eee64d04c8e85e0868c7c9e9f13537a9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="1a76734a507806e7bb78a3a660a767eec481ced6">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_9be719ae3e4df0d8cb1b42720e14b2e4a42430e1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\me.relex\circleindicator\1.2.2\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="1db6784d006818fee2591f13b0bf09ac31a3d49a">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\me.relex-circleindicator-1.2.2_fc248d63eed441ca92b39558f9e3587a06e2d95f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.4.0_63d220f7ba5366cb592e27dc62625132dbba262b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.4.0_7dceeb05fce057a194ee59209f38483ed99e0ef0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="1570cfb810f60c8cf13be9c40f19fed7268dd86a">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a207461a240a3a13682a297d4ddfa9ba753334f4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\cn.leancloud.android\avoscloud-push\v3.7.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="bcd57585af79c723e03ad019c5a922bc185c7b46">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\cn.leancloud.android-avoscloud-push-v3.7.1_b9a49a3a9dc21d1fecea93d6b10d1284e2f788f3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_f01af5aa80ae1a0b6ef913d366216082ac7eb3e2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_8e5ebd556c46dce3703c02b6046aee9b3f01c79e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_40579a43a6e156ffe929e6e9736887b0be666bfd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_f64d388d74fa185fcc9032b41b6e802c0d771057\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\宽伟\.gradle\caches\modules-2\files-2.1\cn.leancloud.android\avoscloud-sdk\v3.14.9\86a2ff9d735f44bea5f22d3f881fbaf519fe5476\avoscloud-sdk-v3.14.9.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="86a2ff9d735f44bea5f22d3f881fbaf519fe5476">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\avoscloud-sdk-v3.14.9_585a50de238fc5c41c4386039dcaf0a27e86d658\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.yuyh.easyadapter\library\1.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="d274320550b0352f154a1c8ba29930935800ffdd">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.yuyh.easyadapter-library-1.0.0_6e4807523f83eab750a7e9901cd03f2bad8d18dd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_0149b760cecdf1ce230d47d03bc6ed01e4bf3032\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\宽伟\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\glide-3.7.0_13c7ec4dc5dadf6c6be4ef542cdbb81b59b605bd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\宽伟\.gradle\caches\modules-2\files-2.1\cn.leancloud.android\okio\1.6.0-leancloud\7086c00a30a6de0ee3b963ec2c3702d37f1de11d\okio-1.6.0-leancloud.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="7086c00a30a6de0ee3b963ec2c3702d37f1de11d">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.6.0-leancloud_c403c50ded961b99af82ce8539b67e9bdfe260cf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.yuyh.imgsel\library\1.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="2acd4fb3144144e45ec70128b6d07cca258d6747">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.yuyh.imgsel-library-1.2.0_c12c286749d4f8aed16640f47a8eccda5bc6f0dd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Desktop\project_school\TestHuan\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="D:\Desktop\project_school\TestHuan\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_02b60f32d29f6e79ee1daea4c6030bf93ae1d31e\classes.dex" />
+    </item>
+
+</items>

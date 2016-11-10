@@ -1,0 +1,184 @@
+<root>
+
+  <building name ="雁北园A">
+    <floor name ="1">
+      <dormitory name = "101"/>
+      <dormitory name = "102"/>
+      <dormitory name = "103"/>
+      <dormitory name = "104"/>
+      <dormitory name = "105"/>
+      <dormitory name = "106"/>
+      <dormitory name = "107"/>
+      <dormitory name = "108"/>
+      <dormitory name = "109"/>
+      <dormitory name = "110"/>
+      <dormitory name = "111"/>
+      <dormitory name = "112"/>
+      <dormitory name = "113"/>
+      <dormitory name = "114"/>
+      <dormitory name = "115"/>
+      <dormitory name = "116"/>
+      <dormitory name = "117"/>
+    </floor>
+    <floor name ="2">
+      <dormitory name = "201"/>
+      <dormitory name = "202"/>
+      <dormitory name = "203"/>
+      <dormitory name = "104"/>
+      <dormitory name = "105"/>
+      <dormitory name = "106"/>
+      <dormitory name = "107"/>
+      <dormitory name = "108"/>
+      <dormitory name = "109"/>
+      <dormitory name = "110"/>
+      <dormitory name = "111"/>
+      <dormitory name = "112"/>
+      <dormitory name = "113"/>
+      <dormitory name = "114"/>
+      <dormitory name = "115"/>
+      <dormitory name = "116"/>
+      <dormitory name = "117"/>
+    </floor>
+    <floor name ="3">
+      <dormitory name = "303"/>
+      <dormitory name = "302"/>
+      <dormitory name = "201"/>
+      <dormitory name = "104"/>
+      <dormitory name = "105"/>
+      <dormitory name = "106"/>
+      <dormitory name = "107"/>
+      <dormitory name = "108"/>
+      <dormitory name = "109"/>
+      <dormitory name = "110"/>
+      <dormitory name = "111"/>
+      <dormitory name = "112"/>
+      <dormitory name = "113"/>
+      <dormitory name = "114"/>
+      <dormitory name = "115"/>
+      <dormitory name = "116"/>
+      <dormitory name = "117"/>
+    </floor>
+  </building>
+
+  <building name ="雁北园B">
+    <floor name ="1">
+      <dormitory name = "101"/>
+      <dormitory name = "102"/>
+      <dormitory name = "103"/>
+      <dormitory name = "104"/>
+      <dormitory name = "105"/>
+      <dormitory name = "106"/>
+      <dormitory name = "107"/>
+      <dormitory name = "108"/>
+      <dormitory name = "109"/>
+      <dormitory name = "110"/>
+      <dormitory name = "111"/>
+      <dormitory name = "112"/>
+      <dormitory name = "113"/>
+      <dormitory name = "114"/>
+      <dormitory name = "115"/>
+      <dormitory name = "116"/>
+      <dormitory name = "117"/>
+    </floor>
+    <floor name ="2">
+      <dormitory name = "201"/>
+      <dormitory name = "202"/>
+      <dormitory name = "203"/>
+      <dormitory name = "104"/>
+      <dormitory name = "105"/>
+      <dormitory name = "106"/>
+      <dormitory name = "107"/>
+      <dormitory name = "108"/>
+      <dormitory name = "109"/>
+      <dormitory name = "110"/>
+      <dormitory name = "111"/>
+      <dormitory name = "112"/>
+      <dormitory name = "113"/>
+      <dormitory name = "114"/>
+      <dormitory name = "115"/>
+      <dormitory name = "116"/>
+      <dormitory name = "117"/>
+    </floor>
+    <floor name ="3">
+      <dormitory name = "303"/>
+      <dormitory name = "302"/>
+      <dormitory name = "201"/>
+      <dormitory name = "104"/>
+      <dormitory name = "105"/>
+      <dormitory name = "106"/>
+      <dormitory name = "107"/>
+      <dormitory name = "108"/>
+      <dormitory name = "109"/>
+      <dormitory name = "110"/>
+      <dormitory name = "111"/>
+      <dormitory name = "112"/>
+      <dormitory name = "113"/>
+      <dormitory name = "114"/>
+      <dormitory name = "115"/>
+      <dormitory name = "116"/>
+      <dormitory name = "117"/>
+    </floor>
+  </building>
+
+  <building name ="雁北园C">
+    <floor name ="1">
+      <dormitory name = "101"/>
+      <dormitory name = "102"/>
+      <dormitory name = "103"/>
+      <dormitory name = "104"/>
+      <dormitory name = "105"/>
+      <dormitory name = "106"/>
+      <dormitory name = "107"/>
+      <dormitory name = "108"/>
+      <dormitory name = "109"/>
+      <dormitory name = "110"/>
+      <dormitory name = "111"/>
+      <dormitory name = "112"/>
+      <dormitory name = "113"/>
+      <dormitory name = "114"/>
+      <dormitory name = "115"/>
+      <dormitory name = "116"/>
+      <dormitory name = "117"/>
+    </floor>
+    <floor name ="2">
+      <dormitory name = "201"/>
+      <dormitory name = "202"/>
+      <dormitory name = "203"/>
+      <dormitory name = "104"/>
+      <dormitory name = "105"/>
+      <dormitory name = "106"/>
+      <dormitory name = "107"/>
+      <dormitory name = "108"/>
+      <dormitory name = "109"/>
+      <dormitory name = "110"/>
+      <dormitory name = "111"/>
+      <dormitory name = "112"/>
+      <dormitory name = "113"/>
+      <dormitory name = "114"/>
+      <dormitory name = "115"/>
+      <dormitory name = "116"/>
+      <dormitory name = "117"/>
+    </floor>
+    <floor name ="3">
+      <dormitory name = "303"/>
+      <dormitory name = "302"/>
+      <dormitory name = "201"/>
+      <dormitory name = "104"/>
+      <dormitory name = "105"/>
+      <dormitory name = "106"/>
+      <dormitory name = "107"/>
+      <dormitory name = "108"/>
+      <dormitory name = "109"/>
+      <dormitory name = "110"/>
+      <dormitory name = "111"/>
+      <dormitory name = "112"/>
+      <dormitory name = "113"/>
+      <dormitory name = "114"/>
+      <dormitory name = "115"/>
+      <dormitory name = "116"/>
+      <dormitory name = "117"/>
+    </floor>
+  </building>
+
+
+</root>

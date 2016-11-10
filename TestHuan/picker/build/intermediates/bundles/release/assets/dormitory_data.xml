@@ -1,0 +1,83 @@
+<root>
+
+  <unit name ="A">
+    <dormitory name = "101"/>
+    <dormitory name = "102"/>
+    <dormitory name = "103"/>
+    <dormitory name = "104"/>
+    <dormitory name = "105"/>
+    <dormitory name = "106"/>
+    <dormitory name = "107"/>
+    <dormitory name = "108"/>
+    <dormitory name = "109"/>
+    <dormitory name = "110"/>
+    <dormitory name = "111"/>
+    <dormitory name = "112"/>
+    <dormitory name = "113"/>
+    <dormitory name = "114"/>
+    <dormitory name = "115"/>
+    <dormitory name = "116"/>
+    <dormitory name = "117"/>
+  </unit>
+
+  <unit name ="B">
+    <dormitory name = "101"/>
+    <dormitory name = "102"/>
+    <dormitory name = "103"/>
+    <dormitory name = "104"/>
+    <dormitory name = "105"/>
+    <dormitory name = "106"/>
+    <dormitory name = "107"/>
+    <dormitory name = "108"/>
+    <dormitory name = "109"/>
+    <dormitory name = "110"/>
+    <dormitory name = "111"/>
+    <dormitory name = "112"/>
+    <dormitory name = "113"/>
+    <dormitory name = "114"/>
+    <dormitory name = "115"/>
+    <dormitory name = "116"/>
+    <dormitory name = "117"/>
+  </unit>
+
+  <unit name ="C">
+    <dormitory name = "101"/>
+    <dormitory name = "102"/>
+    <dormitory name = "103"/>
+    <dormitory name = "104"/>
+    <dormitory name = "105"/>
+    <dormitory name = "106"/>
+    <dormitory name = "107"/>
+    <dormitory name = "108"/>
+    <dormitory name = "109"/>
+    <dormitory name = "110"/>
+    <dormitory name = "111"/>
+    <dormitory name = "112"/>
+    <dormitory name = "113"/>
+    <dormitory name = "114"/>
+    <dormitory name = "115"/>
+    <dormitory name = "116"/>
+    <dormitory name = "117"/>
+  </unit>
+
+  <unit name ="D">
+    <dormitory name = "101"/>
+    <dormitory name = "102"/>
+    <dormitory name = "103"/>
+    <dormitory name = "104"/>
+    <dormitory name = "105"/>
+    <dormitory name = "106"/>
+    <dormitory name = "107"/>
+    <dormitory name = "108"/>
+    <dormitory name = "109"/>
+    <dormitory name = "110"/>
+    <dormitory name = "111"/>
+    <dormitory name = "112"/>
+    <dormitory name = "113"/>
+    <dormitory name = "114"/>
+    <dormitory name = "115"/>
+    <dormitory name = "116"/>
+    <dormitory name = "117"/>
+  </unit>
+
+</root>

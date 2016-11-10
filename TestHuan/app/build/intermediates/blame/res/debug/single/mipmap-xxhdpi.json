@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
+        "source": "D:\\Desktop\\project_school\\TestHuan\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\collect.png",
+        "source": "D:\\Desktop\\project_school\\TestHuan\\app\\src\\main\\res\\mipmap-xxhdpi\\collect.png"
+    },
+    {
+        "merged": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\back_green.png",
+        "source": "D:\\Desktop\\project_school\\TestHuan\\app\\src\\main\\res\\mipmap-xxhdpi\\back_green.png"
+    },
+    {
+        "merged": "D:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\fabu.png",
+        "source": "D:\\Desktop\\project_school\\TestHuan\\app\\src\\main\\res\\mipmap-xxhdpi\\fabu.png"
+    }
+]

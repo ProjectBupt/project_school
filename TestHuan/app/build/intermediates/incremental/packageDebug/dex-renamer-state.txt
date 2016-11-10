@@ -1,0 +1,7 @@
+#Sat Nov 05 10:45:01 CST 2016
+base.0=D\:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_a207461a240a3a13682a297d4ddfa9ba753334f4
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=D\:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_9be719ae3e4df0d8cb1b42720e14b2e4a42430e1\\classes.dex
+base.1=D\:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_9be719ae3e4df0d8cb1b42720e14b2e4a42430e1
+file.0=D\:\\Desktop\\project_school\\TestHuan\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_a207461a240a3a13682a297d4ddfa9ba753334f4\\classes.dex
