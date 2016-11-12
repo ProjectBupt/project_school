@@ -94,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
         else {
 
             final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this, ProgressDialog.STYLE_SPINNER);
-            progressDialog.setMessage("waiting for the server");
+            progressDialog.setMessage("等待服务器响应");
             progressDialog.setIndeterminate(true);
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
@@ -132,19 +132,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-//    private void registerEaseMod(final String username, final String password) {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    EMClient.getInstance().createAccount(username,password);
-//                } catch (HyphenateException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).start();
-//    }
-
     private void onRegisterFailed() {
         Toast.makeText(this,"register failed",Toast.LENGTH_SHORT).show();
     }
@@ -156,18 +143,18 @@ public class RegisterActivity extends AppCompatActivity {
         String username = _userName.getText().toString();
         String password = _password.getText().toString();
 
-        if(username.isEmpty() || username.length()<4){
+        if(username.isEmpty() || username.length()<2){
             valid = false;
-            _userName.setError("changed to another");
+            _userName.setError("你确定这是个名字？");
         }
 
         else if(password.isEmpty() ||password.length() < 6){
-            _password.setError(("invalid password"));
+            _password.setError(("密码不合法"));
             valid = false;
         }
 
         else if(SMScode.length() != 6){
-            _SMScode.setError("wrong SMScode");
+            _SMScode.setError("验证码错误");
             valid = false;
         }
 
@@ -208,7 +195,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onFinish() {
                             _sendSMS.setEnabled(true);
-                            _sendSMS.setText("send SMScode");
+                            _sendSMS.setText("重新发送");
 
                         }
                     }.start();

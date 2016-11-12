@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         if (isValid()) {
             final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, ProgressDialog.STYLE_SPINNER);
             progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Authorizing");
+            progressDialog.setMessage("登陆中...");
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
@@ -95,35 +95,6 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
 
                         LoginActivity.this.finish();
-//                        EMClient.getInstance().login(phone, password, new EMCallBack() {
-//                            @Override
-//                            public void onSuccess() {
-//                                Log.i(TAG, "onSuccess: login success");
-//                                progressDialog.dismiss();
-//
-//                                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-//                                startActivity(intent);
-//
-//                                LoginActivity.this.finish();
-//                            }
-//
-//                            @Override
-//                            public void onError(int i,final String s) {
-//                                Log.i(TAG, "onSuccess: login failed");
-//                                runOnUiThread(new Runnable() {
-//                                    @Override
-//                                    public void run() {
-//                                        Toast.makeText(getApplicationContext(),"登陆失败"+s, Toast.LENGTH_LONG).show();
-//                                        progressDialog.dismiss();
-//                                    }
-//                                });
-//                            }
-//
-//                            @Override
-//                            public void onProgress(int i, String s) {
-//
-//                            }
-//                        });
                     }
                     else{
                         Log.i(TAG, "done: 登陆失败"+e.getMessage());

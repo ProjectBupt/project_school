@@ -77,9 +77,6 @@
         <!--<activity android:name="com.hyphenate.easeui.ui.EaseShowVideoActivity" />-->
         <activity
             android:screenOrientation="portrait"
-            android:name="com.tongxin.youni.activity.PostActivity" />
-        <activity
-            android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.UserInfoActivity" />
         <activity
             android:screenOrientation="portrait"
