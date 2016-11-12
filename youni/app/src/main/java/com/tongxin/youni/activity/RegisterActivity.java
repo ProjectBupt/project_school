@@ -109,7 +109,6 @@ public class RegisterActivity extends AppCompatActivity {
                     if(e == null){
                         Log.i(TAG, "done: 短信验证成功");
                         User user = AVUser.getCurrentUser(User.class);
-                        //AVUser user = new AVUser();
                         user.setUsername(username);
                         user.setPassword(password);
                         user.setMobilePhoneNumber(phone);
@@ -120,7 +119,6 @@ public class RegisterActivity extends AppCompatActivity {
                         data.putExtra("phone",phone);
                         data.putExtra("password",password);
                         RegisterActivity.this.setResult(RESULT_OK,data);
-                        //TODO 应该调用环信的REST接口注册 但是我不会:(
                         RegisterActivity.this.finish();
 
                     }
@@ -133,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void onRegisterFailed() {
-        Toast.makeText(this,"register failed",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"注册失败",Toast.LENGTH_SHORT).show();
     }
 
     private boolean isValid() {
