@@ -130,7 +130,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
     }
     //根据登录用户从服务器获取信息并显示到相应位置
     private void initInformation() {
-        name.setText((String) currentUser.get(UserDao.NICK));
+        name.setText((String) currentUser.getUsername());
         telNumber.setText((String) currentUser.get("mobilePhoneNumber"));
         dormitoryNumber.setText((String) currentUser.get(UserDao.ROOM_ID));
         defaultAddress.setText((String) currentUser.get(UserDao.ADDRESS));
@@ -241,7 +241,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                 if(dataIsOk()){
                     //保存各项数据
                     if(!name.getText().toString().trim().equals("")){
-                        currentUser.put(UserDao.NICK , name.getText().toString().trim());//姓名
+                        currentUser.setUsername(name.getText().toString().trim());//姓名
                     }
                     if(!telNumber.getText().toString().trim().equals("")){
                         currentUser.put("phoneNumber",telNumber.getText().toString().trim());//电话号

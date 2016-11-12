@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         TextView textView = (TextView) v.findViewById(R.id.username);
         current_user=AVUser.getCurrentUser(User.class);
         if (current_user!=null){
-            textView.setText(current_user.getNick());
+            textView.setText(current_user.getUsername());
         }
 
     }

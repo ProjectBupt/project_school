@@ -70,7 +70,7 @@ public class UserInfoActivity extends AppCompatActivity {
 
         ImageView avatar = (ImageView) findViewById(R.id.header);
         TextView name = (TextView) findViewById(R.id.user_name);
-        name.setText(User.getCurrentUser(User.class).getNick());
+        name.setText(User.getCurrentUser(User.class).getUsername());
         Glide.with(this)
                 .load(User.getCurrentUser(User.class).getAvatar())
                 .crossFade()

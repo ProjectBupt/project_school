@@ -9,7 +9,6 @@ import com.avos.avoscloud.AVUser;
  * Created by Administrator on 2016/4/17.
  */
 public class User extends AVUser implements Parcelable {
-    private String nick;
     private String avatar;
     private String mCampus;
     private String sex;
@@ -62,15 +61,6 @@ public class User extends AVUser implements Parcelable {
 
     public void setBackground(String background) {
         put(UserDao.BACKGROUND, background);
-    }
-
-
-    public String getNick() {
-        return getString(UserDao.NICK);
-    }
-
-    public void setNick(String nick) {
-        put(UserDao.NICK, nick);
     }
 
     public String getAvatar() {

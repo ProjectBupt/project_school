@@ -5,7 +5,6 @@ package com.tongxin.youni.bean;
  */
 public class UserDao {
     public static final String ADDRESS = "address";
-    public static final String NICK = "nick";
     public static final String AVATARURL = "avatarurl";
     public static final String INSTALLATIONID = "InstallationId";
     public static final String BACKGROUND = "background";
