@@ -150,20 +150,8 @@ public class PostFeed extends Activity {
         feed.setMoney(moneyForHold);
         feed.setPhone(ttUser.getMobilePhoneNumber());
         feed.setType(typeThingForHold);
-        //设置名字？//TODO
         feed.setUserName(ttUser.getUsername());
 
-        //feed.put(ExpressDao.company,expressCompanyForHold);
-        //feed.put(ExpressDao.time,timeForHold);
-        //feed.put(ExpressDao.money,moneyForHold);
-        //feed.put(ExpressDao.type,typeThingForHold);
-        //feed.put(ExpressDao.roomId,addressForHold);
-        //Toast.makeText(PostFeed.this,addressForHold,Toast.LENGTH_SHORT).show();
-        //feed.put(ExpressDao.extra,attentionTingForHold);
-        //feed.put(ExpressDao.state,ExpressDao.isWaiting);
-        //feed.put(ExpressDao.userID,ttUser.getObjectId());
-
-        //将快递和使用者相关联
         Express.saveAllInBackground(Arrays.asList(feed),new SaveCallback() {
             @Override
             public void done(AVException e) {
@@ -175,8 +163,8 @@ public class PostFeed extends Activity {
                     public void done(AVException e) {
                         if(e==null){
                             Toast.makeText(PostFeed.this,"保存成功",Toast.LENGTH_SHORT).show();
-                            finish();
                             setResult(RESULT_OK);
+                            finish();
                         }
                         else{
                             Toast.makeText(PostFeed.this,"保存失败",Toast.LENGTH_SHORT).show();

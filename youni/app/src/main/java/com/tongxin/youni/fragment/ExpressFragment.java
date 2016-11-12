@@ -114,7 +114,12 @@ public class ExpressFragment extends Fragment
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        refreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                refreshLayout.setRefreshing(true);
+            }
+        });
         ImageView han = (ImageView) mToolbar.findViewById(R.id.han);
         han.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +135,6 @@ public class ExpressFragment extends Fragment
         adapter=new MyListViewAdapter(getActivity(),mData);
         adapter.setRemoveItem(this);
         listView.setAdapter(adapter);
-
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,6 +142,8 @@ public class ExpressFragment extends Fragment
                 startActivityForResult(postIntent,POST_EXPRESS);
             }
         });
+
+        mHandler.sendEmptyMessageDelayed(REFRESH_COMPLETE,2000);
 
         AppCompatActivity activity = ((MainActivity)getActivity());
         activity.setSupportActionBar(mToolbar);
@@ -166,12 +172,14 @@ public class ExpressFragment extends Fragment
 
     }
 
+    //处理筛选请求
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == POST_EXPRESS){
             if(resultCode == Activity.RESULT_OK){
                 refreshLayout.setRefreshing(true);
+                Log.i(TAG, "onActivityResult: 应该刷新了啊");
                 mData=getData();
                 mHandler.sendEmptyMessageDelayed(REFRESH_COMPLETE,2000);
             }
@@ -238,7 +246,7 @@ public class ExpressFragment extends Fragment
                             refreshLayout.setRefreshing(false);
                         }
                         else {
-                            Log.e(TAG, "done: "+e.getMessage());
+                            Log.e(TAG, "done in sort express: "+e.getMessage());
                         }
                     }
                 });
@@ -293,7 +301,7 @@ public class ExpressFragment extends Fragment
                                     startActivity(intent);
                                 }
                                 else{
-                                    Log.i(TAG, "done: "+e.getMessage());
+                                    Log.i(TAG, "done in skip: "+e.getMessage());
                                 }
 
                             }
