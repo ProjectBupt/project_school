@@ -35,16 +35,9 @@
             android:name="com.tongxin.youni.activity.MainActivity">
 
         </activity>
-        <!--<service android:name="com.avos.avoscloud.PushService"/>-->
         <meta-data
             android:name="EASEMOB_APPKEY"
             android:value="lecoancom#imer" />
-
-        <receiver android:name="com.tongxin.youni.receiver.NetStateReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
 
         <activity android:name="com.tongxin.youni.activity.Welcome">
             <intent-filter>
@@ -64,43 +57,12 @@
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.RegisterActivity" />
 
-        <!-- easeui的Activity -->
-        <!--<activity android:name="com.hyphenate.easeui.ui.ChatActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.EaseShowNormalFileActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.CallActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.VideoCallActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.VoiceCallActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.ImageGridActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.RecorderVideoActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.EaseShowVideoActivity" />-->
         <activity
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.UserInfoActivity" />
         <activity
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.ItemDetailActivity" />
-
-        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
-
-
-        <receiver android:name="com.tongxin.youni.receiver.PushReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="com.avos.UPDATE_STATUS" />
-                <action android:name="com.lecoan.push.action" />
-            </intent-filter>
-        </receiver>
 
         <activity android:name="com.tongxin.youni.activity.ChangeInformation"
             android:screenOrientation="portrait"/>
