@@ -43,7 +43,6 @@
                     android:layout_marginRight="10dp"
                     android:gravity="center_vertical"
                     android:id="@+id/post_time"
-                    android:drawableStart="@drawable/ic_access_time"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"/>
             </LinearLayout>
