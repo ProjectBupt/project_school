@@ -1,9 +1,6 @@
 package com.tongxin.youni;
 
 import android.app.Application;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
@@ -20,6 +17,6 @@ public class MyApplication extends Application {
         super.onCreate();
         AVUser.alwaysUseSubUserClass(User.class);
         AVObject.registerSubclass(Express.class);
-        AVOSCloud.initialize(this,"IOlLaA1POAOgTtwbEzw47Njj-gzGzoHsz","O2Y2h3y0XMNseivaAMhYq9uP");
+        AVOSCloud.initialize(this, "IOlLaA1POAOgTtwbEzw47Njj-gzGzoHsz", "O2Y2h3y0XMNseivaAMhYq9uP");
     }
 }

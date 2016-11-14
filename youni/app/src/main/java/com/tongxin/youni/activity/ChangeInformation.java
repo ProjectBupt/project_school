@@ -21,7 +21,6 @@ import com.avos.avoscloud.SaveCallback;
 import com.bumptech.glide.Glide;
 import com.diycoder.citypick.widget.CityPickerPopWindow;
 import com.tongxin.youni.R;
-import com.tongxin.youni.picker.DormitoryPopWindow;
 import com.tongxin.youni.picker.DormitoryPopWindow2;
 import com.tongxin.youni.widget.TitleBar;
 import com.tongxin.youni.bean.User;
@@ -44,7 +43,7 @@ import java.util.List;
  * 弹出此页面，要求用户完善信息
  *
  * 用户也可通过此页面来更改信息
- * 目前支持更爱的信息为
+ * 目前支持更改的信息为
  * 头像
  * 姓名
  * 电话
@@ -59,8 +58,10 @@ import java.util.List;
 //private String studentID;//学号
 //private String InstallationId;//推送id
 
-public class ChangeInformation extends Activity implements CityPickerPopWindow.CityPickListener,
-        DormitoryPopWindow.DormitoryListener ,DormitoryPopWindow2.DormitoryListener{
+public class ChangeInformation extends Activity implements CityPickerPopWindow.CityPickListener
+        ,DormitoryPopWindow2.DormitoryListener{
+
+    public static final int HASCHANGEDIMAGE = 0x2;
     private EditText name;
     private EditText telNumber;
     private TextView dormitoryNumber;//宿舍号
@@ -156,7 +157,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                 if(path!=null)
                     tvResult = path;
                 Log.i("path------------>",path);
-                if(tvResult != "")
+                if("".equals(tvResult))
                 {
                     //currentUser.put("userName",tvResult);
                     Toast.makeText(ChangeInformation.this,tvResult,Toast.LENGTH_SHORT).show();
@@ -176,6 +177,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                                     headImageUrl = file.getUrl();
                                     currentUser.put(UserDao.AVATARURL,headImageUrl);
                                     currentUser.saveInBackground();
+                                    setResult(HASCHANGEDIMAGE);
                                     Log.i("wrong","保存成功");
                                 }
                                 else
@@ -228,7 +230,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
 //        mCollectView = (ImageView) titleBar.addAction(new TitleBar.ImageAction(R.mipmap.collect) {
 //            @Override
 //            public void performAction(View view) {
-//                Toast.makeText(MainActivity.this, "点击了收藏", Toast.LENG                                                              TH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "点击了收藏", Toast.LENGTH_SHORT).show();
 //                mCollectView.setImageResource(R.mipmap.fabu);
 //                titleBar.setTitle(mIsSelected ? "文章详情\n朋友圈" : "帖子详情");
 //                mIsSelected = !mIsSelected;
@@ -258,6 +260,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                         public void done(AVException e){
                             if(e==null){
                                 Toast.makeText(ChangeInformation.this,"保存信息成功",Toast.LENGTH_SHORT).show();
+                                setResult(RESULT_OK);
                                 finish();
                             }
                             else{
@@ -283,24 +286,24 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                 Glide.with(context).load(path).into(imageView);
             }
         };
-        //自由配置选项
+
         ImgSelConfig config = new ImgSelConfig.Builder(loader)
                 // 是否多选
                 .multiSelect(false)
                 // “确定”按钮背景色
-                .btnBgColor(Color.GRAY)
+                .btnBgColor(0x30be9e)
                 // “确定”按钮文字颜色
-                .btnTextColor(Color.BLUE)
+                .btnTextColor(Color.WHITE)
                 // 使用沉浸式状态栏
-                .statusBarColor(Color.parseColor("#3F51B5"))
+                .statusBarColor(Color.parseColor("#30be9e"))
                 // 返回图标ResId
                 .backResId(R.mipmap.back_green)
-                // 标题
-                .title("图片")
+                //标题
+                .title("选择图片")
                 // 标题文字颜色
                 .titleColor(Color.WHITE)
                 // TitleBar背景色
-                .titleBgColor(Color.parseColor("#9932CC"))
+                .titleBgColor(Color.parseColor("#30be9e"))
                 // 裁剪大小。needCrop为true的时候配置
                 .cropSize(1, 1, 200, 200)
                 .needCrop(true)
@@ -321,22 +324,10 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
 
     //点击更改宿舍号
     public void changeDormitoryNumber(View view) {
-//        CityPickerPopWindow mPopWindow = new CityPickerPopWindow(mContext);
-//        mPopWindow.showPopupWindow(rootView);
-//        mPopWindow.setCityPickListener(this);
-
-//        DormitoryPopWindow mPopWindow= new DormitoryPopWindow(mContext);
-//        mPopWindow.showPopupWindow(rootView);
-//        mPopWindow.setDormitoryListener(this);
 
         DormitoryPopWindow2 mPopWindow= new DormitoryPopWindow2(mContext);
         mPopWindow.showPopupWindow(rootView);
         mPopWindow.setDormitoryListener(this);
-    }
-
-    @Override
-    public void pidkValue(String value) {
-        dormitoryNumber.setText(value);
     }
 
     //接口函数获得滚轮传来的数据

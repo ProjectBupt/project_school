@@ -11,20 +11,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVRelation;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.GetCallback;
-import com.avos.avoscloud.SendCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tongxin.youni.R;
 import com.tongxin.youni.bean.Express;
 import com.tongxin.youni.bean.User;
-import com.tongxin.youni.bean.UserDao;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
@@ -99,8 +96,8 @@ public class ItemDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(ItemDetailActivity.this)
-                        .setMessage("qing xuan ze cao zuo")
-                        .setNeutralButton("da dan hua", new DialogInterface.OnClickListener() {
+                        .setMessage("请选择联系方式")
+                        .setPositiveButton("打电话", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Intent intent = new Intent(Intent.ACTION_CALL
@@ -108,7 +105,7 @@ public class ItemDetailActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         })
-                        .setNeutralButton("fa duan xin", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("发短信", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Intent intent = new Intent(Intent.ACTION_SENDTO

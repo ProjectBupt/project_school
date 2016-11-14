@@ -22,7 +22,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:entries="@array/Building"
-            android:background="@color/lightcoral">
+            android:background="#49ba75">
         </Spinner>
 
     </LinearLayout>
@@ -42,7 +42,7 @@
            android:layout_width="100dp"
            android:layout_height="40dp"
            android:entries="@array/expressCompany"
-           android:background="@color/lightblue">
+           android:background="#49ba75">
        </Spinner>
 
     </LinearLayout>
@@ -54,15 +54,19 @@
 
         <Button
             android:id="@+id/cancelScreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="#49ba75"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="20dp"
             android:text="取消"/>
 
         <Button
             android:id="@+id/sureScreen"
+            android:background="#49ba75"
+            android:layout_marginStart="50dp"
             android:text="确定"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:layout_marginLeft="20dp"/>
     </LinearLayout>
 

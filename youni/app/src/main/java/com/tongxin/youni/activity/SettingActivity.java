@@ -93,7 +93,7 @@ public class SettingActivity extends Activity {
         if(data!=null){
             Bundle bundle = data.getExtras();
             boolean isTrue = bundle.getBoolean("intent");
-            if(isTrue==true){
+            if(isTrue){
                 initFragment();//密码正确加载fragment
             }
         }

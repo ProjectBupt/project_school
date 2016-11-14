@@ -19,6 +19,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="time">time</string>
 
     <!--快递公司-->
     <string-array name="expressCompany">

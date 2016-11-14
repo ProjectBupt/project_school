@@ -70,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
-
             final String phone = _phone.getText().toString();
             final String password = _password.getText().toString();
 
@@ -89,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else{
                         Log.i(TAG, "done: 登陆失败"+e.getMessage());
-                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,  "登陆失败"+e.getMessage(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
                 }
