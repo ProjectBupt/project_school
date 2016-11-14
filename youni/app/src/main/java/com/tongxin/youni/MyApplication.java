@@ -8,10 +8,7 @@ import android.net.NetworkInfo;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.PushService;
-import com.tongxin.youni.activity.UserInfoActivity;
 import com.tongxin.youni.bean.Express;
-//import com.hyphenate.easeui.controller.EaseUI;
 import com.tongxin.youni.bean.User;
 
 /**
@@ -24,8 +21,6 @@ public class MyApplication extends Application {
         AVUser.alwaysUseSubUserClass(User.class);
         AVObject.registerSubclass(Express.class);
         AVOSCloud.initialize(this,"IOlLaA1POAOgTtwbEzw47Njj-gzGzoHsz","O2Y2h3y0XMNseivaAMhYq9uP");
-        PushService.setDefaultPushCallback(this, UserInfoActivity.class);
-//        EaseUI.getInstance().init(this, null);
     }
 
     public boolean isConnected(){
