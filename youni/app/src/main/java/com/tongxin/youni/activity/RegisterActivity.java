@@ -119,6 +119,7 @@ public class RegisterActivity extends AppCompatActivity {
                         data.putExtra("phone",phone);
                         data.putExtra("password",password);
                         RegisterActivity.this.setResult(RESULT_OK,data);
+
                         RegisterActivity.this.finish();
 
                     }

@@ -260,6 +260,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                         public void done(AVException e){
                             if(e==null){
                                 Toast.makeText(ChangeInformation.this,"保存信息成功",Toast.LENGTH_SHORT).show();
+                                setResult(RESULT_OK);
                                 finish();
                             }
                             else{
