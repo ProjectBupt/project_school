@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 import com.avos.avoscloud.SaveCallback;
@@ -71,14 +70,6 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
-            final String pushID = AVInstallation.getCurrentInstallation().getInstallationId();
-            AVInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
-                @Override
-                public void done(AVException e) {
-                    AVInstallation.getCurrentInstallation().saveInBackground();
-                }
-            });
-
             final String phone = _phone.getText().toString();
             final String password = _password.getText().toString();
 
@@ -88,7 +79,6 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void done(User user, AVException e) {
                     if(e == null){
-                        user.setInstallationId(pushID);
                         Log.i(TAG, "done: AVOS login 成功");
                         progressDialog.dismiss();
                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);

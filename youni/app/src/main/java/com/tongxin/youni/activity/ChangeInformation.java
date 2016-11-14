@@ -61,6 +61,8 @@ import java.util.List;
 
 public class ChangeInformation extends Activity implements CityPickerPopWindow.CityPickListener,
         DormitoryPopWindow.DormitoryListener ,DormitoryPopWindow2.DormitoryListener{
+    public static final int HASCHANGEDIMAGE = 0x2;
+
     private EditText name;
     private EditText telNumber;
     private TextView dormitoryNumber;//宿舍号
@@ -156,10 +158,10 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                 if(path!=null)
                     tvResult = path;
                 Log.i("path------------>",path);
-                if(tvResult != "")
+                if(!"".equals(tvResult))
                 {
                     //currentUser.put("userName",tvResult);
-                    Toast.makeText(ChangeInformation.this,tvResult,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ChangeInformation.this,tvResult,Toast.LENGTH_SHORT).show();
                     //加载选择图片
                     Glide.with(this).load(tvResult).into(imageView);
                     //更换头像
@@ -176,15 +178,18 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                                     headImageUrl = file.getUrl();
                                     currentUser.put(UserDao.AVATARURL,headImageUrl);
                                     currentUser.saveInBackground();
+                                    setResult(HASCHANGEDIMAGE);
                                     Log.i("wrong","保存成功");
                                 }
                                 else
                                     Log.i("wrong",e.toString());
                             }
                         });
-                    } catch (FileNotFoundException e) {
+                    }
+                    catch (FileNotFoundException e) {
                         e.printStackTrace();
-                    } catch (URISyntaxException e) {
+                    }
+                    catch (URISyntaxException e) {
                         e.printStackTrace();
                     }
                 }

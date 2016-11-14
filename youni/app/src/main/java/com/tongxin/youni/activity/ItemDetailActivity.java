@@ -13,12 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import com.alibaba.fastjson.JSONObject;
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVInstallation;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.AVPush;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVRelation;
 import com.avos.avoscloud.AVUser;
@@ -77,7 +72,6 @@ public class ItemDetailActivity extends AppCompatActivity {
                         public void done(User user, AVException e) {
                             if(e == null) {
                                 mUser = user;
-                                pushToOwner();
                                 AVRelation<Express> relation = AVUser.getCurrentUser(User.class).getRelation("fetch");
                                 relation.add(mExpress);
                                 Glide.with(ItemDetailActivity.this)
@@ -137,40 +131,4 @@ public class ItemDetailActivity extends AppCompatActivity {
         }
     }
 
-    private void pushToOwner(){
-        String pushID = mUser.getInstallationId();
-        Log.i(TAG, "pushToOwner: "+pushID);
-        AVPush push = new AVPush();
-
-//        JSONObject data = new JSONObject();
-//        data.put("action","com.lecoan.push.action");
-//        data.put("meg",mUser.getUsername()+"领了你的快递");
-//
-//        push.setData(data);
-//        push.setMessage("test");
-//        push.setPushToAndroid(true);
-//        push.setCloudQuery("select * from _Installation where installationId ='" + pushID + "'");
-//        //push.setQuery(AVInstallation.getQuery().whereEqualTo(UserDao.INSTALLATIONID,pushID));
-//        push.setChannel("private");
-//        push.sendInBackground(new SendCallback() {
-//            @Override
-//            public void done(AVException e) {
-//                if(e == null)
-//                    Toast.makeText(ItemDetailActivity.this, "您领取的消息已经发送给了发布者", Toast.LENGTH_SHORT).show();
-//                else
-//                    Log.i(TAG, "done: "+e.getMessage());
-//            }
-//        });
-        AVQuery pushQuery = AVInstallation.getQuery();
-        pushQuery.whereEqualTo(UserDao.INSTALLATIONID, pushID);
-        AVPush.sendMessageInBackground("message to installation",  pushQuery, new SendCallback() {
-            @Override
-            public void done(AVException e) {
-                if(e == null)
-                    Toast.makeText(ItemDetailActivity.this, "您领取的消息已经发送给了发布者", Toast.LENGTH_SHORT).show();
-                else
-                    Log.i(TAG, "done: "+e.getMessage());
-            }
-        });
-    }
 }

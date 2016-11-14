@@ -18,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tongxin.youni.R;
 import com.tongxin.youni.bean.Express;
 import com.tongxin.youni.bean.User;
+import com.tongxin.youni.widget.DataUtils;
 
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class MyListViewAdapter extends BaseAdapter {
     private Context context;
     private List<Express> data;
     private LayoutInflater inflater=null;
+    private long time = System.currentTimeMillis();
 
     public RemoveItem removeItem;
 
@@ -69,8 +71,9 @@ public class MyListViewAdapter extends BaseAdapter {
             holder.company = (TextView) view.findViewById(R.id.express_company);
             holder.room = (TextView) view.findViewById(R.id.room);
             holder.pickBt = (Button) view.findViewById(R.id.pick_up_bt);
-            holder.time = (TextView) view.findViewById(R.id.post_time);
+            holder.time = (TextView) view.findViewById(R.id.time);
             holder.money = (TextView) view.findViewById(R.id.money);
+            holder.post_time = (TextView) view.findViewById(R.id.post_time);
 
             holder.pickBt.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -83,11 +86,12 @@ public class MyListViewAdapter extends BaseAdapter {
         }else{
             holder= (ViewHolder) view.getTag();
         }
-        holder.user_name.setText(data.get(i).getUserName());
-        holder.company.setText(data.get(i).getExpressCompany());
-        holder.room.setText(data.get(i).getRoomID());
-        holder.time.setText(data.get(i).getTime());
+        holder.user_name.setText("主人:"+data.get(i).getUserName());
+        holder.company.setText("快递公司:"+data.get(i).getExpressCompany());
+        holder.room.setText("宿舍号:"+data.get(i).getRoomID());
+        holder.time.setText("快递到达时间:"+data.get(i).getTime());
         holder.money.setText("打赏:"+data.get(i).getMoney()+"元");
+        holder.post_time.setText( DataUtils.formatDateTime(data.get(i).getCreatedAt()));
 
         final String id = data.get(i).getUserID();
         AVQuery<User> query = new AVQuery<>("_User");
@@ -125,7 +129,7 @@ public class MyListViewAdapter extends BaseAdapter {
         TextView time;
         Button pickBt;
         TextView money;
-
+        TextView post_time;
     }
 
     public interface RemoveItem{

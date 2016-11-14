@@ -68,7 +68,7 @@ public class ExpressFragment extends Fragment
             switch (msg.what){
                 case REFRESH_COMPLETE:
                     adapter.notifyDataSetChanged();
-                    Toast.makeText(getActivity(), "更新完成,棒棒哒~~", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "更新完成,棒棒哒~~", Toast.LENGTH_SHORT).show();
                     refreshLayout.setRefreshing(false);
                     break;
             }
@@ -190,44 +190,44 @@ public class ExpressFragment extends Fragment
                 Bundle extra = data.getExtras();
                 int building = extra.getInt("Building");
                 final int exCom = extra.getInt("Express");
-                String commpany;
+                String company;
                 AVQuery<Express> query1 = new AVQuery<>("Express");
                 switch (exCom){
                     case 0:
-                        commpany = "圆通";
+                        company = "圆通";
                     break;
                     case 1:
-                        commpany = "中通";
+                        company = "中通";
                     break;
                     case 2:
-                        commpany = "申通";
+                        company = "申通";
                     break;
                     case 3:
-                        commpany = "韵达";
+                        company = "韵达";
                     break;
                     case 4:
-                        commpany = "京东";
+                        company = "京东";
                     break;
                     case 5:
-                        commpany = "顺丰";
+                        company = "顺丰";
                     break;
                     case 6:
-                        commpany = "如风达";
+                        company = "如风达";
                     break;
                     case 7:
-                        commpany = "天天";
+                        company = "天天";
                     break;
                     case 8:
-                        commpany = "一统飞鸿";
+                        company = "一统飞鸿";
                     break;
                     case 9:
-                        commpany = "全峰";
+                        company = "全峰";
                     break;
                     default:
-                        commpany = "";
+                        company = "";
 
                 }
-                query1.whereEqualTo(ExpressDao.company,commpany);
+                query1.whereEqualTo(ExpressDao.company,company);
                 AVQuery<Express> query2 = new AVQuery<>("Express");
                 char build = (char) ('A'+building);
                 query2.whereContains(ExpressDao.roomId,""+build);

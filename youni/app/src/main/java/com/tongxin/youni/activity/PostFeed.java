@@ -86,8 +86,8 @@ public class PostFeed extends Activity {
     }
 
     private void initChooseData() {
-        //初始化到达时间，默认选中为上午
-        timeForHold = "noon";
+        //初始化到达时间，默认选中为中午
+        timeForHold = "中午";
         //打赏金额
         moneyForHold = 1;
         //默认收货地址
@@ -225,9 +225,9 @@ public class PostFeed extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if(i==R.id.id_time_noon)
-                    timeForHold = "noon";
+                    timeForHold = "中午";
                 else
-                    timeForHold = "afternoon";
+                    timeForHold = "下午";
             }
         });
         //打赏金额选择
