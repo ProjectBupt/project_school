@@ -288,24 +288,24 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                 Glide.with(context).load(path).into(imageView);
             }
         };
-        //自由配置选项
+
         ImgSelConfig config = new ImgSelConfig.Builder(loader)
                 // 是否多选
                 .multiSelect(false)
                 // “确定”按钮背景色
-                .btnBgColor(Color.GRAY)
+                .btnBgColor(0x30be9e)
                 // “确定”按钮文字颜色
-                .btnTextColor(Color.BLUE)
+                .btnTextColor(Color.WHITE)
                 // 使用沉浸式状态栏
-                .statusBarColor(Color.parseColor("#3F51B5"))
+                .statusBarColor(Color.parseColor("#30be9e"))
                 // 返回图标ResId
                 .backResId(R.mipmap.back_green)
-                // 标题
-                .title("图片")
+                //标题
+                .title("选择图片")
                 // 标题文字颜色
                 .titleColor(Color.WHITE)
                 // TitleBar背景色
-                .titleBgColor(Color.parseColor("#9932CC"))
+                .titleBgColor(Color.parseColor("#30be9e"))
                 // 裁剪大小。needCrop为true的时候配置
                 .cropSize(1, 1, 200, 200)
                 .needCrop(true)

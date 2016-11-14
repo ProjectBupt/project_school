@@ -46,6 +46,7 @@
             android:layout_height="wrap_content" />
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:layout_gravity="end"
@@ -53,8 +54,7 @@
             android:text="取消请求"
             android:textColor="#ffffff"
             android:textSize="10sp"
-            android:background="#30be9e"
-            android:src="@drawable/attention"
+            android:background="#49ba75"
             android:layout_width="50dp"
             android:layout_height="20dp"/>
 
