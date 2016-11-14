@@ -75,21 +75,27 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
-                <Button
-                    android:textColor="#cbffd1"
-                    android:layout_margin="8dp"
-                    android:background="#49ba75"
-                    android:id="@+id/pick_up_bt"
-                    android:text="代领"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"/>
+
             </LinearLayout>
+
             <TextView
                 android:id="@+id/time"
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 />
+
+            <include layout="@layout/divide_line"/>
+            <Button
+                android:layout_gravity="right"
+                android:paddingRight="10dp"
+                android:textColor="@color/black"
+                android:layout_margin="8dp"
+                android:background="@drawable/button2"
+                android:id="@+id/pick_up_bt"
+                android:text="代领"
+                android:layout_width="75dp"
+                android:layout_height="35dp"/>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
@@ -88,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else{
                         Log.i(TAG, "done: 登陆失败"+e.getMessage());
+                        Toast.makeText(LoginActivity.this,  "登陆失败"+e.getMessage(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
                 }
