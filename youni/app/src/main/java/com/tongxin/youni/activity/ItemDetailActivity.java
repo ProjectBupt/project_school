@@ -1,5 +1,6 @@
 package com.tongxin.youni.activity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -28,7 +29,7 @@ import com.tongxin.youni.bean.UserDao;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class ItemDetailActivity extends AppCompatActivity {
+public class ItemDetailActivity extends Activity {
 
     private static final String TAG = "ItemActivity----->";
     private TextView mInfo;
@@ -92,23 +93,21 @@ public class ItemDetailActivity extends AppCompatActivity {
             }
         });
         
-
-
-
+        
         mChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(ItemDetailActivity.this)
-                        .setMessage("qing xuan ze cao zuo")
-                        .setNeutralButton("da dan hua", new DialogInterface.OnClickListener() {
+                        .setMessage("请选择操作")
+                        .setPositiveButton("打电话", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = new Intent(Intent.ACTION_CALL
+                                Intent intent = new Intent(Intent.ACTION_DIAL
                                         , Uri.parse("tel:" + mUser.getMobilePhoneNumber()));
                                 startActivity(intent);
                             }
                         })
-                        .setNeutralButton("fa duan xin", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("发短信", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Intent intent = new Intent(Intent.ACTION_SENDTO
@@ -126,6 +125,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         int id = view.getId();
         switch (id){
             case R.id.got_it:
+                setResult(RESULT_OK);
                 finish();
                 break;
         }

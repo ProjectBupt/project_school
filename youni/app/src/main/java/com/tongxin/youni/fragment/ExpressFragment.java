@@ -51,7 +51,7 @@ import java.util.List;
  */
 public class ExpressFragment extends Fragment
         implements MyListViewAdapter.RemoveItem, SwipeRefreshLayout.OnRefreshListener {
-
+    private static final int SEE_INFO = 0x33;
     private static final int REFRESH_COMPLETE=0x110;
     private static final int POST_EXPRESS = 2;
     private static final int SCREEN_EXPRESS = 0xff;
@@ -186,7 +186,14 @@ public class ExpressFragment extends Fragment
             }
         }
 
-
+        if(requestCode == SEE_INFO){
+            if(resultCode == Activity.RESULT_OK){
+                refreshLayout.setRefreshing(true);
+                Log.i(TAG, "onActivityResult: 应该刷新了啊");
+                mData=getData();
+                mHandler.sendEmptyMessageDelayed(REFRESH_COMPLETE,2000);
+            }
+        }
         if(requestCode == SCREEN_EXPRESS){
             if(resultCode == Activity.RESULT_OK){
                 refreshLayout.setRefreshing(true);
@@ -309,7 +316,7 @@ public class ExpressFragment extends Fragment
                                 if(e == null) {
                                     Intent intent = new Intent(getActivity(), ItemDetailActivity.class);
                                     intent.putExtra("ExpressID",ID);
-                                    startActivity(intent);
+                                    startActivityForResult(intent, SEE_INFO);
                                 }
                                 else{
                                     Log.i(TAG, "done in skip: "+e.getMessage());

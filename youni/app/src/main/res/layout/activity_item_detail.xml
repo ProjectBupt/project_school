@@ -6,10 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/acitvity_margin"
-    tools:context="com.example.tongxin.youni.com.tongxin.youni.activity.ItemDetailActivity"
     android:orientation="vertical">
     <LinearLayout
-        android:background="#f8fac2"
+        android:background="#ffffff"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,16 +19,20 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="100dp"
             android:layout_height="100dp" />
+
         <TextView
-            android:text="test"
+            android:layout_marginStart="10dp"
             android:textSize="18sp"
-            android:gravity="center"
+            android:textColor="#aa000000"
+            android:layout_gravity="center"
             android:id="@+id/info"
             android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_width="250dp"
+            android:layout_height="wrap_content" />
 
         <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:layout_margin="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -37,17 +40,18 @@
             <Button
                 android:id="@+id/chat"
                 android:text="和他聊聊"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:background="@drawable/button3"
+                android:layout_width="80dp"
+                android:layout_height="40dp" />
 
             <Button
                 android:onClick="doClick"
                 android:id="@+id/got_it"
+                android:background="@drawable/button3"
                 android:text="我知道了"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="100dp"/>
         </RelativeLayout>
 
 

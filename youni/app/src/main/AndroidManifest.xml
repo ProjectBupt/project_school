@@ -61,6 +61,7 @@
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.UserInfoActivity" />
         <activity
+            android:theme="@style/dialogstyle"
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.ItemDetailActivity" />
 

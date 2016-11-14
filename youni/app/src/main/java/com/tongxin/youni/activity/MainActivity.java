@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVUser;
 import com.bumptech.glide.Glide;
@@ -111,12 +112,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         switch (id){
-
             case R.id.setting:
                 Intent intent = new Intent(MainActivity.this,SettingActivity.class);
-
                 startActivity(intent);
-            default:
+            case R.id.book:
+                Toast.makeText(this, "敬请期待！！", Toast.LENGTH_SHORT).show();
                 break;
         }
 
