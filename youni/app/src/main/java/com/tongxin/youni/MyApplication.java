@@ -22,22 +22,4 @@ public class MyApplication extends Application {
         AVObject.registerSubclass(Express.class);
         AVOSCloud.initialize(this,"IOlLaA1POAOgTtwbEzw47Njj-gzGzoHsz","O2Y2h3y0XMNseivaAMhYq9uP");
     }
-
-    public boolean isConnected(){
-
-        ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeInfo = cm.getActiveNetworkInfo();
-        if(activeInfo != null){
-            if(activeInfo.getType() == ConnectivityManager.TYPE_WIFI){
-                return true;
-            }
-            else if(activeInfo.getType() == ConnectivityManager.TYPE_MOBILE){
-                return true;
-            }
-        }
-        else{
-            return false;
-        }
-        return true;
-    }
 }
