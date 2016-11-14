@@ -21,7 +21,9 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <permission android:name="com.tongxin.youni.permission.MIPUSH_RECEIVE" android:protectionLevel="signature" />
+    <uses-permission android:name="com.tongxin.youni.permission.MIPUSH_RECEIVE" />
 
     <application
         android:name="com.tongxin.youni.MyApplication"
@@ -30,12 +32,48 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--xiaomi-->
+        <service
+            android:enabled="true"
+            android:process=":pushservice"
+            android:name="com.xiaomi.push.service.XMPushService"/>
+        <service
+            android:name="com.xiaomi.push.service.XMJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:process=":pushservice" />
+        <!--注：此service必须在3.0.1版本以后（包括3.0.1版本）加入-->
+        <service
+            android:enabled="true"
+            android:exported="true"
+            android:name="com.xiaomi.mipush.sdk.PushMessageHandler" />
+        <service android:enabled="true"
+            android:name="com.xiaomi.mipush.sdk.MessageHandleService" />
+        <!--注：此service必须在2.2.5版本以后（包括2.2.5版本）加入-->
+        <receiver
+            android:exported="true"
+            android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:exported="false"
+            android:process=":pushservice"
+            android:name="com.xiaomi.push.service.receivers.PingReceiver" >
+            <intent-filter>
+                <action android:name="com.xiaomi.push.PING_TIMER" />
+            </intent-filter>
+        </receiver>
+        <!--/xiaomi-->
+
         <activity
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.MainActivity">
 
         </activity>
-        <!--<service android:name="com.avos.avoscloud.PushService"/>-->
         <meta-data
             android:name="EASEMOB_APPKEY"
             android:value="lecoancom#imer" />
@@ -64,31 +102,12 @@
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.RegisterActivity" />
 
-        <!-- easeui的Activity -->
-        <!--<activity android:name="com.hyphenate.easeui.ui.ChatActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.EaseShowNormalFileActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.CallActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.VideoCallActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.VoiceCallActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.ImageGridActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.RecorderVideoActivity" />-->
-        <!--<activity android:name="com.hyphenate.easeui.ui.EaseShowVideoActivity" />-->
         <activity
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.UserInfoActivity" />
         <activity
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.ItemDetailActivity" />
-
-        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
 
 
 
