@@ -286,14 +286,14 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                 Glide.with(context).load(path).into(imageView);
             }
         };
-        //自由配置选项
+
         ImgSelConfig config = new ImgSelConfig.Builder(loader)
                 // 是否多选
                 .multiSelect(false)
                 // “确定”按钮背景色
-                .btnBgColor(Color.GRAY)
+                .btnBgColor(0x30be9e)
                 // “确定”按钮文字颜色
-                .btnTextColor(Color.BLUE)
+                .btnTextColor(Color.WHITE)
                 // 使用沉浸式状态栏
                 .statusBarColor(Color.parseColor("#30be9e"))
                 // 返回图标ResId

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <android.support.v7.widget.CardView
         android:id="@+id/background"
         android:orientation="horizontal"
@@ -14,12 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <RelativeLayout
             android:background="@color/white"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
+                android:id="@+id/line1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -49,19 +52,23 @@
 
 
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@+id/line1"
                 android:text="@string/post_express_company"
                 android:id="@+id/express_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/express_company"
                 android:id="@+id/room"
-                android:textStyle="italic"
                 android:text="@string/your_room_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+<<<<<<< HEAD
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -76,14 +83,30 @@
                     android:layout_weight="1"/>
 
             </LinearLayout>
+=======
+
+             <TextView
+                 android:layout_marginStart="15dp"
+                 android:layout_marginBottom="5dp"
+                 android:layout_below="@+id/time"
+                 android:layout_gravity="center_vertical"
+                 android:id="@+id/money"
+                 android:text="money"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"/>
+>>>>>>> dev
 
             <TextView
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="5dp"
                 android:id="@+id/time"
-                android:layout_marginLeft="10dp"
+                android:text="@string/time"
+                android:layout_below="@+id/room"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 />
 
+<<<<<<< HEAD
             <include layout="@layout/divide_line"/>
             <Button
                 android:layout_gravity="right"
@@ -96,6 +119,24 @@
                 android:layout_width="75dp"
                 android:layout_height="35dp"/>
         </LinearLayout>
+=======
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:textColor="#cbffd1"
+                android:layout_marginRight="10dp"
+                android:background="#49ba75"
+                android:id="@+id/pick_up_bt"
+                android:text="代领"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_alignBaseline="@+id/money"
+                android:layout_alignBottom="@+id/money"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"/>
+
+        </RelativeLayout>
+>>>>>>> dev
 
     </android.support.v7.widget.CardView>
 </FrameLayout>
