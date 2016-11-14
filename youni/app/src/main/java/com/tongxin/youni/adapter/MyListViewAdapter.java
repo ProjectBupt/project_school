@@ -86,11 +86,11 @@ public class MyListViewAdapter extends BaseAdapter {
         }else{
             holder= (ViewHolder) view.getTag();
         }
-        holder.user_name.setText("主人:"+data.get(i).getUserName());
+        holder.user_name.setText(data.get(i).getUserName());
         holder.company.setText("快递公司:"+data.get(i).getExpressCompany());
         holder.room.setText("宿舍号:"+data.get(i).getRoomID());
         holder.time.setText("快递到达时间:"+data.get(i).getTime());
-        holder.money.setText("打赏:"+data.get(i).getMoney()+"元");
+        holder.money.setText("打赏:￥"+data.get(i).getMoney()+"元");
         holder.post_time.setText( DataUtils.formatDateTime(data.get(i).getCreatedAt()));
 
         final String id = data.get(i).getUserID();
