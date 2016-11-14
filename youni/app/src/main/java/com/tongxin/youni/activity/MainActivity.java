@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.setting:
                 Intent intent = new Intent(MainActivity.this,SettingActivity.class);
                 startActivity(intent);
+                break;
             case R.id.book:
                 Toast.makeText(this, "敬请期待！！", Toast.LENGTH_SHORT).show();
                 break;

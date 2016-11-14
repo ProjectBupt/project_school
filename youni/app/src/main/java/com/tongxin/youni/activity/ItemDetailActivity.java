@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -33,7 +34,7 @@ public class ItemDetailActivity extends Activity {
 
     private static final String TAG = "ItemActivity----->";
     private TextView mInfo;
-    private Button mChat;
+    private Button Send_message,Dial;
     private Express mExpress;
     private String mUserID;
     private User mUser;
@@ -45,7 +46,8 @@ public class ItemDetailActivity extends Activity {
         setContentView(R.layout.activity_item_detail);
 
         mInfo = (TextView) findViewById(R.id.info);
-        mChat = (Button) findViewById(R.id.chat);
+        Send_message = (Button) findViewById(R.id.btn_message);
+        Dial= (Button) findViewById(R.id.btn_dial);
         avatar = (ImageView) findViewById(R.id.avatar);
 
         String ID = getIntent().getStringExtra("ExpressID");
@@ -93,30 +95,42 @@ public class ItemDetailActivity extends Activity {
             }
         });
         
-        
-        mChat.setOnClickListener(new View.OnClickListener() {
+
+        Send_message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AlertDialog.Builder(ItemDetailActivity.this)
-                        .setMessage("请选择操作")
-                        .setPositiveButton("打电话", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = new Intent(Intent.ACTION_DIAL
-                                        , Uri.parse("tel:" + mUser.getMobilePhoneNumber()));
-                                startActivity(intent);
-                            }
-                        })
-                        .setNegativeButton("发短信", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = new Intent(Intent.ACTION_SENDTO
-                                        , Uri.parse("sms:"+mUser.getMobilePhoneNumber()));
-                                startActivity(intent);
-                            }
-                        })
-                        .show();
+                Intent intent = new Intent(Intent.ACTION_SENDTO
+                        , Uri.parse("sms:"+mUser.getMobilePhoneNumber()));
+                startActivity(intent);
+//                new AlertDialog.Builder(ItemDetailActivity.this)
+//                        .setMessage("请选择操作")
+//                        .setPositiveButton("打电话", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Intent intent = new Intent(Intent.ACTION_DIAL
+//                                        , Uri.parse("tel:" + mUser.getMobilePhoneNumber()));
+//                                startActivity(intent);
+//                            }
+//                        })
+//                        .setNegativeButton("发短信", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Intent intent = new Intent(Intent.ACTION_SENDTO
+//                                        , Uri.parse("sms:"+mUser.getMobilePhoneNumber()));
+//                                startActivity(intent);
+//                            }
+//                        })
+//                        .show();
 
+            }
+        });
+
+        Dial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL
+                        , Uri.parse("tel:" + mUser.getMobilePhoneNumber()));
+                startActivity(intent);
             }
         });
     }

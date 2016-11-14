@@ -32,26 +32,38 @@
 
         <RelativeLayout
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:layout_margin="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/chat"
-                android:text="和他聊聊"
+                android:id="@+id/btn_dial"
+                android:layout_margin="5dp"
+                android:text="打电话"
+                android:layout_toLeftOf="@+id/got_it"
                 android:background="@drawable/button3"
                 android:layout_width="80dp"
                 android:layout_height="40dp" />
 
             <Button
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
                 android:onClick="doClick"
                 android:id="@+id/got_it"
                 android:background="@drawable/button3"
                 android:text="我知道了"
                 android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="100dp"/>
+                android:layout_height="40dp"/>
+
+            <Button
+                android:id="@+id/btn_message"
+                android:layout_margin="5dp"
+                android:text="发短信"
+                android:layout_toRightOf="@+id/got_it"
+                android:background="@drawable/button3"
+                android:layout_width="80dp"
+                android:layout_height="40dp" />
+
         </RelativeLayout>
 
 

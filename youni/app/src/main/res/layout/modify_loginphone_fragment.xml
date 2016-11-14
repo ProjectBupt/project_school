@@ -37,6 +37,7 @@
             android:layout_height="match_parent"
             android:hint="填写验证码"
             android:background="@null"/>
+
         <Button
             android:id="@+id/id_getCode"
             android:background="@drawable/button2"
