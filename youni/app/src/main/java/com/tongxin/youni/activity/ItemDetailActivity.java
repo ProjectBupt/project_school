@@ -99,26 +99,6 @@ public class ItemDetailActivity extends Activity {
                 Intent intent = new Intent(Intent.ACTION_SENDTO
                         , Uri.parse("sms:"+mUser.getMobilePhoneNumber()));
                 startActivity(intent);
-//                new AlertDialog.Builder(ItemDetailActivity.this)
-//                        .setMessage("请选择操作")
-//                        .setPositiveButton("打电话", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                Intent intent = new Intent(Intent.ACTION_DIAL
-//                                        , Uri.parse("tel:" + mUser.getMobilePhoneNumber()));
-//                                startActivity(intent);
-//                            }
-//                        })
-//                        .setNegativeButton("发短信", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                Intent intent = new Intent(Intent.ACTION_SENDTO
-//                                        , Uri.parse("sms:"+mUser.getMobilePhoneNumber()));
-//                                startActivity(intent);
-//                            }
-//                        })
-//                        .show();
-
             }
         });
 
