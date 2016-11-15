@@ -56,6 +56,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_below="@+id/line1"
                 android:text="@string/post_express_company"
+                android:textSize="14sp"
                 android:id="@+id/express_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -66,6 +67,7 @@
                 android:layout_below="@id/express_company"
                 android:id="@+id/room"
                 android:text="@string/your_room_id"
+                android:textSize="14sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -76,6 +78,7 @@
                  android:layout_gravity="center_vertical"
                  android:id="@+id/money"
                  android:text="money"
+                 android:textSize="14sp"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"/>
 
@@ -84,10 +87,11 @@
                 android:layout_marginBottom="5dp"
                 android:id="@+id/time"
                 android:text="@string/time"
-                android:layout_below="@+id/room"
+                android:textSize="14sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:layout_below="@+id/room"
+                android:layout_alignParentEnd="true" />
 
             <Button
                 style="?android:attr/borderlessButtonStyle"
@@ -96,13 +100,11 @@
                 android:background="#49ba75"
                 android:id="@+id/pick_up_bt"
                 android:text="代领"
+                android:textSize="15sp"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
-                android:layout_alignBaseline="@+id/money"
                 android:layout_alignBottom="@+id/money"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
 

@@ -22,7 +22,7 @@
 
         <TextView
             android:layout_marginStart="10dp"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textColor="#aa000000"
             android:layout_gravity="center"
             android:id="@+id/info"
@@ -40,6 +40,7 @@
                 android:id="@+id/btn_dial"
                 android:layout_margin="5dp"
                 android:text="打电话"
+                android:textSize="15sp"
                 android:layout_toLeftOf="@+id/got_it"
                 android:background="@drawable/button3"
                 android:layout_width="80dp"
@@ -52,6 +53,7 @@
                 android:id="@+id/got_it"
                 android:background="@drawable/button3"
                 android:text="我知道了"
+                android:textSize="15sp"
                 android:layout_width="80dp"
                 android:layout_height="40dp"/>
 
@@ -59,6 +61,7 @@
                 android:id="@+id/btn_message"
                 android:layout_margin="5dp"
                 android:text="发短信"
+                android:textSize="15sp"
                 android:layout_toRightOf="@+id/got_it"
                 android:background="@drawable/button3"
                 android:layout_width="80dp"
