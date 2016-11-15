@@ -266,7 +266,7 @@ public class DormitoryPopWindow2 extends PopupWindow implements OnWheelChangedLi
 
              //mDormitoryNumber = mDormitoryNumbers[newValue];
         }
-        pickValue = mCurrentBuilding + divider + mCurrentFloor+mCurrentDormitoryNumber;
+        pickValue = mCurrentBuilding + divider +mCurrentDormitoryNumber;
         slected.setText(pickValue);
     }
 

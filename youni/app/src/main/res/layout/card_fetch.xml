@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="2.5dp"
     android:layout_marginBottom="2.5dp"
-    app:cardBackgroundColor="#fdffc7"
+    app:cardBackgroundColor="#ffffffff"
     app:cardCornerRadius="10dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
@@ -48,12 +48,14 @@
 
             <TextView
                 android:id="@+id/room_number"
+                android:layout_marginBottom="5dp"
                 android:text="地址"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_below="@+id/room_number"
+                android:layout_marginBottom="5dp"
                 android:id="@+id/phone_number"
                 android:text="电话"
                 android:layout_width="match_parent"
@@ -61,6 +63,7 @@
 
             <TextView
                 android:layout_below="@+id/phone_number"
+                android:layout_marginBottom="5dp"
                 android:id="@+id/company"
                 android:text="快递公司"
                 android:layout_width="match_parent"
@@ -68,6 +71,7 @@
 
             <TextView
                 android:layout_below="@+id/company"
+                android:layout_marginBottom="5dp"
                 android:id="@+id/time"
                 android:text="送货时间"
                 android:layout_width="match_parent"
@@ -75,6 +79,7 @@
 
             <TextView
                 android:layout_below="@+id/time"
+                android:layout_marginBottom="5dp"
                 android:id="@+id/payment"
                 android:text="打赏金额"
                 android:layout_width="wrap_content"

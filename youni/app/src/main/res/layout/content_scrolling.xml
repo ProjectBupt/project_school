@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.tongxin.youni.com.tongxin.youni.activity.UserInfoActivity"
+    tools:context="com.tongxin.youni.activity.UserInfoActivity"
     tools:showIn="@layout/activity_user_info">
 
     <LinearLayout

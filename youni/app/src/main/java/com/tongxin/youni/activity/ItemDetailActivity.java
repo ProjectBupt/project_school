@@ -1,5 +1,6 @@
 package com.tongxin.youni.activity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,18 +8,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import com.alibaba.fastjson.JSONObject;
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVInstallation;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.AVPush;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVRelation;
 import com.avos.avoscloud.AVUser;
@@ -33,11 +30,11 @@ import com.tongxin.youni.bean.UserDao;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class ItemDetailActivity extends AppCompatActivity {
+public class ItemDetailActivity extends Activity {
 
     private static final String TAG = "ItemActivity----->";
     private TextView mInfo;
-    private Button mChat;
+    private Button Send_message,Dial;
     private Express mExpress;
     private String mUserID;
     private User mUser;
@@ -49,7 +46,8 @@ public class ItemDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_item_detail);
 
         mInfo = (TextView) findViewById(R.id.info);
-        mChat = (Button) findViewById(R.id.chat);
+        Send_message = (Button) findViewById(R.id.btn_message);
+        Dial= (Button) findViewById(R.id.btn_dial);
         avatar = (ImageView) findViewById(R.id.avatar);
 
         String ID = getIntent().getStringExtra("ExpressID");
@@ -77,7 +75,6 @@ public class ItemDetailActivity extends AppCompatActivity {
                         public void done(User user, AVException e) {
                             if(e == null) {
                                 mUser = user;
-                                pushToOwner();
                                 AVRelation<Express> relation = AVUser.getCurrentUser(User.class).getRelation("fetch");
                                 relation.add(mExpress);
                                 Glide.with(ItemDetailActivity.this)
@@ -99,31 +96,41 @@ public class ItemDetailActivity extends AppCompatActivity {
         });
         
 
-
-
-        mChat.setOnClickListener(new View.OnClickListener() {
+        Send_message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AlertDialog.Builder(ItemDetailActivity.this)
-                        .setMessage("qing xuan ze cao zuo")
-                        .setNeutralButton("da dan hua", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = new Intent(Intent.ACTION_CALL
-                                        , Uri.parse("tel:" + mUser.getMobilePhoneNumber()));
-                                startActivity(intent);
-                            }
-                        })
-                        .setNeutralButton("fa duan xin", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = new Intent(Intent.ACTION_SENDTO
-                                        , Uri.parse("sms:"+mUser.getMobilePhoneNumber()));
-                                startActivity(intent);
-                            }
-                        })
-                        .show();
+                Intent intent = new Intent(Intent.ACTION_SENDTO
+                        , Uri.parse("sms:"+mUser.getMobilePhoneNumber()));
+                startActivity(intent);
+//                new AlertDialog.Builder(ItemDetailActivity.this)
+//                        .setMessage("请选择操作")
+//                        .setPositiveButton("打电话", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Intent intent = new Intent(Intent.ACTION_DIAL
+//                                        , Uri.parse("tel:" + mUser.getMobilePhoneNumber()));
+//                                startActivity(intent);
+//                            }
+//                        })
+//                        .setNegativeButton("发短信", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Intent intent = new Intent(Intent.ACTION_SENDTO
+//                                        , Uri.parse("sms:"+mUser.getMobilePhoneNumber()));
+//                                startActivity(intent);
+//                            }
+//                        })
+//                        .show();
 
+            }
+        });
+
+        Dial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL
+                        , Uri.parse("tel:" + mUser.getMobilePhoneNumber()));
+                startActivity(intent);
             }
         });
     }
@@ -132,45 +139,10 @@ public class ItemDetailActivity extends AppCompatActivity {
         int id = view.getId();
         switch (id){
             case R.id.got_it:
+                setResult(RESULT_OK);
                 finish();
                 break;
         }
     }
 
-    private void pushToOwner(){
-        String pushID = mUser.getInstallationId();
-        Log.i(TAG, "pushToOwner: "+pushID);
-        AVPush push = new AVPush();
-
-//        JSONObject data = new JSONObject();
-//        data.put("action","com.lecoan.push.action");
-//        data.put("meg",mUser.getUsername()+"领了你的快递");
-//
-//        push.setData(data);
-//        push.setMessage("test");
-//        push.setPushToAndroid(true);
-//        push.setCloudQuery("select * from _Installation where installationId ='" + pushID + "'");
-//        //push.setQuery(AVInstallation.getQuery().whereEqualTo(UserDao.INSTALLATIONID,pushID));
-//        push.setChannel("private");
-//        push.sendInBackground(new SendCallback() {
-//            @Override
-//            public void done(AVException e) {
-//                if(e == null)
-//                    Toast.makeText(ItemDetailActivity.this, "您领取的消息已经发送给了发布者", Toast.LENGTH_SHORT).show();
-//                else
-//                    Log.i(TAG, "done: "+e.getMessage());
-//            }
-//        });
-        AVQuery pushQuery = AVInstallation.getQuery();
-        pushQuery.whereEqualTo(UserDao.INSTALLATIONID, pushID);
-        AVPush.sendMessageInBackground("message to installation",  pushQuery, new SendCallback() {
-            @Override
-            public void done(AVException e) {
-                if(e == null)
-                    Toast.makeText(ItemDetailActivity.this, "您领取的消息已经发送给了发布者", Toast.LENGTH_SHORT).show();
-                else
-                    Log.i(TAG, "done: "+e.getMessage());
-            }
-        });
-    }
 }

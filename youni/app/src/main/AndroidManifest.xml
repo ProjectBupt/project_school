@@ -28,7 +28,7 @@
     <application
         android:name="com.tongxin.youni.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -74,16 +74,9 @@
             android:name="com.tongxin.youni.activity.MainActivity">
 
         </activity>
-        <!--<service android:name="com.avos.avoscloud.PushService"/>-->
         <meta-data
             android:name="EASEMOB_APPKEY"
             android:value="lecoancom#imer" />
-
-        <receiver android:name="com.tongxin.youni.receiver.NetStateReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
 
         <activity android:name="com.tongxin.youni.activity.Welcome">
             <intent-filter>
@@ -107,28 +100,9 @@
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.UserInfoActivity" />
         <activity
+            android:theme="@style/dialogstyle"
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.ItemDetailActivity" />
-
-        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
-
-
-        <receiver android:name="com.tongxin.youni.receiver.PushReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="com.avos.UPDATE_STATUS" />
-                <action android:name="com.lecoan.push.action" />
-            </intent-filter>
-        </receiver>
 
         <activity android:name="com.tongxin.youni.activity.ChangeInformation"
             android:screenOrientation="portrait"/>

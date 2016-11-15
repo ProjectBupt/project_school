@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -50,7 +51,7 @@ import java.util.List;
  */
 public class ExpressFragment extends Fragment
         implements MyListViewAdapter.RemoveItem, SwipeRefreshLayout.OnRefreshListener {
-
+    private static final int SEE_INFO = 0x33;
     private static final int REFRESH_COMPLETE=0x110;
     private static final int POST_EXPRESS = 2;
     private static final int SCREEN_EXPRESS = 0xff;
@@ -68,7 +69,7 @@ public class ExpressFragment extends Fragment
             switch (msg.what){
                 case REFRESH_COMPLETE:
                     adapter.notifyDataSetChanged();
-                    Toast.makeText(getActivity(), "更新完成,棒棒哒~~", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "更新完成,棒棒哒~~", Toast.LENGTH_SHORT).show();
                     refreshLayout.setRefreshing(false);
                     break;
             }
@@ -184,50 +185,26 @@ public class ExpressFragment extends Fragment
                 mHandler.sendEmptyMessageDelayed(REFRESH_COMPLETE,2000);
             }
         }
+
+        if(requestCode == SEE_INFO){
+            if(resultCode == Activity.RESULT_OK){
+                refreshLayout.setRefreshing(true);
+                Log.i(TAG, "onActivityResult: 应该刷新了啊");
+                mData=getData();
+                mHandler.sendEmptyMessageDelayed(REFRESH_COMPLETE,2000);
+            }
+        }
         if(requestCode == SCREEN_EXPRESS){
             if(resultCode == Activity.RESULT_OK){
                 refreshLayout.setRefreshing(true);
                 Bundle extra = data.getExtras();
                 int building = extra.getInt("Building");
                 final int exCom = extra.getInt("Express");
-                String commpany;
                 AVQuery<Express> query1 = new AVQuery<>("Express");
-                switch (exCom){
-                    case 0:
-                        commpany = "圆通";
-                    break;
-                    case 1:
-                        commpany = "中通";
-                    break;
-                    case 2:
-                        commpany = "申通";
-                    break;
-                    case 3:
-                        commpany = "韵达";
-                    break;
-                    case 4:
-                        commpany = "京东";
-                    break;
-                    case 5:
-                        commpany = "顺丰";
-                    break;
-                    case 6:
-                        commpany = "如风达";
-                    break;
-                    case 7:
-                        commpany = "天天";
-                    break;
-                    case 8:
-                        commpany = "一统飞鸿";
-                    break;
-                    case 9:
-                        commpany = "全峰";
-                    break;
-                    default:
-                        commpany = "";
+                String company;
+                company = getCompany(exCom);
 
-                }
-                query1.whereEqualTo(ExpressDao.company,commpany);
+                query1.whereEqualTo(ExpressDao.company,company);
                 AVQuery<Express> query2 = new AVQuery<>("Express");
                 char build = (char) ('A'+building);
                 query2.whereContains(ExpressDao.roomId,""+build);
@@ -252,6 +229,47 @@ public class ExpressFragment extends Fragment
                 });
             }
         }
+    }
+
+    @NonNull
+    private String getCompany(int exCom) {
+        String company;
+        switch (exCom){
+            case 0:
+                company = "圆通";
+            break;
+            case 1:
+                company = "中通";
+            break;
+            case 2:
+                company = "申通";
+            break;
+            case 3:
+                company = "韵达";
+            break;
+            case 4:
+                company = "京东";
+            break;
+            case 5:
+                company = "顺丰";
+            break;
+            case 6:
+                company = "如风达";
+            break;
+            case 7:
+                company = "天天";
+            break;
+            case 8:
+                company = "一统飞鸿";
+            break;
+            case 9:
+                company = "全峰";
+            break;
+            default:
+                company = "";
+
+        }
+        return company;
     }
 
     private List<Express> getData() {
@@ -298,7 +316,7 @@ public class ExpressFragment extends Fragment
                                 if(e == null) {
                                     Intent intent = new Intent(getActivity(), ItemDetailActivity.class);
                                     intent.putExtra("ExpressID",ID);
-                                    startActivity(intent);
+                                    startActivityForResult(intent, SEE_INFO);
                                 }
                                 else{
                                     Log.i(TAG, "done in skip: "+e.getMessage());

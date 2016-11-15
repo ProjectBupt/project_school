@@ -30,9 +30,12 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class UserInfoActivity extends AppCompatActivity {
 
+    private static final int CHANGE_INFO = 0x1;
+
     private MyViewPager viewPager;
     private List<String> titleList;
     private List<Fragment> fragmentList;
+    private ImageView avatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +65,13 @@ public class UserInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserInfoActivity.this,ChangeInformation.class);
-                startActivity(intent);
+                startActivityForResult(intent,CHANGE_INFO);
             }
         });
 
         TabLayout tabLayout= (TabLayout) findViewById(R.id.tab);
 
-        ImageView avatar = (ImageView) findViewById(R.id.header);
+        avatar = (ImageView) findViewById(R.id.header);
         TextView name = (TextView) findViewById(R.id.user_name);
         name.setText(User.getCurrentUser(User.class).getUsername());
         Glide.with(this)
@@ -93,4 +96,18 @@ public class UserInfoActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == CHANGE_INFO) {
+            if(resultCode == ChangeInformation.HASCHANGEDIMAGE){
+                Glide.with(this)
+                        .load(User.getCurrentUser(User.class).getAvatar())
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .bitmapTransform(new CropCircleTransformation(this))
+                        .into(avatar);
+            }
+        }
+    }
 }

@@ -21,19 +21,20 @@
 
         <Button
             android:id="@+id/cancelPost"
-            android:layout_alignParentRight="true"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:background="@drawable/ic_clear_black_24dp"/>
+            android:background="@drawable/close"
+            android:layout_marginEnd="18dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:background="@drawable/bg1"
         android:gravity="center">
@@ -42,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"/>
+
         <Spinner
             android:layout_marginLeft="10dp"
             android:id="@+id/id_expressCompany"
@@ -56,7 +58,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:background="@drawable/bg1"
         android:gravity="center">
@@ -124,8 +126,8 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:text="没有钱~"
-                android:textColor="@color/greenyellow"
+                android:text="没有钱"
+                android:textColor="#ff000000"
                 android:background="@drawable/bg_radiobutton"
                 android:button="@null"/>
             <RadioButton
@@ -135,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:text="1元~"
+                android:text="1元"
                 android:checked="true"
                 android:textColor="@color/black"
                 android:background="@drawable/bg_radiobutton"
@@ -147,7 +149,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:text="2元~"
+                android:text="2元"
                 android:textColor="@color/black"
                 android:background="@drawable/bg_radiobutton"
                 android:button="@null"/>
@@ -158,7 +160,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:text="3元~"
+                android:text="3元"
                 android:textColor="@color/black"
                 android:background="@drawable/bg_radiobutton"
                 android:button="@null"/>
@@ -170,7 +172,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:text="5元~"
+                android:text="5元"
                 android:textColor="@color/black"
                 android:background="@drawable/bg_radiobutton"
                 android:button="@null"/>
@@ -254,6 +256,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black" />
+
         <RadioGroup
             android:layout_marginTop="5dp"
             android:id="@+id/id_getThingAddress"
@@ -291,6 +294,7 @@
         android:orientation="vertical"
         android:background="@drawable/bg1"
         android:gravity="center">
+
         <EditText
             android:id="@+id/id_getThingAddressOther"
             android:layout_width="match_parent"
@@ -299,8 +303,9 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:background="@null"
-            android:textColor="@color/black"
-            android:textColorHint="@color/greenyellow"/>
+            android:textColorHint="#c4c3c3"
+            android:textColor="@color/black"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -314,6 +319,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"/>
+
         <EditText
             android:id="@+id/id_attentionThing"
             android:layout_width="match_parent"
