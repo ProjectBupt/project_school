@@ -2,6 +2,7 @@ package com.tongxin.youni.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "MainActivity----->";
+    private static final int FINISH_INFO = 0xf;
 
     private List<Fragment> mFragments;
     private FragmentManager mFragmentManager;
@@ -45,6 +47,16 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        boolean isFirst = getIntent().getBooleanExtra("isFirstLogin",true);
+//        if(isFirst){
+//            Intent intent = new Intent(this, ChangeInformation.class);
+//            Bundle bundle = new Bundle();
+//            bundle.putInt("doWhat",1);
+//            intent.putExtras(bundle);
+//            startActivityForResult(intent,FINISH_INFO);
+//        }
+
         activity =this;
 
         mContent = (FrameLayout) findViewById(R.id.content);
@@ -126,4 +138,16 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if(requestCode == FINISH_INFO){
+//            if(resultCode == RESULT_OK){
+//                SharedPreferences preferences=getSharedPreferences("YOUNI",MODE_PRIVATE);
+//                SharedPreferences.Editor editor = preferences.edit();
+//                editor.putBoolean("isFirstLogin",false);
+//                editor.apply();
+//            }
+//        }
+//    }
 }

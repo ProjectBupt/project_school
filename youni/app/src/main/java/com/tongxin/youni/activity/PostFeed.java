@@ -307,4 +307,8 @@ public class PostFeed extends Activity {
         }
         return true;
     }
+
+    //
+    public void in(View view) {
+    }
 }

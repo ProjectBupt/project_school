@@ -18,6 +18,7 @@ import com.tongxin.youni.bean.User;
 public class Welcome extends AppCompatActivity {
 
     private boolean isFirstIn=false;
+    private boolean isFirstLogin = false;
     private static final int TIME=2000;
     private static final int GO_HOME=0x1000;
     private static final int GO_GUIDE=0x1001;
@@ -48,6 +49,7 @@ public class Welcome extends AppCompatActivity {
     private void init(){
         SharedPreferences preferences=getSharedPreferences("YOUNI",MODE_PRIVATE);
         isFirstIn=preferences.getBoolean("isFirstIn",true);
+//        isFirstLogin = preferences.getBoolean("isFirstLogin",true);
         if (!isFirstIn){
             mHandler.sendEmptyMessageDelayed(GO_HOME,TIME);
         }else {
@@ -62,6 +64,7 @@ public class Welcome extends AppCompatActivity {
         Intent i;
         if (currentUser!=null){
             i=new Intent(Welcome.this,MainActivity.class);
+            i.putExtra("isFirstLogin", isFirstLogin);
         }else{
             i=new Intent(Welcome.this,LoginActivity.class);
         }

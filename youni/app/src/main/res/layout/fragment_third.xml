@@ -28,13 +28,16 @@
         android:src="@drawable/text33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/image2"
         android:layout_centerHorizontal="true" />
 
-    <ImageButton
+    <Button
         android:id="@+id/image4"
-        android:background="#00ffffff"
-        android:src="@drawable/text34"
+        android:background="@drawable/button5"
+        android:text="开启"
+        android:textColor="@color/white"
+        android:textSize="40sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"

@@ -35,9 +35,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/changeHead"
-                android:background="@drawable/button3"
-                android:layout_width="wrap_content"
+                android:background="@drawable/button4"
+                android:layout_width="70dp"
                 android:layout_height="20dp"
+                android:textSize="12sp"
                 android:text="更改头像"/>
         </LinearLayout>
 

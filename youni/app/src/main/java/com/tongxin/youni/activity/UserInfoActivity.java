@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +45,7 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
     private List<Fragment> fragmentList;
     private ImageView avatar;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private NestedScrollView mScrollView;
     private AppBarLayout appBarLayout;
 
     private Handler mHandler=new Handler(){
@@ -109,6 +111,23 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
         mSwipeRefreshLayout.setOnRefreshListener(this);
         //设置样式刷新显示的位置
         mSwipeRefreshLayout.setProgressViewOffset(true, -20, 100);
+
+        mScrollView= (NestedScrollView) findViewById(R.id.nested_scroll_view);
+        mScrollView.getViewTreeObserver().addOnScrollChangedListener(new  ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                if (mScrollView.getScrollY()!=0){
+//                    if (mSwipeRefreshLayout.isEnabled()==false){
+//                        mSwipeRefreshLayout.setEnabled(true);
+//                    }
+//                }else{
+//                    if (mSwipeRefreshLayout.isEnabled()==true){
+//                        mSwipeRefreshLayout.setEnabled(false);
+//                    }
+                    mSwipeRefreshLayout.setEnabled(false);
+                }
+            }
+        });
 
         appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         appBarLayout.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {

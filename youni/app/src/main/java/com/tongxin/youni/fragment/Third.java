@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import com.tongxin.youni.R;
@@ -23,7 +24,7 @@ public class Third extends Fragment implements View.OnClickListener {
     private ImageView image1;
     private ImageView image2;
     private ImageView image3;
-    private ImageButton image4;
+    private Button image4;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class Third extends Fragment implements View.OnClickListener {
         image1= (ImageView) view.findViewById(R.id.image1);
         image2= (ImageView) view.findViewById(R.id.image2);
         image3= (ImageView) view.findViewById(R.id.image3);
-        image4= (ImageButton) view.findViewById(R.id.image4);
+        image4= (Button) view.findViewById(R.id.image4);
         image1.setVisibility(View.GONE);
         image2.setVisibility(View.GONE);
         image3.setVisibility(View.GONE);

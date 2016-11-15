@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:onClick="in"
     android:background="@drawable/screen_background">
 
     <RelativeLayout
