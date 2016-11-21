@@ -3,6 +3,7 @@ package com.tongxin.youni.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,7 +83,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
     private Activity mContext;
     private LinearLayout rootView;
 
-    private int doWhat=2;//表示此页面是用来完善信息还是更改信息
+    private int doWhat=2;//表示此页面是用来完善信息(1)还是更改信息(2)
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -263,6 +264,12 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                         public void done(AVException e){
                             if(e==null){
                                 Toast.makeText(ChangeInformation.this,"保存信息成功",Toast.LENGTH_SHORT).show();
+                                if (doWhat==1){
+                                    SharedPreferences preferences=getSharedPreferences("YOUNI",MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = preferences.edit();
+                                    editor.putBoolean("isFirstLogin",false);
+                                    editor.apply();
+                                }
                                 finish();
                             }
                             else{

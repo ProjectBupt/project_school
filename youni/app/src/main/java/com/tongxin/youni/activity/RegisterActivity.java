@@ -1,6 +1,8 @@
 package com.tongxin.youni.activity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,10 +10,13 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,16 +28,23 @@ import com.avos.avoscloud.RequestMobileCodeCallback;
 import com.tongxin.youni.R;
 import com.tongxin.youni.SmsObserver;
 import com.tongxin.youni.bean.User;
+import com.tongxin.youni.picker.DormitoryPopWindow2;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements DormitoryPopWindow2.DormitoryListener {
 
     private static final String TAG = "RegisterActivity---->";
     private EditText _userName;
+    private EditText _stuNumber;
+    private TextView _dormitoryNumber;
     private EditText _phone;
     private EditText _SMScode;
     private EditText _password;
-    private Button _sendSMS;
+    private TextView _sendSMS;
     private TextView _login;
+
+    private LinearLayout rootView;
+
+    private Activity mActivity;
 
     private Button _register_bt;
 
@@ -101,6 +113,8 @@ public class RegisterActivity extends AppCompatActivity {
 
             String SMScode = _SMScode.getText().toString();
             final String username = _userName.getText().toString().trim();
+            final String stu_number=_stuNumber.getText().toString().trim();
+            final String dormitory_number=_dormitoryNumber.getText().toString().trim();
             final String password = _password.getText().toString().trim();
             final String phone = _phone.getText().toString().trim();
             User.signUpOrLoginByMobilePhoneInBackground(phone, SMScode, new LogInCallback<AVUser>() {
@@ -110,6 +124,8 @@ public class RegisterActivity extends AppCompatActivity {
                         Log.i(TAG, "done: 短信验证成功");
                         User user = AVUser.getCurrentUser(User.class);
                         user.setUsername(username);
+                        user.setStudentID(stu_number);
+                        user.setRoomID(dormitory_number);
                         user.setPassword(password);
                         user.setMobilePhoneNumber(phone);
                         user.saveInBackground();
@@ -140,6 +156,8 @@ public class RegisterActivity extends AppCompatActivity {
         String SMScode = _SMScode.getText().toString();
         String username = _userName.getText().toString();
         String password = _password.getText().toString();
+        String stu_number=_stuNumber.getText().toString();
+        String dormitory_number=_dormitoryNumber.getText().toString();
 
         if(username.isEmpty() || username.length()<2){
             valid = false;
@@ -151,6 +169,16 @@ public class RegisterActivity extends AppCompatActivity {
             valid = false;
         }
 
+        else if(stu_number.isEmpty()||stu_number.length()!=10){
+            _stuNumber.setError("学号错误");
+            valid=false;
+        }
+
+        else if(dormitory_number.isEmpty()){
+            _dormitoryNumber.setError("未填写宿舍号");
+            valid=false;
+        }
+
         else if(SMScode.length() != 6){
             _SMScode.setError("验证码错误");
             valid = false;
@@ -160,6 +188,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        mActivity=this;
+        rootView= (LinearLayout) findViewById(R.id.root_layout);
+        _stuNumber= (EditText) findViewById(R.id.stuNumber);
+        _dormitoryNumber = (TextView) findViewById(R.id.dormitoryNumber);
         _userName = (EditText) findViewById(R.id.username);
         _phone = (EditText) findViewById(R.id.phone_number);
         _password = (EditText) findViewById(R.id.password);
@@ -167,7 +199,8 @@ public class RegisterActivity extends AppCompatActivity {
         _login = (TextView) findViewById(R.id.login);
         _register_bt = (Button) findViewById(R.id.register_bt);
 
-        _sendSMS = (Button) findViewById(R.id.send_SMS);
+        _sendSMS = (TextView) findViewById(R.id.send_SMS);
+        _sendSMS.setText(Html.fromHtml("<font color=#22a322>|获取验证码</font>"));
         _SMScode = (EditText) findViewById(R.id.SMScode);
 
     }
@@ -186,14 +219,13 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onTick(long millisUntilFinished) {
                             _sendSMS.setEnabled(false);
-                            String s = millisUntilFinished/1000+"秒后重新发送";
-                            _sendSMS.setText(s);
+                            _sendSMS.setText("|"+(millisUntilFinished/1000)+"秒后重发");
                         }
 
                         @Override
                         public void onFinish() {
                             _sendSMS.setEnabled(true);
-                            _sendSMS.setText("重新发送");
+                            _sendSMS.setText(Html.fromHtml("<font color=#22a322>|获取验证码</font>"));
 
                         }
                     }.start();
@@ -203,5 +235,26 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void changeDormitoryNumber(View view) {
+//        CityPickerPopWindow mPopWindow = new CityPickerPopWindow(mContext);
+//        mPopWindow.showPopupWindow(rootView);
+//        mPopWindow.setCityPickListener(this);
+
+//        DormitoryPopWindow mPopWindow= new DormitoryPopWindow(mContext);
+//        mPopWindow.showPopupWindow(rootView);
+//        mPopWindow.setDormitoryListener(this);
+
+        InputMethodManager m=(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        m.hideSoftInputFromWindow(mActivity.getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
+        DormitoryPopWindow2 mPopWindow= new DormitoryPopWindow2(this);
+        mPopWindow.showPopupWindow(rootView);
+        mPopWindow.setDormitoryListener(this);
+    }
+
+    @Override
+    public void pickValue2(String value) {
+        _dormitoryNumber.setText(value);
     }
 }

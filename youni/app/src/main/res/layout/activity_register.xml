@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -10,76 +11,165 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.tongxin.youni.activity.RegisterActivity">
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="姓名"/>
-    </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <TextView
+        android:layout_marginTop="50dp"
+        android:textColor="#49ba75"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:text="欢迎加入邮你"
+        android:layout_above="@+id/text1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/phone_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:hint="手机号"/>
-
-    </android.support.design.widget.TextInputLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/textView2" />
 
     <LinearLayout
-        android:gravity="end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.design.widget.TextInputLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
-            <android.support.design.widget.TextInputEditText
 
-                android:id="@+id/SMScode"
-                android:layout_gravity="start"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLength="6"
-                android:inputType="number"
-                android:hint="验证码"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <Button
-            android:id="@+id/send_SMS"
-            android:onClick="sendSMS"
+        <TextView
+            android:text="姓    名:"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="发送验证码"/>
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:background="@drawable/bg1"
+            android:id="@+id/username"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/password"
+
+        <TextView
+            android:text="学    号:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:background="@drawable/bg1"
+            android:id="@+id/stuNumber"
+            android:padding="10dp"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="宿舍号:"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:onClick="changeDormitoryNumber"
+            android:background="@drawable/bg1"
+            android:id="@+id/dormitoryNumber"
+            android:text="宿舍号:如D1-111"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="手机号:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:background="@drawable/bg1"
+            android:id="@+id/phone_number"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="验证码:"
+            android:layout_alignBaseline="@+id/SMScode"
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:background="@drawable/bg1"
+            android:id="@+id/SMScode"
+            android:padding="10dp"
+            android:layout_toRightOf="@id/text"
+            android:maxLength="6"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/send_SMS"
+            android:clickable="true"
+            android:onClick="sendSMS"
+            android:text="|获取验证码"
+            android:gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/SMScode"
+            android:layout_alignTop="@id/SMScode"
+            android:layout_alignRight="@id/SMScode"/>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="密    码:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/password"
+            android:padding="10dp"
+            android:background="@drawable/bg1"
             android:inputType="textPassword"
-            android:hint="密码"/>
-    </android.support.design.widget.TextInputLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/register_bt"
         android:text="注册"
+        android:background="#49ba75"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/login"
+        android:layout_margin="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="已经有账户？现在登陆！"
         android:layout_gravity="center"/>
+
 </LinearLayout>

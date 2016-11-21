@@ -81,7 +81,7 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
             @Override
             public void onClick(View view) {
                 finish();
-                Log.e("YOUNI","Back from UserInfoActivity.");
+                Log.i("YOUNI","Back from UserInfoActivity.");
             }
         });
 
@@ -103,7 +103,7 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
                 .load(User.getCurrentUser(User.class).getAvatar())
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(R.drawable.default_header)
                 .bitmapTransform(new CropCircleTransformation(this))
                 .into(avatar);
 
@@ -117,13 +117,6 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
             @Override
             public void onScrollChanged() {
                 if (mScrollView.getScrollY()!=0){
-//                    if (mSwipeRefreshLayout.isEnabled()==false){
-//                        mSwipeRefreshLayout.setEnabled(true);
-//                    }
-//                }else{
-//                    if (mSwipeRefreshLayout.isEnabled()==true){
-//                        mSwipeRefreshLayout.setEnabled(false);
-//                    }
                     mSwipeRefreshLayout.setEnabled(false);
                 }
             }

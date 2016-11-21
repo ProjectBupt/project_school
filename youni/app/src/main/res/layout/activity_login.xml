@@ -11,22 +11,55 @@
     android:orientation="vertical"
     tools:context="com.tongxin.youni.activity.LoginActivity">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/password"
+    <TextView
+        android:textColor="#49ba75"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:text="欢迎来到邮你"
+        android:layout_above="@+id/text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="密码"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/textView2" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_centerInParent="true"
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="电话号码"
+            android:layout_above="@+id/password"
+            android:layout_alignParentStart="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text2"
+        android:layout_below="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="密码"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/login_bt"
@@ -35,30 +68,9 @@
         android:background="#49ba75"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/text2"
         android:layout_alignParentStart="true"
         android:layout_marginTop="21dp" />
-
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="电话号码"
-        android:layout_above="@+id/password"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:textColor="#49ba75"
-        android:textSize="40sp"
-        android:gravity="center"
-        android:text="欢迎来到邮你"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/username"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="40dp"
-        android:id="@+id/textView2" />
 
     <TextView
         android:textColor="#49ba75"

@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         android:orientation="vertical"
-        android:id="@+id/root_layout">
+        android:id="@+id/root_layout"
+        android:fitsSystemWindows="true">
+
         <com.tongxin.youni.widget.TitleBar
             android:id="@+id/titleBar2"
             android:background="@color/colorPrimary"
@@ -21,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <com.tongxin.youni.widget.CircleImageView
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/imageView"
@@ -29,8 +32,8 @@
                 android:layout_marginTop="40dp"
                 android:src="@drawable/picture4"
                 app:border_color="@color/linen"
-                app:border_width="1dp"
-                />
+                app:border_width="1dp" />
+
             <Button
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
@@ -40,100 +43,100 @@
                 android:layout_height="20dp"
                 android:textSize="12sp"
                 android:text="更改头像"/>
+
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg2"
-           >
+            android:layout_height="wrap_content">
             <TextView
-                android:layout_marginLeft="80dp"
-                android:gravity="center"
+                android:layout_marginLeft="20dp"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="姓名   "/>
+                android:text="姓       名:"/>
+
             <EditText
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg1"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@null"
+                android:padding="10dp"
                 android:id="@+id/name"
                 android:textSize="15dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="你的姓名"
-                />
+                android:hint="你的姓名" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg2">
+            android:layout_height="wrap_content">
             <TextView
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="20dp"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="性别   "/>
+                android:text="性       别:"/>
+
             <Spinner
+                android:background="@drawable/bg1"
+                android:padding="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
                 android:id="@+id/sex"
-                android:layout_gravity="center"
                 android:textSize="15dp"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:entries="@array/chooseSex">
-            </Spinner>
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:entries="@array/chooseSex" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg2"
-            >
+            android:layout_height="wrap_content">
             <TextView
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="20dp"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="电话号   "/>
+                android:text="电  话  号:"/>
 
             <EditText
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@null"
+                android:background="@drawable/bg1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:padding="10dp"
                 android:id="@+id/telNumber"
                 android:textSize="15dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="你的电话号"/>
+
         </LinearLayout>
 
         <LinearLayout
             android:onClick="changeDormitoryNumber"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg2">
+            android:layout_height="wrap_content">
             <TextView
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="20dp"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="宿舍号   "/>
+                android:text="宿  舍  号:"/>
+
             <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@null"
-                android:id="@+id/dormitoryNumber"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:padding="10dp"
+                android:background="@drawable/bg1"                android:id="@+id/dormitoryNumber"
                 android:textSize="15dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="你的宿舍号例如:D-1111"/>
         </LinearLayout>
@@ -141,25 +144,26 @@
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg2">
+            android:layout_height="wrap_content">
             <TextView
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="20dp"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="收货地址   "/>
+                android:text="收货地址:"/>
 
             <EditText
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@null"
-                android:id="@+id/defaultAddress"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:padding="10dp"
+                android:background="@drawable/bg1"                android:id="@+id/defaultAddress"
                 android:textSize="15dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="可不填，不填默认为宿舍"/>
+
         </LinearLayout>
+
     </LinearLayout>
+
 </android.support.design.widget.CoordinatorLayout>
