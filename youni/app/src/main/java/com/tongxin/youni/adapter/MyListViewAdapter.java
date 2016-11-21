@@ -1,6 +1,7 @@
 package com.tongxin.youni.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +10,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
-import com.avos.avoscloud.GetCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tongxin.youni.R;
@@ -23,12 +24,18 @@ import com.tongxin.youni.widget.DataUtils;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 
 /**
  * Created by charlene on 2016/9/27.
  */
 public class MyListViewAdapter extends BaseAdapter {
+    private static final String TAG = "ListAdapter----->";
     private User iUser;
     private Context context;
     private List<Express> data;
@@ -60,8 +67,7 @@ public class MyListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-        ViewHolder holder=null;
-        //如果缓存为空,则创建view
+        ViewHolder holder;
         if (view==null){
             holder=new ViewHolder();
             view=inflater.inflate(R.layout.item,viewGroup,false);
@@ -74,6 +80,7 @@ public class MyListViewAdapter extends BaseAdapter {
             holder.time = (TextView) view.findViewById(R.id.time);
             holder.money = (TextView) view.findViewById(R.id.money);
             holder.post_time = (TextView) view.findViewById(R.id.post_time);
+            holder.mCardView = (CardView) view.findViewById(R.id.background);
 
             holder.pickBt.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -92,32 +99,51 @@ public class MyListViewAdapter extends BaseAdapter {
         holder.time.setText("快递到达时间:"+data.get(i).getTime());
         holder.money.setText("打赏:￥"+data.get(i).getMoney()+"元");
         holder.post_time.setText( DataUtils.formatDateTime(data.get(i).getCreatedAt()));
-
-        final String id = data.get(i).getUserID();
-        AVQuery<User> query = new AVQuery<>("_User");
-
-        final ViewHolder finalHolder = holder;
-        query.getInBackground(id, new GetCallback<User>() {
+        holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void done(User user, AVException e) {
-                if(e == null){
-                    iUser = user;
-                    Glide.with(context)
-                            .load(iUser.getAvatar())
-                            .crossFade()
-                            .diskCacheStrategy(DiskCacheStrategy.ALL)
-                            .placeholder(R.mipmap.ic_launcher)
-                            .bitmapTransform(new CropCircleTransformation(context))
-                            .into(finalHolder.avatar);
-                }
-                else {
-                    Log.i("---->", "done: "+id);
-                    Log.i("-------->", "done: "+e.getMessage());
-                }
+            public void onClick(View view) {
+                Toast.makeText(context, "带领后方可查看", Toast.LENGTH_SHORT).show();
             }
         });
 
+        final String id = data.get(i).getUserID();
+        final AVQuery<User> query = new AVQuery<>("_User");
 
+        final ViewHolder finalHolder = holder;
+        Observable.create(new Observable.OnSubscribe<User>() {
+            @Override
+            public void call(Subscriber<? super User> subscriber) {
+                try {
+                    User user = query.get(id);
+                    subscriber.onNext(user);
+                } catch (AVException e) {
+                    subscriber.onError(e);
+                }
+                subscriber.onCompleted();
+            }
+        }).subscribeOn(Schedulers.io())
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribe(new Action1<User>() {
+                         @Override
+                         public void call(User user) {
+                             Glide.with(context)
+                                     .load(user.getAvatar())
+                                     .crossFade()
+                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                     .placeholder(R.mipmap.ic_launcher)
+                                     .bitmapTransform(new CropCircleTransformation(context))
+                                     .into(finalHolder.avatar);
+                             Log.i(TAG, "userID: "+user.getUsername()+"\n url: "+user.getAvatar());
+                         }
+                     }
+                      , new Action1<Throwable>() {
+                          @Override
+                          public void call(Throwable throwable) {
+                              Log.i("---->", "done: "+id);
+                              Log.i("-------->", "done: "+throwable.getMessage());
+                          }
+                      }
+          );
         return view;
     }
 
@@ -130,6 +156,7 @@ public class MyListViewAdapter extends BaseAdapter {
         Button pickBt;
         TextView money;
         TextView post_time;
+        CardView mCardView;
     }
 
     public interface RemoveItem{

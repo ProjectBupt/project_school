@@ -48,14 +48,14 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        boolean isFirst = getIntent().getBooleanExtra("isFirstLogin",true);
-        if(isFirst){
-            Intent intent = new Intent(this, ChangeInformation.class);
-            Bundle bundle = new Bundle();
-            bundle.putInt("doWhat",1);
-            intent.putExtras(bundle);
-            startActivityForResult(intent,FINISH_INFO);
-        }
+//        boolean isFirst = getIntent().getBooleanExtra("isFirstLogin",true);
+//        if(isFirst){
+//            Intent intent = new Intent(this, ChangeInformation.class);
+//            Bundle bundle = new Bundle();
+//            bundle.putInt("doWhat",1);
+//            intent.putExtras(bundle);
+//            startActivityForResult(intent,FINISH_INFO);
+//        }
 
         activity =this;
 
@@ -139,15 +139,15 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == FINISH_INFO){
-            if(resultCode == RESULT_OK){
-                SharedPreferences preferences=getSharedPreferences("YOUNI",MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putBoolean("isFirstLogin",false);
-                editor.apply();
-            }
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if(requestCode == FINISH_INFO){
+//            if(resultCode == RESULT_OK){
+//                SharedPreferences preferences=getSharedPreferences("YOUNI",MODE_PRIVATE);
+//                SharedPreferences.Editor editor = preferences.edit();
+//                editor.putBoolean("isFirstLogin",false);
+//                editor.apply();
+//            }
+//        }
+//    }
 }

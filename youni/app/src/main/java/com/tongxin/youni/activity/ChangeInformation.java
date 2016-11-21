@@ -21,6 +21,7 @@ import com.avos.avoscloud.SaveCallback;
 import com.bumptech.glide.Glide;
 import com.diycoder.citypick.widget.CityPickerPopWindow;
 import com.tongxin.youni.R;
+import com.tongxin.youni.picker.DormitoryPopWindow;
 import com.tongxin.youni.picker.DormitoryPopWindow2;
 import com.tongxin.youni.widget.TitleBar;
 import com.tongxin.youni.bean.User;
@@ -43,7 +44,7 @@ import java.util.List;
  * 弹出此页面，要求用户完善信息
  *
  * 用户也可通过此页面来更改信息
- * 目前支持更改的信息为
+ * 目前支持更爱的信息为
  * 头像
  * 姓名
  * 电话
@@ -58,10 +59,10 @@ import java.util.List;
 //private String studentID;//学号
 //private String InstallationId;//推送id
 
-public class ChangeInformation extends Activity implements CityPickerPopWindow.CityPickListener
-        ,DormitoryPopWindow2.DormitoryListener{
-
+public class ChangeInformation extends Activity implements CityPickerPopWindow.CityPickListener,
+        DormitoryPopWindow.DormitoryListener ,DormitoryPopWindow2.DormitoryListener{
     public static final int HASCHANGEDIMAGE = 0x2;
+
     private EditText name;
     private EditText telNumber;
     private TextView dormitoryNumber;//宿舍号
@@ -157,10 +158,10 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                 if(path!=null)
                     tvResult = path;
                 Log.i("path------------>",path);
-                if("".equals(tvResult))
+                if(!"".equals(tvResult))
                 {
                     //currentUser.put("userName",tvResult);
-                    Toast.makeText(ChangeInformation.this,tvResult,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ChangeInformation.this,tvResult,Toast.LENGTH_SHORT).show();
                     //加载选择图片
                     Glide.with(this).load(tvResult).into(imageView);
                     //更换头像
@@ -184,9 +185,11 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                                     Log.i("wrong",e.toString());
                             }
                         });
-                    } catch (FileNotFoundException e) {
+                    }
+                    catch (FileNotFoundException e) {
                         e.printStackTrace();
-                    } catch (URISyntaxException e) {
+                    }
+                    catch (URISyntaxException e) {
                         e.printStackTrace();
                     }
                 }
@@ -230,7 +233,7 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
 //        mCollectView = (ImageView) titleBar.addAction(new TitleBar.ImageAction(R.mipmap.collect) {
 //            @Override
 //            public void performAction(View view) {
-//                Toast.makeText(MainActivity.this, "点击了收藏", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "点击了收藏", Toast.LENG                                                              TH_SHORT).show();
 //                mCollectView.setImageResource(R.mipmap.fabu);
 //                titleBar.setTitle(mIsSelected ? "文章详情\n朋友圈" : "帖子详情");
 //                mIsSelected = !mIsSelected;
@@ -260,7 +263,6 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
                         public void done(AVException e){
                             if(e==null){
                                 Toast.makeText(ChangeInformation.this,"保存信息成功",Toast.LENGTH_SHORT).show();
-                                setResult(RESULT_OK);
                                 finish();
                             }
                             else{
@@ -324,10 +326,22 @@ public class ChangeInformation extends Activity implements CityPickerPopWindow.C
 
     //点击更改宿舍号
     public void changeDormitoryNumber(View view) {
+//        CityPickerPopWindow mPopWindow = new CityPickerPopWindow(mContext);
+//        mPopWindow.showPopupWindow(rootView);
+//        mPopWindow.setCityPickListener(this);
+
+//        DormitoryPopWindow mPopWindow= new DormitoryPopWindow(mContext);
+//        mPopWindow.showPopupWindow(rootView);
+//        mPopWindow.setDormitoryListener(this);
 
         DormitoryPopWindow2 mPopWindow= new DormitoryPopWindow2(mContext);
         mPopWindow.showPopupWindow(rootView);
         mPopWindow.setDormitoryListener(this);
+    }
+
+    @Override
+    public void pidkValue(String value) {
+        dormitoryNumber.setText(value);
     }
 
     //接口函数获得滚轮传来的数据

@@ -47,6 +47,9 @@ public class SmsObserver extends ContentObserver {
                 String address = c.getString(c.getColumnIndex("address"));
                 String body = c.getString(c.getColumnIndex("body"));
 
+//                if (!address.equals("06902476237")) {
+//                    return;
+//                }
                 Log.d("main", "发件人为:" + address + " ," + "短信内容为:" + body);
 
                 Pattern pattern = Pattern.compile("\\d{6}");

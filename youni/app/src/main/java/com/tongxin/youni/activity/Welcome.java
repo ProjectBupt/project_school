@@ -49,15 +49,14 @@ public class Welcome extends AppCompatActivity {
     private void init(){
         SharedPreferences preferences=getSharedPreferences("YOUNI",MODE_PRIVATE);
         isFirstIn=preferences.getBoolean("isFirstIn",true);
-        isFirstLogin = preferences.getBoolean("isFirstLogin",true);
-
+//        isFirstLogin = preferences.getBoolean("isFirstLogin",true);
         if (!isFirstIn){
             mHandler.sendEmptyMessageDelayed(GO_HOME,TIME);
         }else {
             mHandler.sendEmptyMessageDelayed(GO_GUIDE,TIME);
             SharedPreferences.Editor editor=preferences.edit();
             editor.putBoolean("isFirstIn",false);
-            editor.apply();
+            editor.commit();
         }
     }
 
