@@ -7,5 +7,5 @@
         android:orderInCategory="100"
         android:icon="@drawable/filters"
         android:title="筛选"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
 </menu>

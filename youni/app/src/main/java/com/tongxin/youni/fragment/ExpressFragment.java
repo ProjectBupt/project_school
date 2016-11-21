@@ -242,34 +242,43 @@ public class ExpressFragment extends Fragment
         switch (exCom){
             case 0:
                 company = "圆通";
-            break;
+                break;
             case 1:
                 company = "中通";
-            break;
+                break;
             case 2:
                 company = "申通";
-            break;
+                break;
             case 3:
                 company = "韵达";
-            break;
+                break;
             case 4:
                 company = "京东";
-            break;
+                break;
             case 5:
                 company = "顺丰";
-            break;
+                break;
             case 6:
                 company = "如风达";
-            break;
+                break;
             case 7:
                 company = "天天";
-            break;
+                break;
             case 8:
                 company = "一统飞鸿";
-            break;
+                break;
             case 9:
                 company = "全峰";
-            break;
+                break;
+            case 10:
+                company = "唯品会";
+                break;
+            case 11:
+                company = "优速";
+                break;
+            case 12:
+                company = "德邦";
+                break;
             default:
                 company = "";
 

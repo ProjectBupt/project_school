@@ -307,7 +307,7 @@ public class PostFeed extends Activity {
         }
         return true;
     }
-    //占用监听事件
-    public void stuck(View view) {
+
+    public void in(View view) {
     }
 }
