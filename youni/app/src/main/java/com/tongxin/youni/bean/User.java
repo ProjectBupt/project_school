@@ -16,6 +16,9 @@ public class User extends AVUser implements Parcelable {
     private String roomID;
     private String studentID;
     private String InstallationId;
+    private int QuantityOfOrder=0;
+    private int QuantityOfAsking=0;
+    private int Credit=0;
 
     public User() {
     }
@@ -101,5 +104,29 @@ public class User extends AVUser implements Parcelable {
 
     public void setmAddress(String mAddress) {
         put(UserDao.ADDRESS,mAddress);
+    }
+
+    public int getQuantityOfOrder() {
+        return QuantityOfOrder;
+    }
+
+    public void setQuantityOfOrder(int quantityOfOrder) {
+        QuantityOfOrder = quantityOfOrder;
+    }
+
+    public int getQuantityOfAsking() {
+        return QuantityOfAsking;
+    }
+
+    public void setQuantityOfAsking(int quantityOfAsking) {
+        QuantityOfAsking = quantityOfAsking;
+    }
+
+    public int getCredit() {
+        return Credit;
+    }
+
+    public void setCredit(int credit) {
+        Credit = credit;
     }
 }

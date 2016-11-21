@@ -47,6 +47,7 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private NestedScrollView mScrollView;
     private AppBarLayout appBarLayout;
+    private TextView name;
 
     private Handler mHandler=new Handler(){
         @Override
@@ -97,7 +98,7 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
         TabLayout tabLayout= (TabLayout) findViewById(R.id.tab);
 
         avatar = (ImageView) findViewById(R.id.header);
-        TextView name = (TextView) findViewById(R.id.user_name);
+        name = (TextView) findViewById(R.id.user_name);
         name.setText(User.getCurrentUser(User.class).getUsername());
         Glide.with(this)
                 .load(User.getCurrentUser(User.class).getAvatar())
@@ -128,8 +129,10 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
             public void onSystemUiVisibilityChange(int visibility) {
                 if (visibility==View.VISIBLE){
                     mSwipeRefreshLayout.setEnabled(true);
+                    name.setVisibility(View.VISIBLE);
                 }else{
                     mSwipeRefreshLayout.setEnabled(false);
+                    name.setVisibility(View.GONE);
                 }
             }
         });
