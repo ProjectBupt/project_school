@@ -8,7 +8,6 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -18,8 +17,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.avos.avoscloud.AVUser;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tongxin.youni.R;
@@ -39,6 +41,8 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
     private static final int CHANGE_INFO = 0x1;
     private static final int COMPLETE_REFRESH=0x1001;
 
+    private User CurrentUser;
+
     private MyViewPager viewPager;
     private FragmentAdapter adapter;
     private List<String> titleList;
@@ -47,7 +51,10 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private NestedScrollView mScrollView;
     private AppBarLayout appBarLayout;
-    private TextView name;
+    private TextView Name;
+    private TextView Credit;
+    private TextView QuantityOfOrder;
+    private TextView QuantityOfAsking;
 
     private Handler mHandler=new Handler(){
         @Override
@@ -66,11 +73,43 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
-
+        CurrentUser= AVUser.getCurrentUser(User.class);
         initViews();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (CurrentUser!=null){
+            avatar = (ImageView) findViewById(R.id.header);
+            Glide.with(this)
+                    .load(CurrentUser.getAvatar())
+                    .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.drawable.default_header)
+                    .bitmapTransform(new CropCircleTransformation(this))
+                    .into(avatar);
+        }else{
+            Toast.makeText(this, "网络异常！！", Toast.LENGTH_SHORT).show();
+            Log.e("UserInfoActivity","CurrentUser is null!!");
+        }
+    }
+
     private void initViews(){
+        Name = (TextView) findViewById(R.id.user_name);
+        Credit= (TextView) findViewById(R.id.credit);
+        QuantityOfOrder= (TextView) findViewById(R.id.quantity_of_order);
+        QuantityOfAsking= (TextView) findViewById(R.id.quantity_of_asking);
+        if (CurrentUser!=null){
+            Name.setText(CurrentUser.getUsername());
+            Credit.setText("积    分:"+CurrentUser.getCredit());
+            QuantityOfAsking.setText("请求数:"+CurrentUser.getQuantityOfAsking());
+            QuantityOfOrder.setText("接单数:"+CurrentUser.getQuantityOfOrder());
+        }else{
+            Toast.makeText(this, "网络异常！！", Toast.LENGTH_SHORT).show();
+            Log.e("UserInfoActivity","CurrentUser is null!!");
+        }
+
         viewPager= (MyViewPager) findViewById(R.id.view_pager);
         viewPager.setOnTouchListener(this);
 
@@ -97,23 +136,12 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
 
         TabLayout tabLayout= (TabLayout) findViewById(R.id.tab);
 
-        avatar = (ImageView) findViewById(R.id.header);
-        name = (TextView) findViewById(R.id.user_name);
-        name.setText(User.getCurrentUser(User.class).getUsername());
-        Glide.with(this)
-                .load(User.getCurrentUser(User.class).getAvatar())
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.default_header)
-                .bitmapTransform(new CropCircleTransformation(this))
-                .into(avatar);
-
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        //设置样式刷新显示的位置
-        mSwipeRefreshLayout.setProgressViewOffset(true, -20, 100);
+        mSwipeRefreshLayout.setProgressViewOffset(true, -20, 100);//设置样式刷新显示的位置
 
         mScrollView= (NestedScrollView) findViewById(R.id.nested_scroll_view);
+        //设置ScrollView的监听事件,当ScrollView完全拉下来才能下拉刷新
         mScrollView.getViewTreeObserver().addOnScrollChangedListener(new  ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
@@ -129,17 +157,14 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
             public void onSystemUiVisibilityChange(int visibility) {
                 if (visibility==View.VISIBLE){
                     mSwipeRefreshLayout.setEnabled(true);
-                    name.setVisibility(View.VISIBLE);
                 }else{
                     mSwipeRefreshLayout.setEnabled(false);
-                    name.setVisibility(View.GONE);
                 }
             }
         });
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-
                 if (verticalOffset >= 0) {
                     mSwipeRefreshLayout.setEnabled(true);
                 } else {
@@ -147,6 +172,7 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
                 }
             }
         });
+
 
         titleList=new ArrayList<>();
         titleList.add("我帮别人代领的快递");
@@ -173,12 +199,25 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
                         .placeholder(R.mipmap.ic_launcher)
                         .bitmapTransform(new CropCircleTransformation(this))
                         .into(avatar);
+                onRefresh();
             }
         }
     }
 
     @Override
     public void onRefresh() {
+        CurrentUser=AVUser.getCurrentUser(User.class);
+
+        if (CurrentUser!=null){
+            Name.setText(CurrentUser.getUsername());
+            Credit.setText("积    分:"+CurrentUser.getCredit());
+            QuantityOfAsking.setText("请求数:"+CurrentUser.getQuantityOfAsking());
+            QuantityOfOrder.setText("接单数:"+CurrentUser.getQuantityOfOrder());
+        }else{
+            Toast.makeText(this, "网络异常！！", Toast.LENGTH_SHORT).show();
+            Log.e("UserInfoActivity","CurrentUser is null!!");
+        }
+
         fragmentList.clear();
         fragmentList.add(new FetchFragment());
         fragmentList.add(new AskFragment());
@@ -192,12 +231,15 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
             case MotionEvent.ACTION_DOWN:// 经测试，ViewPager的DOWN事件不会被分发下来
             case MotionEvent.ACTION_MOVE:
                 mSwipeRefreshLayout.setEnabled(false);
+                mScrollView.setEnabled(false);
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 mSwipeRefreshLayout.setEnabled(true);
+                mScrollView.setEnabled(true);
                 break;
         }
         return false;
     }
+
 }

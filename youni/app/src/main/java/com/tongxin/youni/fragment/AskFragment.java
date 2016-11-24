@@ -166,6 +166,7 @@ public class AskFragment extends Fragment {
                                 express.setState(ExpressDao.isFinished);
                                 express.deleteInBackground();
                                 linearLayout.removeView(cardView);
+                                AddOrder(FetchUser);
                                 Toast.makeText(getContext(), "确认送达", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -190,5 +191,13 @@ public class AskFragment extends Fragment {
                 }
             });
         }
+    }
+
+    private void AddOrder(User FetchUser) {
+        this_user.setQuantityOfAsking(this_user.getQuantityOfAsking()+1);
+        this_user.saveInBackground();
+
+        FetchUser.setQuantityOfOrder(FetchUser.getQuantityOfOrder()+1);
+        FetchUser.saveInBackground();
     }
 }
