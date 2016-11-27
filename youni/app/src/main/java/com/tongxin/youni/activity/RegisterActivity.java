@@ -30,6 +30,8 @@ import com.tongxin.youni.SmsObserver;
 import com.tongxin.youni.bean.User;
 import com.tongxin.youni.picker.DormitoryPopWindow2;
 
+import java.util.regex.Pattern;
+
 public class RegisterActivity extends AppCompatActivity implements DormitoryPopWindow2.DormitoryListener {
 
     private static final String TAG = "RegisterActivity---->";
@@ -159,6 +161,8 @@ public class RegisterActivity extends AppCompatActivity implements DormitoryPopW
         String stu_number=_stuNumber.getText().toString();
         String dormitory_number=_dormitoryNumber.getText().toString();
 
+        boolean stunum_matches= Pattern.matches("^\\d{1,10}",stu_number);
+
         if(username.isEmpty() || username.length()<2){
             valid = false;
             _userName.setError("你确定这是个名字？");
@@ -169,18 +173,18 @@ public class RegisterActivity extends AppCompatActivity implements DormitoryPopW
             valid = false;
         }
 
-        else if(stu_number.isEmpty()||stu_number.length()!=10){
+        else if(!stunum_matches){
             _stuNumber.setError("学号错误");
             valid=false;
         }
 
-        else if(dormitory_number.isEmpty()){
-            _dormitoryNumber.setError("未填写宿舍号");
+        else if("宿舍号:如D1-111".equals(dormitory_number)){
+            Toast.makeText(this, "未填写宿舍号", Toast.LENGTH_SHORT).show();
             valid=false;
         }
 
         else if(SMScode.length() != 6){
-            _SMScode.setError("验证码错误");
+            Toast.makeText(this, "验证码错误!!", Toast.LENGTH_SHORT).show();
             valid = false;
         }
 
