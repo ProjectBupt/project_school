@@ -13,9 +13,9 @@ import android.widget.TextView;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
-import com.avos.avoscloud.SaveCallback;
 import com.tongxin.youni.R;
 import com.tongxin.youni.bean.User;
+import com.xiaomi.mipush.sdk.MiPushClient;
 
 //TODO 改为用手机号登录
 
@@ -83,7 +83,8 @@ public class LoginActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                         startActivity(intent);
-
+                        //设置推送别名
+                        MiPushClient.setAlias(getApplicationContext(),phone,null);
                         LoginActivity.this.finish();
                     }
                     else{

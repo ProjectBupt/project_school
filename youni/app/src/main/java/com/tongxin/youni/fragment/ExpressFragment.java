@@ -30,6 +30,7 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.GetCallback;
 import com.avos.avoscloud.SaveCallback;
+import com.tongxin.youni.MyApplication;
 import com.tongxin.youni.R;
 import com.tongxin.youni.activity.ItemDetailActivity;
 import com.tongxin.youni.activity.MainActivity;
@@ -39,7 +40,12 @@ import com.tongxin.youni.adapter.MyListViewAdapter;
 import com.tongxin.youni.bean.Express;
 import com.tongxin.youni.bean.ExpressDao;
 import com.tongxin.youni.bean.User;
+import com.xiaomi.xmpush.server.Message;
+import com.xiaomi.xmpush.server.Sender;
 
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,6 +54,7 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
+import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 //test
@@ -255,7 +262,7 @@ public class ExpressFragment extends Fragment
         AVQuery<Express> data = new AVQuery<>("Express");
         data.getInBackground(ID, new GetCallback<Express>() {
             @Override
-            public void done(Express express, AVException e) {
+            public void done(final Express express, AVException e) {
                 if(e == null) {
                     if(express.getState() != ExpressDao.isWaiting) {
                         Toast.makeText(getActivity(), "已经被领取咯", Toast.LENGTH_SHORT).show();
@@ -266,9 +273,36 @@ public class ExpressFragment extends Fragment
                         express.setState(ExpressDao.isTaking);
                         express.saveInBackground(new SaveCallback() {
                             @Override
-                            public void done(AVException e) {
+                            public void done(final AVException e) {
                                 if(e == null) {
                                     Intent intent = new Intent(getActivity(), ItemDetailActivity.class);
+
+                                    Observable.create(new Observable.OnSubscribe<Boolean>() {
+                                        @Override
+                                        public void call(Subscriber<? super Boolean> subscriber) {
+                                            Message message = new Message.Builder().title("您的快递已被领取")
+                                                    .description(User.getCurrentUser(User.class).getUsername()+"代领了您的快递")
+                                                    .passThrough(0)
+                                                    .notifyType(Message.NOTIFY_TYPE_ALL)
+                                                    .build();
+                                            Sender sender = new Sender(MyApplication.SECRUIT_CODE);
+                                            try {
+                                                sender.sendToAlias(message,express.getPhone(),20);
+                                            } catch (IOException e1) {
+                                                subscriber.onError(e1);
+                                            } catch (ParseException e1) {
+                                                subscriber.onError(e1);
+                                            }
+                                        }
+                                    }).subscribeOn(Schedulers.io())
+                                      .observeOn(AndroidSchedulers.mainThread())
+                                      .subscribe(new Action1<Boolean>() {
+                                          @Override
+                                          public void call(Boolean aBoolean) {
+                                              Toast.makeText(getContext(), "您领取的消息以发送给发布者", Toast.LENGTH_SHORT).show();
+                                          }
+                                      });
+
                                     intent.putExtra("ExpressID",ID);
                                     startActivityForResult(intent, SEE_INFO);
                                 }
