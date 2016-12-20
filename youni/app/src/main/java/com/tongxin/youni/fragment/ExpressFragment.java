@@ -51,10 +51,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import rx.Observable;
+import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
-import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 //test
@@ -296,9 +296,19 @@ public class ExpressFragment extends Fragment
                                         }
                                     }).subscribeOn(Schedulers.io())
                                       .observeOn(AndroidSchedulers.mainThread())
-                                      .subscribe(new Action1<Boolean>() {
+                                      .subscribe(new Observer<Boolean>() {
                                           @Override
-                                          public void call(Boolean aBoolean) {
+                                          public void onCompleted() {
+
+                                          }
+
+                                          @Override
+                                          public void onError(Throwable e) {
+                                              Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                          }
+
+                                          @Override
+                                          public void onNext(Boolean aBoolean) {
                                               Toast.makeText(getContext(), "您领取的消息以发送给发布者", Toast.LENGTH_SHORT).show();
                                           }
                                       });
