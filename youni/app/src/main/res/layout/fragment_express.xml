@@ -33,6 +33,23 @@
         </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/float_express"
+        android:src="@drawable/express"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_gravity="bottom|end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/float_book"
+        android:src="@drawable/book"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_gravity="bottom|end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <android.support.design.widget.FloatingActionButton
         android:layout_margin="@dimen/fab_margin"
         android:id="@+id/float_add"

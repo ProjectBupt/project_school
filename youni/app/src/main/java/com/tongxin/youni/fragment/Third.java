@@ -1,5 +1,6 @@
 package com.tongxin.youni.fragment;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -61,15 +62,6 @@ public class Third extends Fragment implements View.OnClickListener {
         ScaleAnimation animation1=new ScaleAnimation(0,1,0,1,
                 Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
         animation1.setDuration(500);
-        final ScaleAnimation animation2=new ScaleAnimation(0,1,0,1,
-                Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
-        animation2.setDuration(500);
-        final ScaleAnimation animation3=new ScaleAnimation(0,1,0,1,
-                Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
-        animation3.setDuration(500);
-        final ScaleAnimation animation4=new ScaleAnimation(0,1,0,1,
-                Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
-        animation4.setDuration(500);
         image1.startAnimation(animation1);
         image1.setVisibility(View.VISIBLE);
         animation1.setAnimationListener(new Animation.AnimationListener() {
@@ -80,43 +72,51 @@ public class Third extends Fragment implements View.OnClickListener {
 
             @Override
             public void onAnimationEnd(Animation animation) {
+                ScaleAnimation animation2=new ScaleAnimation(0,1,0,1,
+                        Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+                animation2.setDuration(500);
+                animation2.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        final ScaleAnimation animation3=new ScaleAnimation(0,1,0,1,
+                                Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+                        animation3.setDuration(500);
+                        animation3.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+                                ScaleAnimation animation4=new ScaleAnimation(0,1,0,1,
+                                        Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+                                animation4.setDuration(500);
+                                image4.startAnimation(animation4);
+                                image4.setVisibility(View.VISIBLE);
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+                        image3.startAnimation(animation3);
+                        image3.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
                 image2.startAnimation(animation2);
                 image2.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        animation2.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                image3.startAnimation(animation3);
-                image3.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        animation3.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                image4.startAnimation(animation4);
-                image4.setVisibility(View.VISIBLE);
             }
 
             @Override

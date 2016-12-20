@@ -19,7 +19,7 @@
         android:src="@drawable/text32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/image1"
         android:layout_centerHorizontal="true" />
 
@@ -28,7 +28,7 @@
         android:src="@drawable/text33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/image2"
         android:layout_centerHorizontal="true" />
 

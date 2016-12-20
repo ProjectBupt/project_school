@@ -1,6 +1,7 @@
 package com.tongxin.youni.fragment;
 
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -44,6 +46,7 @@ import com.tongxin.youni.bean.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EventListener;
 import java.util.List;
 //test
 /**
@@ -56,11 +59,14 @@ public class ExpressFragment extends Fragment
     private static final int POST_EXPRESS = 2;
     private static final int SCREEN_EXPRESS = 0xff;
     private static final String TAG = "-------------->";
+    private boolean isButtonOut = false;
     private ListView listView;
     private MyListViewAdapter adapter;
     private List<Express> mData;
     private SwipeRefreshLayout refreshLayout;
     private FloatingActionButton mAddButton;
+    private FloatingActionButton book;
+    private FloatingActionButton express;
     private Toolbar mToolbar;
 
     private Handler mHandler=new Handler(){
@@ -106,8 +112,26 @@ public class ExpressFragment extends Fragment
         listView.setDivider(null);
         refreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
         mAddButton = (FloatingActionButton) view.findViewById(R.id.float_add);
+        book= (FloatingActionButton) view.findViewById(R.id.float_book);
+        express= (FloatingActionButton) view.findViewById(R.id.float_express);
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         this.setHasOptionsMenu(true);
+
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (isButtonOut){
+                    switch (event.getAction()){
+                        case MotionEvent.ACTION_UP:
+                            AnimateBack();
+                            isButtonOut=false;
+                            break;
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
 
         return view;
     }
@@ -139,8 +163,31 @@ public class ExpressFragment extends Fragment
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isButtonOut){
+                    AnimateBack();
+                    isButtonOut=false;
+                }else{
+                    AnimateBegin();
+                    isButtonOut=true;
+                }
+            }
+        });
+
+        express.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent postIntent = new Intent(getActivity(), PostFeed.class);
                 startActivityForResult(postIntent,POST_EXPRESS);
+                AnimateBack();
+                isButtonOut=false;
+            }
+        });
+
+        book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AnimateBack();
+                isButtonOut=false;
             }
         });
 
@@ -160,17 +207,46 @@ public class ExpressFragment extends Fragment
                 if(mLastFirstVisibleItem<firstVisibleItem)
                 {
                     Log.i("SCROLLING DOWN","TRUE");
+                    book.hide();
+                    express.hide();
                     mAddButton.hide();
                 }
                 if(mLastFirstVisibleItem>firstVisibleItem)
                 {
                     Log.i("SCROLLING UP","TRUE");
+                    book.show();
+                    express.show();
                     mAddButton.show();
                 }
                 mLastFirstVisibleItem=firstVisibleItem;
+
+                if (isButtonOut){
+                    AnimateBack();
+                    isButtonOut=false;
+                }
             }
         });
 
+    }
+
+    private void AnimateBegin() {
+        ObjectAnimator animator1=ObjectAnimator.ofFloat(express,"translationY",0f,-300f);
+        animator1.setDuration(500);
+        ObjectAnimator animator2=ObjectAnimator.ofFloat(book,"translationY",0f,-150f);
+        animator2.setDuration(500);
+        animator1.setStartDelay(200);
+        animator1.start();
+        animator2.start();
+    }
+
+    private void AnimateBack() {
+        ObjectAnimator animator1=ObjectAnimator.ofFloat(express,"translationY",-300f,0f);
+        animator1.setDuration(500);
+        ObjectAnimator animator2=ObjectAnimator.ofFloat(book,"translationY",-150f,0f);
+        animator2.setDuration(500);
+        animator1.setStartDelay(200);
+        animator1.start();
+        animator2.start();
     }
 
     //处理筛选请求
@@ -351,4 +427,6 @@ public class ExpressFragment extends Fragment
         mData=getData();
         mHandler.sendEmptyMessageDelayed(REFRESH_COMPLETE,2000);
     }
+
+
 }

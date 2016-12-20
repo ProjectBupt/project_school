@@ -1,11 +1,15 @@
 package com.tongxin.youni.fragment;
 
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Interpolator;
+import android.view.animation.OvershootInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import com.tongxin.youni.R;
@@ -52,13 +56,15 @@ public class First extends Fragment {
         if(image2!=null&&image1!=null){
             image1.setVisibility(View.VISIBLE);
             image2.setVisibility(View.VISIBLE);
-            TranslateAnimation animation1=new TranslateAnimation(-500,0,0,0);
-            animation1.setDuration(1000);
+            ObjectAnimator animator1=ObjectAnimator.ofFloat(image1,"translationX",-500f,0f);
+            animator1.setInterpolator(new AccelerateDecelerateInterpolator());
+            animator1.setDuration(1000);
+            animator1.start();
 
-            TranslateAnimation animation2=new TranslateAnimation(500,0,0,0);
-            animation2.setDuration(1000);
-            image1.startAnimation(animation1);
-            image2.startAnimation(animation2);
+            ObjectAnimator animator2=ObjectAnimator.ofFloat(image2,"translationX",500f,0f);
+            animator2.setInterpolator(new AccelerateDecelerateInterpolator());
+            animator2.setDuration(1000);
+            animator2.start();
         }
     }
 }
