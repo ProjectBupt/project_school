@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -130,6 +131,8 @@ public class FetchFragment extends Fragment {
                             startActivity(intent);
                         }
                     });
+
+                    final LinearLayout details= (LinearLayout) mInflater.inflate(R.layout.express_details,null);
                     Attention.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
