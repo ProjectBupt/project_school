@@ -230,21 +230,21 @@ public class ExpressFragment extends Fragment
     }
 
     private void AnimateBegin() {
-        ObjectAnimator animator1=ObjectAnimator.ofFloat(express,"translationY",0f,-300f);
-        animator1.setDuration(500);
-        ObjectAnimator animator2=ObjectAnimator.ofFloat(book,"translationY",0f,-150f);
-        animator2.setDuration(500);
-        animator1.setStartDelay(200);
+        ObjectAnimator animator1=ObjectAnimator.ofFloat(express,"translationY",0f,-500f);
+        animator1.setDuration(300);
+        ObjectAnimator animator2=ObjectAnimator.ofFloat(book,"translationY",0f,-250f);
+        animator2.setDuration(300);
+        animator1.setStartDelay(100);
         animator1.start();
         animator2.start();
     }
 
     private void AnimateBack() {
-        ObjectAnimator animator1=ObjectAnimator.ofFloat(express,"translationY",-300f,0f);
-        animator1.setDuration(500);
-        ObjectAnimator animator2=ObjectAnimator.ofFloat(book,"translationY",-150f,0f);
-        animator2.setDuration(500);
-        animator1.setStartDelay(200);
+        ObjectAnimator animator1=ObjectAnimator.ofFloat(express,"translationY",-500f,0f);
+        animator1.setDuration(300);
+        ObjectAnimator animator2=ObjectAnimator.ofFloat(book,"translationY",-250f,0f);
+        animator2.setDuration(300);
+        animator1.setStartDelay(100);
         animator1.start();
         animator2.start();
     }
