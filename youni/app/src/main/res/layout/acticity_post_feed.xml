@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,26 +10,16 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/bg3"
-        >
+        android:background="@drawable/bg3">
         <TextView
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="找人代领信息发布"
+            android:text="快递发布"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="20dp"/>
-
-        <Button
-            android:id="@+id/cancelPost"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/close"
-            android:layout_marginEnd="18dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true" />
+            android:textSize="20dp"
+            android:id="@+id/textView" />
 
     </RelativeLayout>
 
@@ -52,8 +43,7 @@
             android:layout_height="35dp"
             android:background="@drawable/bg_spinner"
             android:entries="@array/expressCompany"
-            android:textAlignment="center"
-            />
+            android:textAlignment="center"/>
 
     </LinearLayout>
 
@@ -333,15 +323,31 @@
             android:textColorHint="@color/lightseagreen"/>
     </LinearLayout>
 
-    <Button
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_gravity="center"
-        android:id="@+id/submit"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/bgcricle"
-        android:textColor="@color/black"
-        android:text="提交"
-        />
+        android:layout_marginBottom="5dp">
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            android:text="提交"
+            android:layout_marginRight="25dp"/>
+
+        <Button
+            android:id="@+id/cancelPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            android:text="取消"
+            android:layout_marginLeft="25dp"/>
+
+    </LinearLayout>
 </LinearLayout>

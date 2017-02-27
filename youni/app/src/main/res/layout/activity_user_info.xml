@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.SwipeRefreshLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/swipe_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:addStatesFromChildren="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-<android.support.design.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -34,7 +29,8 @@
                 android:layout_margin="20dp"
                 android:id="@+id/relative_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:layout_collapseMode="none">
 
                 <LinearLayout
                     android:id="@+id/line1"
@@ -120,5 +116,3 @@
         app:layout_anchorGravity="bottom|end" />
 
 </android.support.design.widget.CoordinatorLayout>
-
-</android.support.v4.widget.SwipeRefreshLayout>

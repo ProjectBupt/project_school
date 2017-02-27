@@ -13,19 +13,18 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
@@ -38,10 +37,11 @@ import com.tongxin.youni.activity.ItemDetailActivity;
 import com.tongxin.youni.activity.MainActivity;
 import com.tongxin.youni.activity.PostFeed;
 import com.tongxin.youni.activity.Screen;
-import com.tongxin.youni.adapter.MyListViewAdapter;
+import com.tongxin.youni.adapter.RecyclerViewAdapter;
 import com.tongxin.youni.bean.Express;
 import com.tongxin.youni.bean.ExpressDao;
 import com.tongxin.youni.bean.User;
+import com.tongxin.youni.utils.MyToast;
 import com.xiaomi.xmpush.server.Message;
 import com.xiaomi.xmpush.server.Sender;
 
@@ -50,7 +50,6 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EventListener;
 import java.util.List;
 
 import rx.Observable;
@@ -60,20 +59,19 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
-//test
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ExpressFragment extends Fragment
-        implements MyListViewAdapter.RemoveItem, SwipeRefreshLayout.OnRefreshListener {
+public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, RecyclerViewAdapter.OnPick, RecyclerViewAdapter.OnItemClick {
     private static final int SEE_INFO = 0x33;
     private static final int REFRESH_COMPLETE=0x110;
     private static final int POST_EXPRESS = 2;
     private static final int SCREEN_EXPRESS = 0xff;
     private static final String TAG = "-------------->";
     private boolean isButtonOut = false;
-    private ListView listView;
-    private MyListViewAdapter adapter;
+    private RecyclerView recyclerView;
+    private RecyclerViewAdapter adapter;
+
     private List<Express> mData;
     private SwipeRefreshLayout refreshLayout;
     private FloatingActionButton mAddButton;
@@ -108,30 +106,38 @@ public class ExpressFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_express, container, false);
-        listView= (ListView) view.findViewById(R.id.list_view);
-        listView.setDivider(null);
+
+        recyclerView= (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                AnimateBack();
+                if (Math.abs(dy)>4){
+                    if (dy<0) {
+                        mAddButton.show();
+                        book.show();
+                        express.show();
+                    }else {
+                        book.hide();
+                        express.hide();
+                        mAddButton.hide();
+                    }
+                }
+            }
+        });
+        LinearLayoutManager manager=
+                new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        RecyclerView.ItemAnimator animator=new DefaultItemAnimator();
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setItemAnimator(animator);
+
         refreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
         mAddButton = (FloatingActionButton) view.findViewById(R.id.float_add);
         book= (FloatingActionButton) view.findViewById(R.id.float_book);
         express= (FloatingActionButton) view.findViewById(R.id.float_express);
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         this.setHasOptionsMenu(true);
-
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (isButtonOut){
-                    switch (event.getAction()){
-                        case MotionEvent.ACTION_UP:
-                            AnimateBack();
-                            isButtonOut=false;
-                            break;
-                    }
-                    return true;
-                }
-                return false;
-            }
-        });
 
         return view;
     }
@@ -150,28 +156,27 @@ public class ExpressFragment extends Fragment
         });
 
         refreshLayout.setOnRefreshListener(this);
-        mData = new ArrayList<>();
-        adapter=new MyListViewAdapter(getActivity(),mData);
-
         refreshLayout.post(new Runnable() {
             @Override
             public void run() {
                 refreshLayout.setRefreshing(true);
             }
         });
+
+        mData = new ArrayList<>();
+        adapter=new RecyclerViewAdapter(getContext(),mData);
+        adapter.setOnPick(this);
+        adapter.setOnItemClick(this);
+        recyclerView.setAdapter(adapter);
         onRefresh();
 
-        adapter.setRemoveItem(this);
-        listView.setAdapter(adapter);
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isButtonOut){
                     AnimateBack();
-                    isButtonOut=false;
                 }else{
                     AnimateBegin();
-                    isButtonOut=true;
                 }
             }
         });
@@ -182,7 +187,6 @@ public class ExpressFragment extends Fragment
                 Intent postIntent = new Intent(getActivity(), PostFeed.class);
                 startActivityForResult(postIntent,POST_EXPRESS);
                 AnimateBack();
-                isButtonOut=false;
             }
         });
 
@@ -190,65 +194,75 @@ public class ExpressFragment extends Fragment
             @Override
             public void onClick(View v) {
                 AnimateBack();
-                isButtonOut=false;
             }
         });
 
-        onRefresh();
         AppCompatActivity activity = ((MainActivity)getActivity());
         activity.setSupportActionBar(mToolbar);
         activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if(mLastFirstVisibleItem<firstVisibleItem)
-                {
-                    Log.i("SCROLLING DOWN","TRUE");
-                    book.hide();
-                    express.hide();
-                    mAddButton.hide();
-                }
-                if(mLastFirstVisibleItem>firstVisibleItem)
-                {
-                    Log.i("SCROLLING UP","TRUE");
-                    book.show();
-                    express.show();
-                    mAddButton.show();
-                }
-                mLastFirstVisibleItem=firstVisibleItem;
-
-                if (isButtonOut){
-                    AnimateBack();
-                    isButtonOut=false;
-                }
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
             }
         });
+//        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(AbsListView view, int scrollState) {
+//            }
+//
+//            @Override
+//            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+//                if(mLastFirstVisibleItem<firstVisibleItem)
+//                {
+//                    Log.i("SCROLLING DOWN","TRUE");
+//                    book.hide();
+//                    express.hide();
+//                    mAddButton.hide();
+//                }
+//                if(mLastFirstVisibleItem>firstVisibleItem)
+//                {
+//                    Log.i("SCROLLING UP","TRUE");
+//                    book.show();
+//                    express.show();
+//                    mAddButton.show();
+//                }
+//                mLastFirstVisibleItem=firstVisibleItem;
+//
+//                if (isButtonOut){
+//                    AnimateBack();
+//                    isButtonOut=false;
+//                }
+//            }
+//        });
 
     }
 
     private void AnimateBegin() {
-        ObjectAnimator animator1=ObjectAnimator.ofFloat(express,"translationY",0f,-500f);
-        animator1.setDuration(300);
-        ObjectAnimator animator2=ObjectAnimator.ofFloat(book,"translationY",0f,-250f);
-        animator2.setDuration(300);
-        animator1.setStartDelay(100);
-        animator1.start();
-        animator2.start();
+        if (!isButtonOut){
+            ObjectAnimator animator1=ObjectAnimator.ofFloat(express,"translationY",0f,-300f);
+            animator1.setDuration(300);
+            ObjectAnimator animator2=ObjectAnimator.ofFloat(book,"translationY",0f,-150f);
+            animator2.setDuration(300);
+            animator1.setStartDelay(100);
+            animator1.start();
+            animator2.start();
+        }
+        isButtonOut=true;
     }
 
     private void AnimateBack() {
-        ObjectAnimator animator1=ObjectAnimator.ofFloat(express,"translationY",-500f,0f);
-        animator1.setDuration(300);
-        ObjectAnimator animator2=ObjectAnimator.ofFloat(book,"translationY",-250f,0f);
-        animator2.setDuration(300);
-        animator1.setStartDelay(100);
-        animator1.start();
-        animator2.start();
+        if (isButtonOut){
+            ObjectAnimator animator1=ObjectAnimator.ofFloat(express,"translationY",-300f,0f);
+            animator1.setDuration(300);
+            ObjectAnimator animator2=ObjectAnimator.ofFloat(book,"translationY",-150f,0f);
+            animator2.setDuration(300);
+            animator1.setStartDelay(100);
+            animator1.start();
+            animator2.start();
+        }
+        isButtonOut=false;
     }
 
     //处理筛选请求
@@ -308,113 +322,6 @@ public class ExpressFragment extends Fragment
     }
 
     @Override
-    public void Skip(final String ID) {
-        //TODO 把跳转重写，逻辑清晰
-//        Observable.create(new Observable.OnSubscribe<Express>() {
-//            @Override
-//            public void call(Subscriber<? super Express> subscriber) {
-//                AVQuery<Express> data = new AVQuery<>("Express");
-//                try {
-//                    Express ex = data.get(ID);
-//                    if(ex.getState() == ExpressDao.isWaiting){
-//                        subscriber.onNext(ex);
-//                    }
-//                } catch (AVException e) {
-//                    subscriber.onError(e);
-//                }
-//                subscriber.onCompleted();
-//            }
-//        }).subscribeOn(Schedulers.io())
-//          .flatMap(new Func1<Express, Observable<User>>() {
-//            @Override
-//            public Observable<User> call(Express express) {
-//                return Observable.create(new Observable.OnSubscribe<User>() {
-//                    @Override
-//                    public void call(Subscriber<? super User> subscriber) {
-//                        if(User.getCurrentUser().getObjectId() != express.getUserID()){
-//                            subscriber.onNext();
-//                        }
-//                    }
-//                });
-//            }
-//        })
-
-        AVQuery<Express> data = new AVQuery<>("Express");
-        data.getInBackground(ID, new GetCallback<Express>() {
-            @Override
-            public void done(final Express express, AVException e) {
-                if(e == null) {
-                    if(express.getState() != ExpressDao.isWaiting) {
-                        Toast.makeText(getActivity(), "已经被领取咯", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(!express.getUserID().equals(User.getCurrentUser(User.class).getObjectId())){
-                        Log.i(TAG, "done: "+express.getUserID());
-                        Log.i(TAG, "done: "+User.getCurrentUser(User.class).getObjectId());
-                        express.setState(ExpressDao.isTaking);
-                        express.saveInBackground(new SaveCallback() {
-                            @Override
-                            public void done(final AVException e) {
-                                if(e == null) {
-                                    Intent intent = new Intent(getActivity(), ItemDetailActivity.class);
-
-                                    Observable.create(new Observable.OnSubscribe<Boolean>() {
-                                        @Override
-                                        public void call(Subscriber<? super Boolean> subscriber) {
-                                            Message message = new Message.Builder().title("您的快递已被领取")
-                                                    .description(User.getCurrentUser(User.class).getUsername()+"代领了您的快递")
-                                                    .passThrough(0)
-                                                    .notifyType(Message.NOTIFY_TYPE_ALL)
-                                                    .build();
-                                            Sender sender = new Sender(MyApplication.SECRUIT_CODE);
-                                            try {
-                                                sender.sendToAlias(message,express.getPhone(),20);
-                                            } catch (IOException e1) {
-                                                subscriber.onError(e1);
-                                            } catch (ParseException e1) {
-                                                subscriber.onError(e1);
-                                            }
-                                        }
-                                    }).subscribeOn(Schedulers.io())
-                                      .observeOn(AndroidSchedulers.mainThread())
-                                      .subscribe(new Observer<Boolean>() {
-                                          @Override
-                                          public void onCompleted() {
-
-                                          }
-
-                                          @Override
-                                          public void onError(Throwable e) {
-                                              Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                                          }
-
-                                          @Override
-                                          public void onNext(Boolean aBoolean) {
-                                              Toast.makeText(getContext(), "您领取的消息以发送给发布者", Toast.LENGTH_SHORT).show();
-                                          }
-                                      });
-
-                                    intent.putExtra("ExpressID",ID);
-                                    startActivityForResult(intent, SEE_INFO);
-                                }
-                                else{
-                                    Log.i(TAG, "done in skip: "+e.getMessage());
-                                }
-                            }
-                        });
-
-                    }
-                    else {
-                        Toast.makeText(getActivity(), "不可以代领自己的哦", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    Toast.makeText(getActivity(), "无法获取物品信息", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-    @Override
     public void onRefresh() {
         Observable.create(new Observable.OnSubscribe<List<Express>>() {
             @Override
@@ -456,7 +363,7 @@ public class ExpressFragment extends Fragment
 
               @Override
               public void onError(Throwable e) {
-                  Toast.makeText(getActivity(), "网络异常", Toast.LENGTH_SHORT).show();
+                  MyToast.showToast(getContext(),"网络异常");
                   Log.i(TAG, "onError: "+e.getMessage());
                   refreshLayout.setRefreshing(false);
               }
@@ -517,7 +424,6 @@ public class ExpressFragment extends Fragment
         }
         return company;
     }
-//<<<<<<< HEAD
 
     private List<Express> getData() {
         mData.clear();
@@ -534,63 +440,93 @@ public class ExpressFragment extends Fragment
                     }
                 }
                 else{
-                    Toast.makeText(getActivity(), "boom", Toast.LENGTH_SHORT).show();
+                    MyToast.showToast(getContext(),"boom");
                 }
             }
         });
         return mData;
     }
 
-//    @Override
-//    public void Skip(final String ID) {
-//        Log.i(TAG, "Skip: jin lai la");
-//        AVQuery<Express> data = new AVQuery<>("Express");
-//        data.getInBackground(ID, new GetCallback<Express>() {
-//            @Override
-//            public void done(Express express, AVException e) {
-//                if(e == null) {
-//                    if(express.getState() != ExpressDao.isWaiting) {
-//                        Toast.makeText(getActivity(), "已经被领取咯", Toast.LENGTH_SHORT).show();
-//                    }
-//                    //!
-//                    else if(!express.getUserID().equals(User.getCurrentUser(User.class).getObjectId())){
-//                        Log.i(TAG, "done: "+express.getUserID());
-//                        Log.i(TAG, "done: "+User.getCurrentUser(User.class).getObjectId());
-//                        express.setState(ExpressDao.isTaking);
-//                        express.saveInBackground(new SaveCallback() {
-//                            @Override
-//                            public void done(AVException e) {
-//                                if(e == null) {
-//                                    Intent intent = new Intent(getActivity(), ItemDetailActivity.class);
-//                                    intent.putExtra("ExpressID",ID);
-//                                    startActivityForResult(intent, SEE_INFO);
-//                                }
-//                                else{
-//                                    Log.i(TAG, "done in skip: "+e.getMessage());
-//                                }
-//
-//                            }
-//                        });
-//
-//                    }
-//                    else {
-//                        Toast.makeText(getActivity(), "不可以代领自己的哦", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                else {
-//                    Toast.makeText(getActivity(), "无法获取物品信息", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//    }
-//
-//    @Override
-//    public void onRefresh() {
-//        mData=getData();
-//        mHandler.sendEmptyMessageDelayed(REFRESH_COMPLETE,2000);
-//    }
+    @Override
+    public void pick(final String ID) {
+        AVQuery<Express> data = new AVQuery<>("Express");
+        data.getInBackground(ID, new GetCallback<Express>() {
+            @Override
+            public void done(final Express express, AVException e) {
+                if(e == null) {
+                    if(express.getState() != ExpressDao.isWaiting) {
+                        MyToast.showToast(getContext(),"已经被领取咯");
+                    }
+                    else if(!express.getUserID().equals(User.getCurrentUser(User.class).getObjectId())){
+                        Log.i(TAG, "done: "+express.getUserID());
+                        Log.i(TAG, "done: "+User.getCurrentUser(User.class).getObjectId());
+                        express.setState(ExpressDao.isTaking);
+                        express.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(final AVException e) {
+                                if(e == null) {
+                                    Intent intent = new Intent(getActivity(), ItemDetailActivity.class);
+
+                                    Observable.create(new Observable.OnSubscribe<Boolean>() {
+                                        @Override
+                                        public void call(Subscriber<? super Boolean> subscriber) {
+                                            Message message = new Message.Builder().title("您的快递已被领取")
+                                                    .description(User.getCurrentUser(User.class).getUsername()+"代领了您的快递")
+                                                    .passThrough(0)
+                                                    .notifyType(Message.NOTIFY_TYPE_ALL)
+                                                    .build();
+                                            Sender sender = new Sender(MyApplication.SECRUIT_CODE);
+                                            try {
+                                                sender.sendToAlias(message,express.getPhone(),20);
+                                            } catch (IOException e1) {
+                                                subscriber.onError(e1);
+                                            } catch (ParseException e1) {
+                                                subscriber.onError(e1);
+                                            }
+                                        }
+                                    }).subscribeOn(Schedulers.io())
+                                            .observeOn(AndroidSchedulers.mainThread())
+                                            .subscribe(new Observer<Boolean>() {
+                                                @Override
+                                                public void onCompleted() {
+
+                                                }
+
+                                                @Override
+                                                public void onError(Throwable e) {
+                                                    MyToast.showToast(getContext(),e.getMessage());
+                                                }
+
+                                                @Override
+                                                public void onNext(Boolean aBoolean) {
+                                                    MyToast.showToast(getContext(),"您领取的消息以发送给发布者");
+                                                }
+                                            });
+
+                                    intent.putExtra("ExpressID",ID);
+                                    startActivityForResult(intent, SEE_INFO);
+                                }
+                                else{
+                                    Log.i(TAG, "done in skip: "+e.getMessage());
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        MyToast.showToast(getContext(),"不可以代领自己的哦");
+                    }
+                }
+                else {
+                    MyToast.showToast(getContext(),"无法获取物品信息");
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onItemClick(View view) {
+        AnimateBack();
+    }
 
 
-//=======
-//>>>>>>> yangxiang_dev
 }

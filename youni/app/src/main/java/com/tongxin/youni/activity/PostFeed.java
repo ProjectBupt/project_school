@@ -72,7 +72,7 @@ public class PostFeed extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.post_feed);
+        setContentView(R.layout.acticity_post_feed);
         //得到登录用户
         ttUser = AVUser.getCurrentUser(User.class);
         if(ttUser == null)

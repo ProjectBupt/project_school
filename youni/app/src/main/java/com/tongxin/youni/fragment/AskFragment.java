@@ -94,7 +94,6 @@ public class AskFragment extends Fragment {
             });
         }else{
             Log.e("YOUNI","User is null!");
-            //Toast.makeText(getContext(), "Error!!!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -194,9 +193,11 @@ public class AskFragment extends Fragment {
     }
 
     private void AddOrder(User FetchUser) {
+        this_user.put("QuantityOfAsking",0);
         this_user.setQuantityOfAsking(this_user.getQuantityOfAsking()+1);
         this_user.saveInBackground();
 
+        FetchUser.put("QuantityOfOrder",0);
         FetchUser.setQuantityOfOrder(FetchUser.getQuantityOfOrder()+1);
         FetchUser.saveInBackground();
     }

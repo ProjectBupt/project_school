@@ -36,7 +36,7 @@ import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, View.OnTouchListener {
+public class UserInfoActivity extends AppCompatActivity {
 
     private static final int CHANGE_INFO = 0x1;
     private static final int COMPLETE_REFRESH=0x1001;
@@ -48,7 +48,6 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
     private List<String> titleList;
     private List<Fragment> fragmentList;
     private ImageView avatar;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
     private NestedScrollView mScrollView;
     private AppBarLayout appBarLayout;
     private TextView Name;
@@ -63,7 +62,6 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
                 case COMPLETE_REFRESH:
                     adapter.notifyDataSetChanged();
                     viewPager.setAdapter(adapter);
-                    mSwipeRefreshLayout.setRefreshing(false);
                     break;
             }
         }
@@ -111,7 +109,6 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
         }
 
         viewPager= (MyViewPager) findViewById(R.id.view_pager);
-        viewPager.setOnTouchListener(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -136,43 +133,9 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
 
         TabLayout tabLayout= (TabLayout) findViewById(R.id.tab);
 
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
-        mSwipeRefreshLayout.setOnRefreshListener(this);
-        mSwipeRefreshLayout.setProgressViewOffset(true, -20, 100);//设置样式刷新显示的位置
-
         mScrollView= (NestedScrollView) findViewById(R.id.nested_scroll_view);
-        //设置ScrollView的监听事件,当ScrollView完全拉下来才能下拉刷新
-        mScrollView.getViewTreeObserver().addOnScrollChangedListener(new  ViewTreeObserver.OnScrollChangedListener() {
-            @Override
-            public void onScrollChanged() {
-                if (mScrollView.getScrollY()!=0){
-                    mSwipeRefreshLayout.setEnabled(false);
-                }
-            }
-        });
 
         appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
-        appBarLayout.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int visibility) {
-                if (visibility==View.VISIBLE){
-                    mSwipeRefreshLayout.setEnabled(true);
-                }else{
-                    mSwipeRefreshLayout.setEnabled(false);
-                }
-            }
-        });
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (verticalOffset >= 0) {
-                    mSwipeRefreshLayout.setEnabled(true);
-                } else {
-                    mSwipeRefreshLayout.setEnabled(false);
-                }
-            }
-        });
-
 
         titleList=new ArrayList<>();
         titleList.add("我帮别人代领的快递");
@@ -199,47 +162,7 @@ public class UserInfoActivity extends AppCompatActivity implements SwipeRefreshL
                         .placeholder(R.mipmap.ic_launcher)
                         .bitmapTransform(new CropCircleTransformation(this))
                         .into(avatar);
-                onRefresh();
             }
         }
     }
-
-    @Override
-    public void onRefresh() {
-        CurrentUser=AVUser.getCurrentUser(User.class);
-
-        if (CurrentUser!=null){
-            Name.setText(CurrentUser.getUsername());
-            Credit.setText("积    分:"+CurrentUser.getCredit());
-            QuantityOfAsking.setText("请求数:"+CurrentUser.getQuantityOfAsking());
-            QuantityOfOrder.setText("接单数:"+CurrentUser.getQuantityOfOrder());
-        }else{
-            Toast.makeText(this, "网络异常！！", Toast.LENGTH_SHORT).show();
-            Log.e("UserInfoActivity","CurrentUser is null!!");
-        }
-
-        fragmentList.clear();
-        fragmentList.add(new FetchFragment());
-        fragmentList.add(new AskFragment());
-        mHandler.sendEmptyMessageDelayed(COMPLETE_REFRESH,1000);
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        int action = event.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:// 经测试，ViewPager的DOWN事件不会被分发下来
-            case MotionEvent.ACTION_MOVE:
-                mSwipeRefreshLayout.setEnabled(false);
-                mScrollView.setEnabled(false);
-                break;
-            case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
-                mSwipeRefreshLayout.setEnabled(true);
-                mScrollView.setEnabled(true);
-                break;
-        }
-        return false;
-    }
-
 }

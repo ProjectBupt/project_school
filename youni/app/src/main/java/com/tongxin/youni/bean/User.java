@@ -2,8 +2,16 @@ package com.tongxin.youni.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.AVRelation;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.FindCallback;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/4/17.
@@ -19,6 +27,7 @@ public class User extends AVUser implements Parcelable {
     private int QuantityOfOrder=0;
     private int QuantityOfAsking=0;
     private int Credit=0;
+    private List<Express> ask_expresses=new ArrayList<>();
 
     public User() {
     }
@@ -129,4 +138,46 @@ public class User extends AVUser implements Parcelable {
     public void setCredit(int credit) {
         Credit = credit;
     }
+
+//    public List<Express> getAskExpress(){
+//        List<Express> ask_expresses;
+//        AVRelation<Express> relation=this.getRelation("add");
+//        AVQuery<Express> query=relation.getQuery();
+//        query.findInBackground(new FindCallback<Express>() {
+//            @Override
+//            public void done(List<Express> list, AVException e) {
+//                if (e==null){
+//                    if (list.size()!=0){
+//                        ask_expresses=list;
+//                    }else{
+//                        Log.d("User.getAskExpress","Has no ask_express");
+//                    }
+//                }else{
+//                    Log.e("User.getAskExpress","Error:"+e);
+//                }
+//            }
+//        });
+//        return ask_expresses;
+//    }
+//
+//    public List<Express> getFetchExpress(){
+//        final List<Express> express_list=new ArrayList<>();
+//        AVRelation<Express> relation=this.getRelation("fetch");
+//        AVQuery<Express> query=relation.getQuery();
+//        query.findInBackground(new FindCallback<Express>() {
+//            @Override
+//            public void done(List<Express> list, AVException e) {
+//                if (e==null){
+//                    if (list.size()!=0) {
+//                        for (Express express : list) {
+//                            express_list.add(express);
+//                        }
+//                    }
+//                }else{
+//                    Log.e("User.getFetchExpress","Error:"+e);
+//                }
+//            }
+//        });
+//        return express_list;
+//    }
 }

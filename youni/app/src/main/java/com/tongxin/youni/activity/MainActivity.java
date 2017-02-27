@@ -24,6 +24,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tongxin.youni.R;
 import com.tongxin.youni.fragment.ExpressFragment;
 import com.tongxin.youni.bean.User;
+import com.tongxin.youni.utils.MyActivity;
 
 import java.util.ArrayList;
 import java.util.List;
