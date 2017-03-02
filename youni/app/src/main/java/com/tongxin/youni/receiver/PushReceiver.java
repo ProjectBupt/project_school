@@ -1,9 +1,11 @@
 package com.tongxin.youni.receiver;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.tongxin.youni.activity.MainActivity;
 import com.xiaomi.mipush.sdk.ErrorCode;
 import com.xiaomi.mipush.sdk.MiPushClient;
 import com.xiaomi.mipush.sdk.MiPushCommandMessage;
@@ -51,6 +53,7 @@ public class PushReceiver extends PushMessageReceiver {
         } else if(!TextUtils.isEmpty(message.getUserAccount())) {
             mUserAccount=message.getUserAccount();
         }
+        context.startActivity(new Intent(context, MainActivity.class));
     }
     @Override
     public void onNotificationMessageArrived(Context context, MiPushMessage message) {
