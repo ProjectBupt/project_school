@@ -26,8 +26,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.avos.avoscloud.AVCloud;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.GetCallback;
 import com.avos.avoscloud.SaveCallback;
@@ -37,6 +39,7 @@ import com.tongxin.youni.activity.ItemDetailActivity;
 import com.tongxin.youni.activity.MainActivity;
 import com.tongxin.youni.activity.PostFeed;
 import com.tongxin.youni.activity.Screen;
+import com.tongxin.youni.activity.UserCenterActivity;
 import com.tongxin.youni.adapter.RecyclerViewAdapter;
 import com.tongxin.youni.bean.Express;
 import com.tongxin.youni.bean.ExpressDao;
@@ -150,8 +153,10 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
         han.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                drawerLayout.openDrawer(GravityCompat.START);
+                Intent intent=new Intent(getContext(), UserCenterActivity.class);
+                startActivity(intent);
+//                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+//                drawerLayout.openDrawer(GravityCompat.START);
             }
         });
 

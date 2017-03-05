@@ -113,9 +113,6 @@
             android:name="com.tongxin.youni.activity.RegisterActivity" />
 
         <activity
-            android:screenOrientation="portrait"
-            android:name="com.tongxin.youni.activity.UserInfoActivity" />
-        <activity
             android:theme="@style/dialogstyle"
             android:screenOrientation="portrait"
             android:name="com.tongxin.youni.activity.ItemDetailActivity" />
@@ -131,6 +128,8 @@
         <activity android:name=".activity.ConfirmActivity"
             android:theme="@style/dialogstyle"/>
         <activity android:name=".activity.SettingActivity"/>
+        <activity android:name=".activity.UserCenterActivity"/>
+        <activity android:name=".activity.MyExpressActivity"/>
 
     </application>
 

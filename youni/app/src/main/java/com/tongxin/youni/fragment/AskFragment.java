@@ -1,6 +1,5 @@
 package com.tongxin.youni.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,16 +31,17 @@ import com.tongxin.youni.R;
 import com.tongxin.youni.bean.Express;
 import com.tongxin.youni.bean.ExpressDao;
 import com.tongxin.youni.bean.User;
+import com.tongxin.youni.utils.MyToast;
+
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import jp.wasabeef.glide.transformations.internal.FastBlur;
 
 /**
  * Created by charlene on 2016/10/12.
  * 我的请求
  */
-
-//test
 
 public class AskFragment extends Fragment {
 
@@ -48,12 +49,15 @@ public class AskFragment extends Fragment {
     private LinearLayout linearLayout;
     private LayoutInflater mInflater;
     private View view;
+    private ProgressBar progressBar;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_ask_fetch,null);
         linearLayout= (LinearLayout) view.findViewById(R.id.line);
-        mInflater= (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        progressBar= (ProgressBar) view.findViewById(R.id.progress_bar);
+        mInflater= LayoutInflater.from(getContext());
         this_user= AVUser.getCurrentUser(User.class);
         setContentAsk();
         return view;
@@ -66,10 +70,12 @@ public class AskFragment extends Fragment {
             query.findInBackground(new FindCallback<Express>() {
                 @Override
                 public void done(List<Express> list, AVException e) {
+                    progressBar.setVisibility(View.GONE);
                     if (e==null){
                         if (list.size()!=0){
                             for (Express ex:list){
                                 if (ex.getState()!= ExpressDao.isFinished){
+                                    progressBar.setVisibility(View.GONE);
                                     addContentAskView(ex);
                                 }
                             }
@@ -88,12 +94,14 @@ public class AskFragment extends Fragment {
                         textView.setGravity(Gravity.CENTER);
                         textView.setText("这里空空哒~~");
                         linearLayout.addView(textView);
-                        Log.e("YOUNI","Error:"+e);
+                        Log.e("YOUNI","Error1:"+e);
                     }
                 }
             });
         }else{
+            progressBar.setVisibility(View.GONE);
             Log.e("YOUNI","User is null!");
+            MyToast.showToast(getContext(), "Network Error!!");
         }
     }
 
@@ -185,7 +193,7 @@ public class AskFragment extends Fragment {
                         Payment.setText("打赏金额:￥"+express.getMoney());
                         linearLayout.addView(cardView);
                     }else{
-                        Log.e("YOUNI","Error:"+e);
+                        Log.e("YOUNI","Error2:"+e);
                     }
                 }
             });
@@ -193,11 +201,9 @@ public class AskFragment extends Fragment {
     }
 
     private void AddOrder(User FetchUser) {
-        this_user.put("QuantityOfAsking",0);
         this_user.setQuantityOfAsking(this_user.getQuantityOfAsking()+1);
         this_user.saveInBackground();
 
-        FetchUser.put("QuantityOfOrder",0);
         FetchUser.setQuantityOfOrder(FetchUser.getQuantityOfOrder()+1);
         FetchUser.saveInBackground();
     }
