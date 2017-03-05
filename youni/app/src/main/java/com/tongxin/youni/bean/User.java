@@ -51,20 +51,12 @@ public class User extends AVUser implements Parcelable {
         dest.writeString(this.sex);
     }
 
-    public String getLoverAvatar() {
-        return getString(UserDao.LOVERAVATAR);
+    public String getSex() {
+        return getString(UserDao.SEX);
     }
 
-    public void setLoverAvatar(String loverAvatar) {
-        put(UserDao.LOVERAVATAR, loverAvatar);
-    }
-
-    public String getLoverNick() {
-        return getString(UserDao.LOVERNICK);
-    }
-
-    public void setLoverNick(String loverNick) {
-        put(UserDao.LOVERNICK, loverNick);
+    public void setSex(String sex) {
+        put(UserDao.SEX,sex);
     }
 
     public String getBackground() {
@@ -81,14 +73,6 @@ public class User extends AVUser implements Parcelable {
 
     public void setAvatar(String avatar) {
         put(UserDao.AVATARURL, avatar);
-    }
-
-    public String getInstallationId() {
-        return getString(UserDao.INSTALLATIONID);
-    }
-
-    public void setInstallationId(String installationId) {
-        put(UserDao.INSTALLATIONID, installationId);
     }
 
     public String getRoomID() {
@@ -116,27 +100,27 @@ public class User extends AVUser implements Parcelable {
     }
 
     public int getQuantityOfOrder() {
-        return QuantityOfOrder;
+        return (int) getNumber(UserDao.QUANTITY_OF_ORDER);
     }
 
     public void setQuantityOfOrder(int quantityOfOrder) {
-        QuantityOfOrder = quantityOfOrder;
+        put(UserDao.QUANTITY_OF_ORDER,quantityOfOrder);
     }
 
     public int getQuantityOfAsking() {
-        return QuantityOfAsking;
+        return (int) getNumber(UserDao.QUANTITY_OF_ASKING);
     }
 
     public void setQuantityOfAsking(int quantityOfAsking) {
-        QuantityOfAsking = quantityOfAsking;
+        put(UserDao.QUANTITY_OF_ASKING,quantityOfAsking);
     }
 
     public int getCredit() {
-        return Credit;
+        return (int) getNumber(UserDao.CREDIT);
     }
 
     public void setCredit(int credit) {
-        Credit = credit;
+        put(UserDao.CREDIT,credit);
     }
 
 //    public List<Express> getAskExpress(){

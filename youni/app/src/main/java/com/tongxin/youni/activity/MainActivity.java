@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,17 +32,14 @@ import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity{
 
-    private static final String TAG = "MainActivity----->";
+    private static final String TAG = "MainActivity";
     private static final int FINISH_INFO = 0xf;
 
     private List<Fragment> mFragments;
     private FragmentManager mFragmentManager;
     FrameLayout mContent;
-    private ImageView avatar;
-    private User current_user;
     static Activity activity;
 
     @Override
@@ -69,41 +67,8 @@ public class MainActivity extends AppCompatActivity
 
         mFragmentManager.beginTransaction().replace(R.id.content,mFragments.get(0)).commit();
 
-        NavigationView view = (NavigationView) findViewById(R.id.nav_view);
-        assert view != null;
-        view.setNavigationItemSelectedListener(this);
-        View v = view.getHeaderView(0);
-        avatar = (ImageView) v.findViewById(R.id.avatar);
-
-        avatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,UserInfoActivity.class);
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                assert drawer != null;
-                drawer.closeDrawer(GravityCompat.START);
-                startActivity(intent);
-            }
-        });
-        TextView textView = (TextView) v.findViewById(R.id.username);
-        current_user=AVUser.getCurrentUser(User.class);
-        if (current_user!=null){
-            textView.setText(current_user.getUsername());
-        }
-
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Glide.with(this)
-                .load(current_user.getAvatar())
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.default_header)
-                .bitmapTransform(new CropCircleTransformation(this))
-                .into(avatar);
-    }
 
     private void initFragments() {
         mFragments = new ArrayList<>();
@@ -118,28 +83,6 @@ public class MainActivity extends AppCompatActivity
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        switch (id){
-            case R.id.setting:
-                Intent intent = new Intent(MainActivity.this,SettingActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.book:
-                Toast.makeText(this, "敬请期待！！", Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        assert drawer != null;
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 
 }

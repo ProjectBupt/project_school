@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +30,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tongxin.youni.R;
 import com.tongxin.youni.bean.Express;
 import com.tongxin.youni.bean.User;
+import com.tongxin.youni.utils.MyToast;
 
 import java.util.List;
 
@@ -46,12 +47,14 @@ public class FetchFragment extends Fragment {
     private LinearLayout linearLayout;
     private LayoutInflater mInflater;
     private View view;
+    private ProgressBar progressBar;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_ask_fetch,null);
         linearLayout= (LinearLayout) view.findViewById(R.id.line);
+        progressBar= (ProgressBar) view.findViewById(R.id.progress_bar);
         mInflater=LayoutInflater.from(getContext());
         this_user= AVUser.getCurrentUser(User.class);
         setContentFetch();
@@ -65,6 +68,7 @@ public class FetchFragment extends Fragment {
             query.findInBackground(new FindCallback<Express>() {
                 @Override
                 public void done(List<Express> list, AVException e) {
+                    progressBar.setVisibility(View.GONE);
                     if (e==null){
                         if (list.size()!=0){
                             for (Express ex:list){
@@ -83,13 +87,14 @@ public class FetchFragment extends Fragment {
                         textView.setGravity(Gravity.CENTER);
                         textView.setText("这里空空哒~~");
                         linearLayout.addView(textView);
-                        Log.e("YOUNI","Error:"+e);
+                        Log.e("YOUNI","Error1:"+e);
                     }
                 }
             });
         }else{
+            progressBar.setVisibility(View.GONE);
             Log.e("YOUNI","User is null!");
-            Toast.makeText(getContext(), "Error!!!", Toast.LENGTH_SHORT).show();
+            MyToast.showToast(getContext(), "Network Error!!");
         }
     }
 

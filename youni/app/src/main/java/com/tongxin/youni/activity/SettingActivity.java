@@ -1,11 +1,12 @@
 package com.tongxin.youni.activity;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,7 +20,7 @@ import com.tongxin.youni.widget.TitleBar;
  * Created by 宽伟 on 2016/10/16.
  */
 
-public class SettingActivity extends Activity {
+public class SettingActivity extends AppCompatActivity {
     private Button modifyLoginPhoneButton;//修改登录电话号的按钮
     private Button modifyPasswordButton;//修改密码的按钮
     private Button out;
@@ -52,30 +53,30 @@ public class SettingActivity extends Activity {
             }
         });
 
-        modifyPasswordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //直接加载fragment
-                modifyPasswordFragment = ModifyPasswordFragment.getInstance();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.id_fragment,modifyPasswordFragment);
-                if(isFrist) {
-                    fragmentTransaction.addToBackStack(null);
-                    isFrist=false;
-                }
-                fragmentTransaction.commit();
-                //结束fragment
-                modifyPasswordFragment.setFinishSelf(new ModifyPasswordFragment.FinishSelf() {
-                    @Override
-                    public void doFinish() {
-                        FragmentTransaction fra =  getFragmentManager().beginTransaction();
-                        fra.remove(modifyPasswordFragment).commit();
-                        modifyPasswordFragment = null;
-                    }
-                });
-            }
-        });
+//        modifyPasswordButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //直接加载fragment
+//                modifyPasswordFragment = ModifyPasswordFragment.getInstance();
+//                FragmentManager fragmentManager = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.id_fragment,modifyPasswordFragment);
+//                if(isFrist) {
+//                    fragmentTransaction.addToBackStack(null);
+//                    isFrist=false;
+//                }
+//                fragmentTransaction.commit();
+//                //结束fragment
+//                modifyPasswordFragment.setFinishSelf(new ModifyPasswordFragment.FinishSelf() {
+//                    @Override
+//                    public void doFinish() {
+//                        FragmentTransaction fra =  getFragmentManager().beginTransaction();
+//                        fra.remove(modifyPasswordFragment).commit();
+//                        modifyPasswordFragment = null;
+//                    }
+//                });
+//            }
+//        });
 
         out.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,8 +102,8 @@ public class SettingActivity extends Activity {
 
     private void initFragment() {
         modifyLoginPhoneFragment = new ModifyLoginPhoneFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        final android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.id_fragment,modifyLoginPhoneFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -110,11 +111,11 @@ public class SettingActivity extends Activity {
         //结束fragment
         modifyLoginPhoneFragment.setFinishSelf(new ModifyLoginPhoneFragment.FinishSelf() {
             @Override
-            public void doFinish() {
-                FragmentTransaction fra =  getFragmentManager().beginTransaction();
+            public void doFinish(String phone_number) {
+                FragmentTransaction fra =  getSupportFragmentManager().beginTransaction();
                 fra.remove(modifyLoginPhoneFragment).commit();
                 modifyLoginPhoneFragment = null;
-               // fragmentTransaction.remove(modifyLoginPhoneFragment).commit();
+                // fragmentTransaction.remove(modifyLoginPhoneFragment).commit();
             }
         });
     }

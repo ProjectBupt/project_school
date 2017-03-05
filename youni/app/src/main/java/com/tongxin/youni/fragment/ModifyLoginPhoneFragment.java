@@ -1,6 +1,5 @@
 package com.tongxin.youni.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -24,7 +23,7 @@ import com.tongxin.youni.bean.User;
  * Created by 宽伟 on 2016/10/21.
  */
 
-public class ModifyLoginPhoneFragment extends Fragment {
+public class ModifyLoginPhoneFragment extends android.support.v4.app.Fragment {
     private View view;
 
     private Button getCode;
@@ -36,12 +35,12 @@ public class ModifyLoginPhoneFragment extends Fragment {
     private String phoneNumberString;
     private String verCodeString;
 
-    private AVUser ttUser;
+    private AVUser currentUser;
 
     private FinishSelf myFinishSelf;
 
     public interface FinishSelf{
-           void doFinish();
+           void doFinish(String phone_number);
     }
 
     public void setFinishSelf(FinishSelf finishSelf){
@@ -52,8 +51,7 @@ public class ModifyLoginPhoneFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view  = inflater.inflate(R.layout.modify_loginphone_fragment,container,false);
-
-        ttUser = AVUser.getCurrentUser(User.class);
+        currentUser = AVUser.getCurrentUser(User.class);
         initBtn();
 
         return view;
@@ -110,11 +108,11 @@ public class ModifyLoginPhoneFragment extends Fragment {
                         @Override
                         public void done(AVException e) {
                             if (e == null) {
-                                ttUser.setMobilePhoneNumber(phoneNumberString);
-                                ttUser.saveInBackground();
-                                ttUser.put("mobilePhoneVerified",true);
+                                currentUser.setMobilePhoneNumber(phoneNumberString);
+                                currentUser.saveInBackground();
+                                currentUser.put("mobilePhoneVerified",true);
                                 Toast.makeText(getActivity(), "修改成功", Toast.LENGTH_SHORT).show();
-                                myFinishSelf.doFinish();
+                                myFinishSelf.doFinish(phoneNumberString);
                             } else {
                                 Log.e("Home.DoOperationVerify", e.getMessage());
                             }

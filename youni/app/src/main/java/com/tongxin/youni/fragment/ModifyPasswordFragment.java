@@ -1,6 +1,5 @@
 package com.tongxin.youni.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -13,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.RequestMobileCodeCallback;
 import com.avos.avoscloud.UpdatePasswordCallback;
@@ -23,7 +21,7 @@ import com.tongxin.youni.R;
  * Created by 宽伟 on 2016/10/17.
  */
 
-public class ModifyPasswordFragment extends Fragment {
+public class ModifyPasswordFragment extends android.support.v4.app.Fragment {
 
     private View view;
 
