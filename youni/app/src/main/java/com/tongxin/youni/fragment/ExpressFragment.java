@@ -293,35 +293,78 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
             if(resultCode == Activity.RESULT_OK){
                 refreshLayout.setRefreshing(true);
                 Bundle extra = data.getExtras();
-                int building = extra.getInt("Building");
+                final int building = extra.getInt("Building");
                 final int exCom = extra.getInt("Express");
-                AVQuery<Express> query1 = new AVQuery<>("Express");
-                String company;
+                Log.i(TAG, "onActivityResult: "+building+"\n"+exCom);
+//                AVQuery<Express> query1 = new AVQuery<>("Express");
+                final String company;
                 company = getCompany(exCom);
 
-                query1.whereEqualTo(ExpressDao.company,company);
-                AVQuery<Express> query2 = new AVQuery<>("Express");
-                char build = (char) ('A'+building);
-                query2.whereContains(ExpressDao.roomId,""+build);
-                AVQuery<Express> query = AVQuery.and(Arrays.asList(query1,query2));
-                query.orderByDescending("createdAt");
-                query.findInBackground(new FindCallback<Express>() {
+                final char build = (char) ('A'+building);
+
+                Observable.create(new Observable.OnSubscribe<List<Express>>() {
                     @Override
-                    public void done(List<Express> list, AVException e) {
-                        if(e == null){
-                            mData.clear();
-                            for (Express express : list) {
-                                if(express.getState() == ExpressDao.isWaiting)
-                                    mData.add(express);
-                            }
-                            adapter.notifyDataSetChanged();
-                            refreshLayout.setRefreshing(false);
+                    public void call(Subscriber<? super List<Express>> subscriber) {
+                        AVQuery<Express> query=new AVQuery<>("Express");
+                        query.limit(100);
+                        query.orderByDescending("createdAt");
+                        query.whereEqualTo(ExpressDao.state,ExpressDao.isWaiting);
+                        try {
+                            subscriber.onNext(query.find());
+                        } catch (AVException e) {
+                            subscriber.onError(e);
                         }
-                        else {
-                            Log.e(TAG, "done in sort express: "+e.getMessage());
-                        }
+                        subscriber.onCompleted();
                     }
-                });
+                }).subscribeOn(Schedulers.io())
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        mData.clear();
+                        adapter.notifyDataSetChanged();
+                    }
+                }).subscribeOn(AndroidSchedulers.mainThread())
+                 .flatMap(new Func1<List<Express>, Observable<Express>>() {
+                     @Override
+                     public Observable<Express> call(List<Express> expresses) {
+                         return Observable.from(expresses);
+                     }
+                 }).observeOn(AndroidSchedulers.mainThread())
+                 .subscribe(new Subscriber<Express>() {
+                     @Override
+                     public void onCompleted() {
+                         adapter.notifyDataSetChanged();
+                         if(refreshLayout.isRefreshing()){
+                             refreshLayout.setRefreshing(false);
+                         }
+                         Log.i(TAG, "onCompleted: 物品刷新完成");
+                     }
+
+                     @Override
+                     public void onError(Throwable e) {
+                         MyToast.showToast(getContext(),"网络异常");
+                         Log.i(TAG, "onError: "+e.getMessage());
+                         refreshLayout.setRefreshing(false);
+                     }
+
+                     @Override
+                     public void onNext(Express express) {
+                         Log.i(TAG, "done: "+express.getRoomID()+"\n"+express.getExpressCompany());
+                         if(exCom ==0 && building == 0) {
+                             mData.add(express);
+                         }
+                         else if(exCom == 0 && express.getRoomID().charAt(0) == build) {
+                             mData.add(express);
+                         }
+                         else if(company.equals(express.getExpressCompany()) && express.getRoomID().charAt(0) == build) {
+                             mData.add(express);
+                         }
+                         else if(company.equals(express.getExpressCompany()) && building == 0) {
+                             mData.add(express);
+                         }
+                     }
+                 });
+
             }
         }
     }
@@ -384,44 +427,47 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
     private String getCompany(int exCom) {
         String company;
         switch (exCom){
-            case 0:
+            case 1:
                 company = "圆通";
                 break;
-            case 1:
+            case 2:
                 company = "中通";
                 break;
-            case 2:
+            case 3:
                 company = "申通";
                 break;
-            case 3:
+            case 4:
                 company = "韵达";
                 break;
-            case 4:
+            case 5:
                 company = "京东";
                 break;
-            case 5:
+            case 6:
                 company = "顺丰";
                 break;
-            case 6:
+            case 7:
                 company = "如风达";
                 break;
-            case 7:
+            case 8:
                 company = "天天";
                 break;
-            case 8:
+            case 9:
                 company = "一统飞鸿";
                 break;
-            case 9:
+            case 10:
                 company = "全峰";
                 break;
-            case 10:
+            case 11:
                 company = "唯品会";
                 break;
-            case 11:
+            case 12:
                 company = "优速";
                 break;
-            case 12:
+            case 13:
                 company = "德邦";
+                break;
+            case 0:
+                company = "全部";
                 break;
             default:
                 company = "";

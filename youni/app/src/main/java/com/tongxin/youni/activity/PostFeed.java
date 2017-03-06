@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
@@ -28,6 +29,8 @@ import com.tongxin.youni.bean.User;
 import com.tongxin.youni.bean.UserDao;
 
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -68,6 +71,7 @@ public class PostFeed extends Activity {
     private ViewGroup.LayoutParams layoutParams;
     private EditText addressOfGetThing;//收货地址
     private EditText attentionThing;//注意事项
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +88,7 @@ public class PostFeed extends Activity {
         initChooseData();//初始化各项要发布到服务器的数据
         initChoose();
         initBtn();//提交和取消
+        adapter.remove("全部");
     }
 
     private void initChooseData() {
@@ -97,12 +102,15 @@ public class PostFeed extends Activity {
 
     private void initSpinner() {
         expressCompanyList = getResources().getStringArray(R.array.expressCompany);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spinner_style_layout,expressCompanyList);
+        ArrayList<String> list = new ArrayList<>(Arrays.asList(expressCompanyList)); //为了移除数据，将数组改为list
+        adapter = new ArrayAdapter<String>(this,R.layout.spinner_style_layout,list);
         expressCompany.setAdapter(adapter);
     }
 
     private void initId() {
+
         expressCompany = (Spinner) findViewById(R.id.id_expressCompany);
+
         timeOfArrive  = (RadioGroup) findViewById(R.id.id_time);
         moneyOfReward = (RadioGroup) findViewById(R.id.id_money);
         typeOfThing = (RadioGroup) findViewById(R.id.id_type);
