@@ -300,7 +300,7 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 final String company;
                 company = getCompany(exCom);
 
-                final char build = (char) ('A'+building);
+                final char build = (char) ('A'+building - 1);
 
                 Observable.create(new Observable.OnSubscribe<List<Express>>() {
                     @Override
