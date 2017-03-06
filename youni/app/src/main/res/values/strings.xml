@@ -23,6 +23,7 @@
 
     <!--快递公司-->
     <string-array name="expressCompany">
+        <item>全部</item>
         <item>圆通</item>
         <item>中通</item>
         <item>申通</item>
@@ -33,9 +34,13 @@
         <item>天天</item>
         <item>一统飞鸿</item>
         <item>全峰</item>
-
+        <item>唯品会</item>
+        <item>优速</item>
+        <item>德邦</item>
     </string-array>
+
     <string-array name="Building">
+        <item>全部</item>
         <item>A</item>
         <item>B</item>
         <item>C</item>
