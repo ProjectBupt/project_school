@@ -3,6 +3,7 @@ package com.tongxin.youni.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.opengl.GLUtils;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity{
 
         mFragmentManager.beginTransaction().replace(R.id.content,mFragments.get(0)).commit();
 
+        
     }
 
 

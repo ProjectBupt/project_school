@@ -33,6 +33,8 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.GetCallback;
 import com.avos.avoscloud.SaveCallback;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tongxin.youni.MyApplication;
 import com.tongxin.youni.R;
 import com.tongxin.youni.activity.ItemDetailActivity;
@@ -55,6 +57,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
@@ -159,6 +162,14 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
 //                drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+//        Glide.with(this)
+//                .load(User.getCurrentUser(User.class).getAvatar())
+//                .crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .placeholder(R.drawable.default_header)
+//                .bitmapTransform(new CropCircleTransformation(getActivity()))
+//                .into(han);
 
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.post(new Runnable() {
