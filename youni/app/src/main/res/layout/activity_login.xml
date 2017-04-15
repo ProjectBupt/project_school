@@ -87,7 +87,7 @@
         android:onClick="doClick"
         android:textSize="12dp"
         android:gravity="center"
-        android:text="修改密码"
+        android:text="忘记密码"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
