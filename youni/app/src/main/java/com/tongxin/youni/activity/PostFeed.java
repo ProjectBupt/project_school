@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
@@ -29,7 +28,6 @@ import com.tongxin.youni.bean.User;
 import com.tongxin.youni.bean.UserDao;
 
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -156,7 +154,7 @@ public class PostFeed extends Activity {
         feed.setExtra(attentionTingForHold);
         feed.setRoomID(addressForHold);
         feed.setTime(timeForHold);
-        feed.setMoney(moneyForHold);
+        feed.setCredit(moneyForHold);
         feed.setPhone(ttUser.getMobilePhoneNumber());
         feed.setType(typeThingForHold);
         feed.setUserName(ttUser.getUsername());

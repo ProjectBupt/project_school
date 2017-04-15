@@ -296,7 +296,6 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 final int building = extra.getInt("Building");
                 final int exCom = extra.getInt("Express");
                 Log.i(TAG, "onActivityResult: "+building+"\n"+exCom);
-//                AVQuery<Express> query1 = new AVQuery<>("Express");
                 final String company;
                 company = getCompany(exCom);
 
@@ -518,6 +517,7 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
                                 if(e == null) {
                                     Intent intent = new Intent(getActivity(), ItemDetailActivity.class);
 
+
                                     Observable.create(new Observable.OnSubscribe<Boolean>() {
                                         @Override
                                         public void call(Subscriber<? super Boolean> subscriber) {
@@ -527,6 +527,10 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
                                                     .notifyType(Message.NOTIFY_TYPE_ALL)
                                                     .build();
                                             Sender sender = new Sender(MyApplication.SECRUIT_CODE);
+
+                                            //减掉发布者的积分
+                                            PayCredit(express.getCredit());
+
                                             try {
                                                 sender.sendToAlias(message,express.getPhone(),20);
                                             } catch (IOException e1) {
@@ -550,7 +554,7 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
                                                 @Override
                                                 public void onNext(Boolean aBoolean) {
-                                                    MyToast.showToast(getContext(),"您领取的消息以发送给发布者");
+                                                    MyToast.showToast(getContext(),"您领取的消息已发送给发布者!");
                                                 }
                                             });
 
@@ -579,5 +583,15 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
         AnimateBack();
     }
 
+    /**
+     *  减掉发布者的积分
+     * @param credit
+     */
+    public void PayCredit(final int credit){
+        User current=AVUser.getCurrentUser(User.class);
+        Log.i("ExpressFragment:",current.getCredit()+"");
+        current.setCredit(current.getCredit()+credit);
+        current.saveInBackground();
+    }
 
 }

@@ -77,8 +77,8 @@
                  android:layout_marginBottom="5dp"
                  android:layout_below="@+id/time"
                  android:layout_gravity="center_vertical"
-                 android:id="@+id/money"
-                 android:text="money"
+                 android:id="@+id/credit"
+                 android:text="credit"
                  android:textSize="14sp"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"/>
@@ -104,7 +104,7 @@
                 android:textSize="15sp"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
-                android:layout_alignBottom="@+id/money"
+                android:layout_alignBottom="@+id/credit"
                 android:layout_alignParentEnd="true" />
 
         </RelativeLayout>

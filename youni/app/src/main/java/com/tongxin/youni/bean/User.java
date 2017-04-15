@@ -20,13 +20,6 @@ public class User extends AVUser implements Parcelable {
     private String avatar;
     private String mCampus;
     private String sex;
-    private String mAddress;
-    private String roomID;
-    private String studentID;
-    private String InstallationId;
-    private int QuantityOfOrder=0;
-    private int QuantityOfAsking=0;
-    private int Credit=0;
     private List<Express> ask_expresses=new ArrayList<>();
 
     public User() {
@@ -123,45 +116,4 @@ public class User extends AVUser implements Parcelable {
         put(UserDao.CREDIT,credit);
     }
 
-//    public List<Express> getAskExpress(){
-//        List<Express> ask_expresses;
-//        AVRelation<Express> relation=this.getRelation("add");
-//        AVQuery<Express> query=relation.getQuery();
-//        query.findInBackground(new FindCallback<Express>() {
-//            @Override
-//            public void done(List<Express> list, AVException e) {
-//                if (e==null){
-//                    if (list.size()!=0){
-//                        ask_expresses=list;
-//                    }else{
-//                        Log.d("User.getAskExpress","Has no ask_express");
-//                    }
-//                }else{
-//                    Log.e("User.getAskExpress","Error:"+e);
-//                }
-//            }
-//        });
-//        return ask_expresses;
-//    }
-//
-//    public List<Express> getFetchExpress(){
-//        final List<Express> express_list=new ArrayList<>();
-//        AVRelation<Express> relation=this.getRelation("fetch");
-//        AVQuery<Express> query=relation.getQuery();
-//        query.findInBackground(new FindCallback<Express>() {
-//            @Override
-//            public void done(List<Express> list, AVException e) {
-//                if (e==null){
-//                    if (list.size()!=0) {
-//                        for (Express express : list) {
-//                            express_list.add(express);
-//                        }
-//                    }
-//                }else{
-//                    Log.e("User.getFetchExpress","Error:"+e);
-//                }
-//            }
-//        });
-//        return express_list;
-//    }
 }

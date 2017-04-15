@@ -1,32 +1,25 @@
 package com.tongxin.youni.activity;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVRelation;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.GetCallback;
-import com.avos.avoscloud.SendCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tongxin.youni.R;
 import com.tongxin.youni.bean.Express;
 import com.tongxin.youni.bean.User;
-import com.tongxin.youni.bean.UserDao;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
@@ -63,7 +56,7 @@ public class ItemDetailActivity extends Activity {
                             +"快递公司："+mExpress.getExpressCompany()+"\n"
                             +"收货地址："+mExpress.getRoomID()+"\n"
                             +"手机号码："+mExpress.getPhone()+"\n"
-                            +"打赏金额："+mExpress.getMoney()+"\n"
+                            +"打赏金额："+mExpress.getCredit()+"\n"
                             +"附加信息："+mExpress.getExtra();
                     mExpress.setDeliverID(User.getCurrentUser(User.class).getObjectId());
                     mExpress.saveInBackground();

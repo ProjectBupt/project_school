@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
@@ -158,7 +157,7 @@ public class FetchFragment extends Fragment {
                     Time= (TextView) cardView.findViewById(R.id.time);
                     Time.setText("派件时间:"+express.getTime());
                     Payment= (TextView) cardView.findViewById(R.id.payment);
-                    Payment.setText("打赏金额:￥"+express.getMoney());
+                    Payment.setText("打赏金额:￥"+express.getCredit());
                     linearLayout.addView(cardView);
                 }else{
                     Log.e("YOUNI","User is null!");
@@ -176,7 +175,7 @@ public class FetchFragment extends Fragment {
         TextView room=(TextView)linearLayout.findViewById(R.id.room);
         room.setText("宿舍号:"+user.getRoomID());
         TextView payment=(TextView)linearLayout.findViewById(R.id.payment);
-        payment.setText("打赏金额:"+express.getMoney());
+        payment.setText("打赏金额:"+express.getCredit());
         TextView type= (TextView) linearLayout.findViewById(R.id.type);
         type.setText("类型:"+express.getType());
         TextView attention=(TextView)linearLayout.findViewById(R.id.attention);

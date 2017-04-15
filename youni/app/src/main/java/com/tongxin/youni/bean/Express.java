@@ -21,7 +21,7 @@ public class Express extends AVObject {
     public String extra;
     private String time;
     private String  type;
-    private int money;
+    private int Credit;
 
     public Express(){
     }
@@ -135,12 +135,12 @@ public class Express extends AVObject {
         put(UserDao.diliverID,deliverID);
     }
 
-    public int getMoney() {
+    public int getCredit() {
         return getInt(ExpressDao.money);
     }
 
-    public void setMoney(int money) {
-        put(ExpressDao.money,money);
+    public void setCredit(int credit) {
+        put(ExpressDao.money, credit);
     }
 
     public String getType() {

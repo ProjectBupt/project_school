@@ -63,7 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.company.setText("快递公司:"+data.get(i).getExpressCompany());
         holder.room.setText("宿舍号:"+data.get(i).getRoomID());
         holder.time.setText("快递到达时间:"+data.get(i).getTime());
-        holder.money.setText("打赏:￥"+data.get(i).getMoney()+"元");
+        holder.money.setText("打赏:￥"+data.get(i).getCredit()+"元");
         holder.post_time.setText( DataUtils.formatDateTime(data.get(i).getCreatedAt()));
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,7 +160,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             room = (TextView) itemView.findViewById(R.id.room);
             pickBt = (Button) itemView.findViewById(R.id.pick_up_bt);
             time = (TextView) itemView.findViewById(R.id.time);
-            money = (TextView) itemView.findViewById(R.id.money);
+            money = (TextView) itemView.findViewById(R.id.credit);
             post_time = (TextView) itemView.findViewById(R.id.post_time);
             mCardView = (CardView) itemView.findViewById(R.id.background);
         }

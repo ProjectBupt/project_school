@@ -36,7 +36,6 @@ import com.tongxin.youni.utils.MyToast;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
-import jp.wasabeef.glide.transformations.internal.FastBlur;
 
 /**
  * Created by charlene on 2016/10/12.
@@ -114,7 +113,7 @@ public class AskFragment extends Fragment {
             TextView Time= (TextView) cardView.findViewById(R.id.time);
             Time.setText("派件时间:"+express.getTime());
             TextView Payment= (TextView) cardView.findViewById(R.id.payment);
-            Payment.setText("打赏金额:￥"+express.getMoney());
+            Payment.setText("打赏金额:￥"+express.getCredit());
 
             Button Cancel= (Button) cardView.findViewById(R.id.btn_cancel);
             Cancel.setOnClickListener(new View.OnClickListener() {
@@ -173,7 +172,7 @@ public class AskFragment extends Fragment {
                                 express.setState(ExpressDao.isFinished);
                                 express.deleteInBackground();
                                 linearLayout.removeView(cardView);
-                                AddOrder(FetchUser);
+                                AddOrder(FetchUser,express.getCredit());
                                 Toast.makeText(getContext(), "确认送达", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -190,7 +189,7 @@ public class AskFragment extends Fragment {
                         Time= (TextView) cardView.findViewById(R.id.time);
                         Time.setText("派件时间:"+express.getTime());
                         Payment= (TextView) cardView.findViewById(R.id.payment);
-                        Payment.setText("打赏金额:￥"+express.getMoney());
+                        Payment.setText("打赏金额:￥"+express.getCredit());
                         linearLayout.addView(cardView);
                     }else{
                         Log.e("YOUNI","Error2:"+e);
@@ -200,11 +199,9 @@ public class AskFragment extends Fragment {
         }
     }
 
-    private void AddOrder(User FetchUser) {
+    private void AddOrder(User FetchUser,int Credit) {
         this_user.setQuantityOfAsking(this_user.getQuantityOfAsking()+1);
+        this_user.setCredit(this_user.getCredit()-Credit);
         this_user.saveInBackground();
-
-        FetchUser.setQuantityOfOrder(FetchUser.getQuantityOfOrder()+1);
-        FetchUser.saveInBackground();
     }
 }
