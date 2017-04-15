@@ -35,11 +35,13 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:layout_weight="1"
+                    android:id="@+id/goto_fetch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_margin="5dp"
+                        android:layout_margin="10dp"
                         android:layout_alignParentStart="true"
                         android:text="我帮别人带领的快递"
                         android:layout_width="match_parent"
@@ -47,7 +49,6 @@
 
                     <ImageButton
                         android:background="@color/transparent"
-                        android:id="@+id/goto_fetch"
                         android:src="@drawable/go_to"
                         android:layout_alignParentEnd="true"
                         android:layout_width="wrap_content"
@@ -56,11 +57,13 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:layout_weight="1"
+                    android:id="@+id/goto_ask"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_margin="5dp"
+                        android:layout_margin="10dp"
                         android:layout_alignParentStart="true"
                         android:text="别人帮我代领的快递"
                         android:layout_width="match_parent"
@@ -68,13 +71,55 @@
 
                     <ImageButton
                         android:background="@color/transparent"
-                        android:id="@+id/goto_ask"
                         android:layout_alignParentEnd="true"
                         android:src="@drawable/go_to"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                 </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_margin="10dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="总带领数"/>
+                        <TextView
+                            android:layout_margin="10dp"
+                            android:textColor="@color/gray"
+                            android:layout_alignParentEnd="true"
+                            android:text="23"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_margin="10dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="总帮领数"/>
+                        <TextView
+                            android:textColor="@color/gray"
+                            android:layout_margin="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:text="18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+                </LinearLayout>
 
             </LinearLayout>
 

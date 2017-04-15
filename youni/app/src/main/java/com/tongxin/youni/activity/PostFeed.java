@@ -221,7 +221,7 @@ public class PostFeed extends Activity {
         expressCompany.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                expressCompanyForHold = expressCompanyList[i];
+                expressCompanyForHold = expressCompanyList[i+1];
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

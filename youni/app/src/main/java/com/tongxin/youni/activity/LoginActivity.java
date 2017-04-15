@@ -18,6 +18,8 @@ import com.tongxin.youni.R;
 import com.tongxin.youni.bean.User;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
+import static com.tongxin.youni.activity.UserCenterActivity.GO_MODIFY_PASSWORD;
+
 //TODO 改为用手机号登录
 
 public class LoginActivity extends AppCompatActivity {
@@ -34,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         initView();
 
 
@@ -119,6 +120,11 @@ public class LoginActivity extends AppCompatActivity {
         _password = (EditText) findViewById(R.id.password);
         _loginBt = (Button) findViewById(R.id.login_bt);
         _register = (TextView) findViewById(R.id.register);
+    }
 
+    public void doClick(View view) {
+        Intent intent=new Intent(this,MyExpressActivity.class);
+        intent.putExtra("tag",GO_MODIFY_PASSWORD);
+        startActivity(intent);
     }
 }

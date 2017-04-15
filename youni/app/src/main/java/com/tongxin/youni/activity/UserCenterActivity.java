@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
@@ -70,8 +71,8 @@ public class UserCenterActivity extends AppCompatActivity implements View.OnClic
     private String headImageUrl;
 
     private ImageView Header;
-    private ImageButton gotoAsk;
-    private ImageButton gotoFetch;
+    private RelativeLayout gotoAsk;
+    private RelativeLayout gotoFetch;
     private Button btnLogOut;
     private Button btnModifyPassword;
     private Button btnChangeHead;
@@ -112,8 +113,8 @@ public class UserCenterActivity extends AppCompatActivity implements View.OnClic
         });
 
         Header= (ImageView) findViewById(R.id.header);
-        gotoAsk= (ImageButton) findViewById(R.id.goto_ask);
-        gotoFetch= (ImageButton) findViewById(R.id.goto_fetch);
+        gotoAsk= (RelativeLayout) findViewById(R.id.goto_ask);
+        gotoFetch= (RelativeLayout) findViewById(R.id.goto_fetch);
         btnLogOut= (Button) findViewById(R.id.log_out);
         btnModifyPassword= (Button) findViewById(R.id.modify_password);
         btnChangeHead= (Button) findViewById(R.id.change_head);
@@ -427,7 +428,10 @@ public class UserCenterActivity extends AppCompatActivity implements View.OnClic
                     //currentUser.put("userName",tvResult);
                     //Toast.makeText(ChangeInformation.this,tvResult,Toast.LENGTH_SHORT).show();
                     //加载选择图片
-                    Glide.with(this).load(HeadPath).into(Header);
+                    Glide.with(this)
+                            .load(HeadPath)
+                            .bitmapTransform(new CropCircleTransformation(this))
+                            .into(Header);
                     //更换头像
                     try {
                         final AVFile file  = AVFile.withFile("avatar.png",new File((new URI("file:"+HeadPath))));

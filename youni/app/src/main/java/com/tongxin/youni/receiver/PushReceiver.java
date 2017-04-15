@@ -6,6 +6,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.tongxin.youni.activity.MainActivity;
+import com.tongxin.youni.activity.MyExpressActivity;
+import com.tongxin.youni.activity.UserCenterActivity;
+import com.tongxin.youni.fragment.AskFragment;
 import com.xiaomi.mipush.sdk.ErrorCode;
 import com.xiaomi.mipush.sdk.MiPushClient;
 import com.xiaomi.mipush.sdk.MiPushCommandMessage;
@@ -53,8 +56,9 @@ public class PushReceiver extends PushMessageReceiver {
         } else if(!TextUtils.isEmpty(message.getUserAccount())) {
             mUserAccount=message.getUserAccount();
         }
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, MyExpressActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("tag", UserCenterActivity.GO_ASK);
         context.startActivity(intent);
     }
     @Override
