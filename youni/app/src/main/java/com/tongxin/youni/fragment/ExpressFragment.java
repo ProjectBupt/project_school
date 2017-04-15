@@ -530,7 +530,7 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
                                             Sender sender = new Sender(MyApplication.SECRUIT_CODE);
 
                                             //减掉发布者的积分
-                                            PayCredit(express.getCredit());
+                                            addCredit(express.getCredit());
 
                                             try {
                                                 sender.sendToAlias(message,express.getPhone(),20);
@@ -588,10 +588,10 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
      *  减掉发布者的积分
      * @param credit
      */
-    public void PayCredit(final int credit){
+    public void addCredit(final int credit){
         User current=AVUser.getCurrentUser(User.class);
-        Log.i("ExpressFragment:",current.getCredit()+"");
         current.setCredit(current.getCredit()+credit);
+        current.setQuantityOfOrder(current.getQuantityOfOrder()+1);
         current.saveInBackground();
     }
 

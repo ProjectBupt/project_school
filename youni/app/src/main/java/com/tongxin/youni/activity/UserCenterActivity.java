@@ -76,6 +76,7 @@ public class UserCenterActivity extends AppCompatActivity implements View.OnClic
     private Button btnLogOut;
     private Button btnModifyPassword;
     private Button btnChangeHead;
+    private TextView tvCredit;
     private TextView tvPhoneNumber;
     private TextView tvDormitory;
     private TextView tvStudentNumber;
@@ -84,6 +85,8 @@ public class UserCenterActivity extends AppCompatActivity implements View.OnClic
     private TextView tvEditInfo;
     private TextView tvCancel;
     private TextView tvEditUserName;
+    private TextView tvAsk;
+    private TextView tvFetch;
     private CardView card;
 
     private User currentUser;
@@ -124,8 +127,11 @@ public class UserCenterActivity extends AppCompatActivity implements View.OnClic
         tvSex= (TextView) findViewById(R.id.sex);
         tvUserName= (TextView) findViewById(R.id.user_name);
         tvEditUserName= (TextView) findViewById(R.id.edit_user_name);
+        tvCredit= (TextView) findViewById(R.id.credit);
         tvCancel= (TextView) findViewById(R.id.cancel);
         tvEditInfo= (TextView) findViewById(R.id.edit_info);
+        tvAsk= (TextView) findViewById(R.id.ask_number);
+        tvFetch= (TextView) findViewById(R.id.fetch_number);
         card= (CardView) findViewById(R.id.edit_card);
 
         gotoAsk.setOnClickListener(this);
@@ -158,7 +164,10 @@ public class UserCenterActivity extends AppCompatActivity implements View.OnClic
             tvDormitory.setText(currentUser.getRoomID());
             tvStudentNumber.setText(currentUser.getStudentID());
             tvUserName.setText(currentUser.getUsername());
+            tvCredit.setText("积分:"+currentUser.getCredit());
             tvEditUserName.setText(currentUser.getUsername());
+            tvAsk.setText(currentUser.getQuantityOfAsking()+"");
+            tvFetch.setText(currentUser.getQuantityOfOrder()+"");
             if (currentUser.getSex()!=null){
                 switch (currentUser.getSex()){
                     case "boy":

@@ -172,7 +172,7 @@ public class AskFragment extends Fragment {
                                 express.setState(ExpressDao.isFinished);
                                 express.deleteInBackground();
                                 linearLayout.removeView(cardView);
-                                AddOrder(FetchUser,express.getCredit());
+                                AddOrder(express.getCredit());
                                 Toast.makeText(getContext(), "确认送达", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -199,7 +199,7 @@ public class AskFragment extends Fragment {
         }
     }
 
-    private void AddOrder(User FetchUser,int Credit) {
+    private void AddOrder(int Credit) {
         this_user.setQuantityOfAsking(this_user.getQuantityOfAsking()+1);
         this_user.setCredit(this_user.getCredit()-Credit);
         this_user.saveInBackground();
