@@ -84,6 +84,7 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
     private FloatingActionButton book;
     private FloatingActionButton express;
     private Toolbar mToolbar;
+    private ImageView noItem;
 
     private int mLastFirstVisibleItem = 0;
 
@@ -143,6 +144,7 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
         book= (FloatingActionButton) view.findViewById(R.id.float_book);
         express= (FloatingActionButton) view.findViewById(R.id.float_express);
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        noItem = (ImageView) view.findViewById(R.id.no_item);
         this.setHasOptionsMenu(true);
 
         return view;
@@ -223,35 +225,6 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
-//        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(AbsListView view, int scrollState) {
-//            }
-//
-//            @Override
-//            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-//                if(mLastFirstVisibleItem<firstVisibleItem)
-//                {
-//                    Log.i("SCROLLING DOWN","TRUE");
-//                    book.hide();
-//                    express.hide();
-//                    mAddButton.hide();
-//                }
-//                if(mLastFirstVisibleItem>firstVisibleItem)
-//                {
-//                    Log.i("SCROLLING UP","TRUE");
-//                    book.show();
-//                    express.show();
-//                    mAddButton.show();
-//                }
-//                mLastFirstVisibleItem=firstVisibleItem;
-//
-//                if (isButtonOut){
-//                    AnimateBack();
-//                    isButtonOut=false;
-//                }
-//            }
-//        });
 
     }
 
@@ -344,6 +317,16 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
                  .subscribe(new Subscriber<Express>() {
                      @Override
                      public void onCompleted() {
+                         if(mData.size() == 0){
+                             recyclerView.setVisibility(View.GONE);
+                             noItem.setVisibility(View.VISIBLE);
+                         } else{
+                             recyclerView.setVisibility(View.VISIBLE);
+                             noItem.setVisibility(View.GONE);
+                         }
+                         if(refreshLayout.isRefreshing()){
+                             refreshLayout.setRefreshing(false);
+                         }
                          adapter.notifyDataSetChanged();
                          if(refreshLayout.isRefreshing()){
                              refreshLayout.setRefreshing(false);
@@ -414,6 +397,13 @@ public class ExpressFragment extends Fragment implements SwipeRefreshLayout.OnRe
               @Override
               public void onCompleted() {
                   adapter.notifyDataSetChanged();
+                  if(mData.size() == 0){
+                      recyclerView.setVisibility(View.GONE);
+                      noItem.setVisibility(View.VISIBLE);
+                  } else{
+                      recyclerView.setVisibility(View.VISIBLE);
+                      noItem.setVisibility(View.GONE);
+                  }
                   if(refreshLayout.isRefreshing()){
                       refreshLayout.setRefreshing(false);
                   }
